@@ -27,6 +27,12 @@ const AntdPortfolio = lazy(() =>
   })),
 )
 
+const AdvisoryPortfolio = lazy(() =>
+  import('./portfolio/AdvisoryPortfolio.jsx').then((module) => ({
+    default: module.AdvisoryPortfolio,
+  })),
+)
+
 const STORAGE_KEYS = {
   locale: 'amc-locale',
   theme: 'amc-theme',
@@ -67,6 +73,7 @@ function AppRoutes({ content, locale, theme, setLocale, setTheme, direction }) {
       '/design/editorial': `${content.selector.designs[0].title} | ${content.brand.name}`,
       '/design/mantine': `${content.selector.designs[1].title} | ${content.brand.name}`,
       '/design/executive': `${content.selector.designs[2].title} | ${content.brand.name}`,
+      '/design/advisory': `${content.selector.designs[3].title} | ${content.brand.name}`,
     }
 
     document.title = titleMap[location.pathname] ?? content.meta.title
@@ -121,6 +128,19 @@ function AppRoutes({ content, locale, theme, setLocale, setTheme, direction }) {
               theme={theme}
               onLocaleChange={setLocale}
               onThemeChange={setTheme}
+            />
+          }
+        />
+        <Route
+          path="/design/advisory"
+          element={
+            <AdvisoryPortfolio
+              content={content}
+              locale={locale}
+              theme={theme}
+              onLocaleChange={setLocale}
+              onThemeChange={setTheme}
+              direction={direction}
             />
           }
         />

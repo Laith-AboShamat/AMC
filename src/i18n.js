@@ -34,7 +34,7 @@ export const translations = {
     selector: {
       pageTitle: 'AMC | Choose a Design Direction',
       eyebrow: 'Portfolio Design Directions',
-      title: 'Choose one of three distinct portfolio experiences for presentation.',
+      title: 'Choose one of four distinct portfolio experiences for presentation.',
       description:
         'Each direction presents the same AMC content through a different visual language so the client can compare tone, hierarchy, and professionalism before making a final choice.',
       openDesign: 'Open design',
@@ -43,6 +43,7 @@ export const translations = {
         { label: 'Option 01', value: 'Editorial and institutional with strong architectural framing.' },
         { label: 'Option 02', value: 'Soft executive dashboard feel built with Mantine.' },
         { label: 'Option 03', value: 'Structured corporate presentation built with Ant Design.' },
+        { label: 'Option 04', value: 'Immersive consulting landing page with bespoke animated sections.' },
       ],
       designs: [
         {
@@ -71,6 +72,15 @@ export const translations = {
           description:
             'A structured enterprise layout with concise data surfaces and a board-level reporting feel.',
           bullets: ['Corporate clarity', 'Timeline and stats', 'Decision-maker friendly'],
+        },
+        {
+          slug: 'advisory',
+          href: '/design/advisory',
+          title: 'Immersive Advisory',
+          library: 'Tailwind + React',
+          description:
+            'A premium consulting landing page with atmospheric hero treatment, modular storytelling, and conversion-focused sections.',
+          bullets: ['Bold hero composition', 'Animated KPI band', 'High-end service storytelling'],
         },
       ],
     },
@@ -315,7 +325,7 @@ export const translations = {
     selector: {
       pageTitle: 'AMC | اختر الاتجاه التصميمي',
       eyebrow: 'اتجاهات تصميم الملف التعريفي',
-      title: 'اختر واحدة من ثلاث تجارب تصميم مختلفة لعرض الملف التعريفي.',
+      title: 'اختر واحدة من أربع تجارب تصميم مختلفة لعرض الملف التعريفي.',
       description:
         'كل اتجاه يعرض نفس محتوى AMC بلغة بصرية مختلفة حتى يتمكن العميل من مقارنة الطابع والهرمية والاحترافية قبل اعتماد النسخة النهائية.',
       openDesign: 'فتح التصميم',
@@ -324,6 +334,7 @@ export const translations = {
         { label: 'الخيار 01', value: 'تصميم تحريري مؤسسي بطابع معماري واضح.' },
         { label: 'الخيار 02', value: 'أسلوب تنفيذي هادئ مبني باستخدام Mantine.' },
         { label: 'الخيار 03', value: 'عرض مؤسسي منظم مبني باستخدام Ant Design.' },
+        { label: 'الخيار 04', value: 'صفحة استشارية غامرة بمقاطع متحركة وسرد بصري أكثر جرأة.' },
       ],
       designs: [
         {
@@ -352,6 +363,15 @@ export const translations = {
           description:
             'تصميم مؤسسي منظم بأسطح معلومات مختصرة وشعور قريب من تقارير الإدارة العليا.',
           bullets: ['وضوح مؤسسي', 'مؤشرات ومسارات', 'ملائم لصنّاع القرار'],
+        },
+        {
+          slug: 'advisory',
+          href: '/design/advisory',
+          title: 'الاستشاري الغامر',
+          library: 'Tailwind + React',
+          description:
+            'صفحة استشارية راقية بهيرو بصري قوي ومقاطع خدمية مترابطة ومسار تواصل واضح.',
+          bullets: ['افتتاحية جريئة', 'شريط مؤشرات متحرك', 'سرد بصري موجه للتحويل'],
         },
       ],
     },

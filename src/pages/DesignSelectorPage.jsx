@@ -1,4 +1,4 @@
-import { ArrowRight, LayoutTemplate, Layers3, Palette } from 'lucide-react'
+import { ArrowRight, Building2, LayoutTemplate, Layers3, Palette } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { DesignControls } from '../components/DesignControls.jsx'
 import { motion } from 'framer-motion'
@@ -13,7 +13,7 @@ const reveal = {
   transition: { duration: 0.6, ease: 'easeOut' },
 }
 
-const designIcons = [LayoutTemplate, Layers3, Palette]
+const designIcons = [LayoutTemplate, Layers3, Palette, Building2]
 
 function PreviewPanel({ design, index, openLabel }) {
   const Icon = designIcons[index]
@@ -109,6 +109,38 @@ function PreviewPanel({ design, index, openLabel }) {
             <div className="mt-4 flex gap-2">
               <div className="h-2 flex-1 rounded-full bg-[#0f172a]/10" />
               <div className="h-2 w-1/3 rounded-full bg-[#4f46e5]/30" />
+            </div>
+          </>
+        ) : null}
+
+        {design.slug === 'advisory' ? (
+          <>
+            <div className="rounded-[1.3rem] bg-[linear-gradient(135deg,#0d1b2a_0%,#1b3a6b_100%)] p-5 text-white">
+              <div className="inline-flex rounded-full border border-[#c8a96e]/40 bg-white/8 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#f0ddbb]">
+                Fourth Direction
+              </div>
+              <div className="mt-4 h-3 w-3/4 rounded-full bg-white/80" />
+              <div className="mt-2 h-2 w-2/3 rounded-full bg-white/30" />
+            </div>
+            <div className="mt-4 grid grid-cols-2 gap-3">
+              <div className="rounded-[1.1rem] bg-[#2e6be6] p-4 text-white">
+                <div className="h-2 w-14 rounded-full bg-white/50" />
+                <div className="mt-4 text-2xl font-bold">100%</div>
+              </div>
+              <div className="rounded-[1.1rem] bg-white p-4 shadow-[0_10px_24px_rgba(17,35,64,0.08)]">
+                <div className="h-2 w-16 rounded-full bg-[#2e4a77]/30" />
+                <div className="mt-4 space-y-2">
+                  <div className="h-2 rounded-full bg-[#2e4a77]/15" />
+                  <div className="h-2 w-4/5 rounded-full bg-[#2e4a77]/15" />
+                </div>
+              </div>
+            </div>
+            <div className="mt-4 rounded-[1.1rem] bg-[#f5f7fb] p-4">
+              <div className="grid grid-cols-3 gap-2">
+                <div className="h-16 rounded-xl bg-[#e8effe]" />
+                <div className="h-16 rounded-xl bg-[#0d1b2a]" />
+                <div className="h-16 rounded-xl bg-[#f5ecd8]" />
+              </div>
             </div>
           </>
         ) : null}
