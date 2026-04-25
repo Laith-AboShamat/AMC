@@ -33,8 +33,23 @@ export function FourthHeroSection({ locale = 'en' }) {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 
+  const renderLine = (segments, lineIndex) => (
+    <span className="advisory-text-reveal-wrapper advisory-hero-line block" key={`line-${lineIndex}`}>
+      <span className="advisory-text-reveal-content advisory-delay-200 inline-flex flex-wrap items-baseline gap-x-0.5 sm:gap-x-1">
+        {segments.map((segment, segmentIndex) => (
+          <span
+            key={`segment-${lineIndex}-${segmentIndex}`}
+            className={segment.accent === 'gold' ? 'advisory-gold-shimmer italic font-light' : ''}
+          >
+            {segment.text}
+          </span>
+        ))}
+      </span>
+    </span>
+  )
+
   return (
-    <section id="hero" className="relative min-h-screen flex flex-col overflow-hidden" style={{ minHeight: '100vh' }}>
+    <section id="hero" className="relative min-h-screen flex flex-col overflow-hidden" style={{ minHeight: '100svh' }}>
       <div className="absolute inset-0 z-0 overflow-hidden" ref={bgRef}>
         <AppImage
           src="/background.jpg"
@@ -49,37 +64,32 @@ export function FourthHeroSection({ locale = 'en' }) {
         <div className="absolute inset-0 advisory-hero-mask" />
       </div>
 
-      <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] rounded-full bg-[var(--blue-accent)] opacity-10 blur-[120px] advisory-blob pointer-events-none z-0" />
-      <div className="absolute bottom-1/3 left-1/3 w-[400px] h-[400px] rounded-full bg-[var(--navy)] opacity-15 blur-[100px] advisory-blob-slow pointer-events-none z-0" />
+      <div className="absolute top-[18%] right-[12%] w-56 h-56 sm:w-80 sm:h-80 lg:w-[500px] lg:h-[500px] rounded-full bg-[var(--blue-accent)] opacity-10 blur-[90px] lg:blur-[120px] advisory-blob pointer-events-none z-0" />
+      <div className="absolute bottom-[22%] left-[8%] w-48 h-48 sm:w-72 sm:h-72 lg:bottom-1/3 lg:left-1/3 lg:w-[400px] lg:h-[400px] rounded-full bg-[var(--navy)] opacity-15 blur-[80px] lg:blur-[100px] advisory-blob-slow pointer-events-none z-0" />
 
-      <div className="relative z-10 flex-1 flex flex-col max-w-7xl mx-auto px-5 sm:px-6 w-full pt-36 pb-16">
-        <div className="flex flex-col lg:flex-row items-end gap-12 lg:gap-20 flex-1">
+      <div className="relative z-10 flex-1 flex flex-col max-w-7xl mx-auto px-4 sm:px-6 w-full pt-28 sm:pt-32 lg:pt-36 pb-12 sm:pb-16">
+        <div className="flex flex-col lg:flex-row items-start lg:items-end gap-10 sm:gap-12 lg:gap-20 flex-1">
           <div className="lg:w-7/12 flex flex-col justify-center flex-1">
             <div
-              className={`inline-flex items-center gap-3 px-4 py-2 rounded-full bg-[rgba(13,27,42,0.7)] backdrop-blur-md border border-[rgba(200,169,110,0.35)] text-white text-[10px] font-semibold tracking-[0.18em] uppercase mb-8 w-fit transition-all duration-700 ${
+              className={`advisory-hero-intro inline-flex max-w-full items-center gap-2 sm:gap-2.5 px-3.5 sm:px-5 py-2.5 rounded-full text-[10px] sm:text-[11px] font-semibold tracking-[0.14em] sm:tracking-[0.2em] uppercase mb-6 sm:mb-8 w-fit transition-all duration-700 ${
                 loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
               }`}
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-[var(--gold)] animate-pulse flex-shrink-0" />
-              {copy.eyebrow}
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--gold)] advisory-pulse-dot flex-shrink-0" />
+              <span className="advisory-hero-intro-text">
+                {copy.eyebrow.lead}
+                <span className="advisory-hero-intro-accent"> {copy.eyebrow.accent} </span>
+                {copy.eyebrow.tail}
+              </span>
+              <AppIcon name="SparklesIcon" size={12} className="text-[var(--gold-light)] advisory-spark-inline" />
             </div>
 
-            <h1 ref={titleRef} className="advisory-display text-5xl sm:text-6xl lg:text-7xl text-white mb-6 leading-[1.0]">
-              <span className="advisory-text-reveal-wrapper block">
-                <span className="advisory-text-reveal-content advisory-delay-200">{copy.lines[0]}</span>
-              </span>
-              <span className="advisory-text-reveal-wrapper block">
-                <span className="advisory-text-reveal-content advisory-delay-300 italic font-light text-[var(--gold-light)]">
-                  {copy.lines[1]}
-                </span>
-              </span>
-              <span className="advisory-text-reveal-wrapper block">
-                <span className="advisory-text-reveal-content advisory-delay-400">{copy.lines[2]}</span>
-              </span>
+            <h1 ref={titleRef} className="advisory-display advisory-hero-title advisory-hero-heading text-[2.9rem] sm:text-6xl lg:text-7xl mb-5 sm:mb-6 leading-[1.06] sm:leading-[1.05] max-w-[11ch] sm:max-w-none">
+              {copy.lines.map((line, lineIndex) => renderLine(line, lineIndex))}
             </h1>
 
             <p
-              className={`text-white/80 text-lg font-light mb-10 max-w-xl leading-relaxed transition-all duration-700 delay-500 ${
+              className={`advisory-hero-description text-base sm:text-lg font-light mb-8 sm:mb-10 max-w-xl leading-relaxed transition-all duration-700 delay-500 ${
                 loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
               }`}
             >
@@ -87,13 +97,13 @@ export function FourthHeroSection({ locale = 'en' }) {
             </p>
 
             <div
-              className={`flex flex-wrap items-center gap-4 transition-all duration-700 delay-700 ${
+              className={`flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto transition-all duration-700 delay-700 ${
                 loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
               }`}
             >
               <button
                 onClick={() => scrollToSection('contact')}
-                className="advisory-btn-primary px-8 py-3.5 rounded-full text-sm font-semibold flex items-center gap-2.5"
+                className="advisory-btn-primary w-full sm:w-auto px-6 sm:px-8 py-3.5 rounded-full text-sm font-semibold flex items-center justify-center gap-2.5"
                 type="button"
               >
                 {copy.contactCta}
@@ -101,7 +111,7 @@ export function FourthHeroSection({ locale = 'en' }) {
               </button>
               <button
                 onClick={() => scrollToSection('services')}
-                className="px-8 py-3.5 rounded-full text-sm font-semibold text-white border border-white/30 hover:bg-white/10 transition-all flex items-center gap-2.5"
+                className="advisory-hero-secondary-btn w-full sm:w-auto px-6 sm:px-8 py-3.5 rounded-full text-sm font-semibold transition-all flex items-center justify-center gap-2.5"
                 type="button"
               >
                 <AppIcon name="PlayIcon" size={14} />
@@ -115,22 +125,24 @@ export function FourthHeroSection({ locale = 'en' }) {
               loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
-            <div className="grid grid-cols-2 gap-3">
+            <div className="advisory-gold-sparkle-zone grid grid-cols-2 gap-3">
+              <div className="advisory-sparkle advisory-sparkle-one" aria-hidden="true" />
+              <div className="advisory-sparkle advisory-sparkle-two" aria-hidden="true" />
               {copy.stats.map((stat, index) => (
                 <div
                   key={stat.label}
-                  className={`p-5 backdrop-blur-xl border rounded-2xl ${
-                    index === 0
-                      ? 'bg-[var(--blue-accent)]/90 border-[var(--blue-accent)] text-white rounded-tl-3xl'
-                      : index === 1
-                        ? 'bg-white/90 border-white/30 text-[var(--navy-dark)] rounded-tr-3xl'
-                        : index === 2
-                          ? 'bg-[rgba(13,27,42,0.7)] border-white/10 text-white rounded-bl-3xl'
-                          : 'bg-[rgba(200,169,110,0.85)] border-[var(--gold)] text-[var(--navy-dark)] rounded-br-3xl'
+                  className={`advisory-hero-stat-card advisory-hero-stat-${index + 1} p-5 border rounded-2xl text-center ${
+                    stat.accent === 'gold' ? 'advisory-gold-glow-card' : ''
                   }`}
                 >
-                  <div className="advisory-display text-3xl font-semibold mb-1 leading-none">{stat.value}</div>
-                  <div className={`text-[10px] font-semibold uppercase tracking-[0.15em] ${index === 0 || index === 2 ? 'text-white/70' : 'text-[var(--navy)]/70'}`}>
+                  <div
+                    className={`advisory-display advisory-hero-stat-value mb-1 leading-none ${
+                      String(stat.value).length > 8 ? 'text-[2rem]' : 'text-3xl'
+                    } ${stat.accent === 'gold' ? 'advisory-hero-stat-value-gold' : ''}`}
+                  >
+                    {stat.value}
+                  </div>
+                  <div className="advisory-hero-stat-label text-[11px] font-semibold uppercase tracking-[0.15em]">
                     {stat.label}
                   </div>
                 </div>
@@ -139,11 +151,11 @@ export function FourthHeroSection({ locale = 'en' }) {
           </div>
         </div>
 
-        <div className={`flex items-center gap-3 mt-8 transition-all duration-700 delay-700 ${loaded ? 'opacity-100' : 'opacity-0'}`}>
-          <div className="w-6 h-10 rounded-full border border-white/30 flex items-start justify-center pt-2">
-            <div className="w-1 h-2 bg-white/60 rounded-full animate-bounce" />
+        <div className={`advisory-scroll-cue flex items-center justify-center sm:justify-start gap-3 mt-8 transition-all duration-700 delay-700 ${loaded ? 'opacity-100' : 'opacity-0'}`}>
+          <div className="advisory-scroll-indicator w-6 h-10 rounded-full border flex items-start justify-center pt-2">
+            <div className="w-1 h-2 rounded-full animate-bounce advisory-scroll-dot" />
           </div>
-          <span className="text-white/50 text-xs uppercase tracking-[0.15em] font-medium">{copy.scrollLabel}</span>
+          <span className="advisory-scroll-label text-xs uppercase tracking-[0.12em] font-semibold">{copy.scrollLabel}</span>
         </div>
       </div>
     </section>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Languages, MoonStar, SunMedium } from 'lucide-react'
+import { MoonStar, SunMedium } from 'lucide-react'
 import { AppIcon } from './AppIcon.jsx'
 import { AppLogo } from './AppLogo.jsx'
 import { getAdvisoryCopy } from './copy.js'
@@ -71,20 +71,20 @@ export function FourthHeader({ content, locale, theme, onLocaleChange, onThemeCh
         scrolled ? 'advisory-nav-scrolled py-0' : 'bg-transparent py-2'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-5 sm:px-6 h-20 flex items-center justify-between gap-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between gap-3 sm:gap-4">
         <div className="flex items-center gap-3 min-w-0">
           <button className="flex items-center gap-3 group min-w-0" onClick={() => handleNavClick('#hero')} type="button">
             <AppLogo
               src="/amc1.png"
-              size={42}
+              size={36}
               className="advisory-brand-chip group-hover:scale-105 transition-transform duration-300 rounded-lg overflow-hidden p-1.5 backdrop-blur-sm"
             />
             <div className="flex flex-col justify-center min-w-0 text-left">
-              <span className={`advisory-brand-title transition-colors duration-300 ${scrolled ? 'text-[var(--navy-dark)]' : 'text-white'}`}>
+              <span className={`advisory-brand-title transition-colors duration-300 ${scrolled ? 'text-[var(--navy-dark)]' : 'advisory-nav-hero-text'}`}>
                 AMC
               </span>
-              <span className={`advisory-brand-subtitle transition-colors duration-300 ${scrolled ? 'text-[var(--gold)]' : 'text-[var(--gold-light)]'}`}>
-                Excellence & Advisory
+              <span className={`advisory-brand-subtitle hidden sm:block transition-colors duration-300 ${scrolled ? 'text-[var(--gold)]' : 'text-[var(--gold-light)]'}`}>
+                {copy.header.brandLine}
               </span>
             </div>
           </button>
@@ -114,9 +114,11 @@ export function FourthHeader({ content, locale, theme, onLocaleChange, onThemeCh
               title={copy.header.toggleLanguage}
               aria-label={copy.header.toggleLanguage}
               onClick={toggleLocale}
-              className="advisory-icon-button"
+              className="advisory-icon-button advisory-locale-toggle px-3 w-auto min-w-[4.5rem]"
             >
-              <Languages size={16} />
+              <span className={`advisory-locale-token ${locale === 'en' ? 'is-active' : ''}`}>EN</span>
+              <span className="advisory-locale-divider" aria-hidden="true">|</span>
+              <span className={`advisory-locale-token ${locale === 'ar' ? 'is-active' : ''}`}>AR</span>
             </button>
             <button
               type="button"
@@ -139,7 +141,7 @@ export function FourthHeader({ content, locale, theme, onLocaleChange, onThemeCh
         </div>
 
         <button
-          className={`md:hidden p-2 rounded-lg transition-colors ${scrolled ? 'text-[var(--navy)]' : 'text-white'}`}
+          className={`md:hidden p-2 rounded-lg transition-colors ${scrolled ? 'text-[var(--navy)]' : 'advisory-nav-hero-text'}`}
           onClick={() => setMenuOpen((open) => !open)}
           aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           type="button"
@@ -149,7 +151,7 @@ export function FourthHeader({ content, locale, theme, onLocaleChange, onThemeCh
       </div>
 
       <div
-        className={`advisory-mobile-menu md:hidden absolute top-full left-0 w-full bg-white border-b border-[rgba(27,58,107,0.1)] shadow-lg ${
+        className={`advisory-mobile-menu md:hidden absolute top-full left-0 w-full bg-[var(--bg-white)] border-b border-[var(--border-light)] shadow-lg ${
           menuOpen ? 'open' : 'closed'
         }`}
       >
@@ -160,9 +162,11 @@ export function FourthHeader({ content, locale, theme, onLocaleChange, onThemeCh
               title={copy.header.toggleLanguage}
               aria-label={copy.header.toggleLanguage}
               onClick={toggleLocale}
-              className="advisory-icon-button"
+              className="advisory-icon-button advisory-locale-toggle px-3 w-auto min-w-[4.5rem]"
             >
-              <Languages size={16} />
+              <span className={`advisory-locale-token ${locale === 'en' ? 'is-active' : ''}`}>EN</span>
+              <span className="advisory-locale-divider" aria-hidden="true">|</span>
+              <span className={`advisory-locale-token ${locale === 'ar' ? 'is-active' : ''}`}>AR</span>
             </button>
             <button
               type="button"

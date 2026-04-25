@@ -104,9 +104,9 @@ export function FourthContactSection({ locale = 'en' }) {
             </div>
           </div>
 
-          <div className="rounded-3xl border border-[var(--border-light)] bg-[var(--bg-cool)] p-8 lg:p-10">
+          <div className="rounded-3xl border border-[var(--border-light)] bg-[var(--bg-cool)] p-6 sm:p-8 lg:p-10">
             {submitted ? (
-              <div className="flex flex-col items-center justify-center h-full min-h-[400px] text-center gap-5">
+              <div className="flex flex-col items-center justify-center h-full min-h-[320px] sm:min-h-[400px] text-center gap-5">
                 <div className="w-16 h-16 rounded-full bg-[var(--blue-pale)] flex items-center justify-center">
                   <AppIcon name="CheckCircleIcon" size={36} className="text-[var(--blue-accent)]" />
                 </div>
@@ -133,28 +133,28 @@ export function FourthContactSection({ locale = 'en' }) {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs font-semibold text-[var(--navy-dark)] mb-1.5" htmlFor="advisory-name">{copy.fields.name}</label>
-                    <input id="advisory-name" type="text" name="name" value={form.name} onChange={handleChange} required placeholder={copy.placeholders.name} className="advisory-form-input w-full px-4 py-3 rounded-xl border border-[var(--border-mid)] bg-white text-sm text-[var(--text-primary)] placeholder-[var(--text-muted)] min-h-[44px]" />
+                    <input id="advisory-name" type="text" name="name" value={form.name} onChange={handleChange} required placeholder={copy.placeholders.name} className="advisory-form-input w-full px-4 py-3 rounded-xl border border-[var(--border-mid)] bg-[var(--bg-white)] text-sm text-[var(--text-primary)] placeholder-[var(--text-muted)] min-h-[44px]" />
                   </div>
                   <div>
                     <label className="block text-xs font-semibold text-[var(--navy-dark)] mb-1.5" htmlFor="advisory-email">{copy.fields.email}</label>
-                    <input id="advisory-email" type="email" name="email" value={form.email} onChange={handleChange} required placeholder={copy.placeholders.email} className="advisory-form-input w-full px-4 py-3 rounded-xl border border-[var(--border-mid)] bg-white text-sm text-[var(--text-primary)] placeholder-[var(--text-muted)] min-h-[44px]" />
+                    <input id="advisory-email" type="email" name="email" value={form.email} onChange={handleChange} required placeholder={copy.placeholders.email} className="advisory-form-input w-full px-4 py-3 rounded-xl border border-[var(--border-mid)] bg-[var(--bg-white)] text-sm text-[var(--text-primary)] placeholder-[var(--text-muted)] min-h-[44px]" />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs font-semibold text-[var(--navy-dark)] mb-1.5" htmlFor="advisory-company">{copy.fields.company}</label>
-                    <input id="advisory-company" type="text" name="company" value={form.company} onChange={handleChange} required placeholder={copy.placeholders.company} className="advisory-form-input w-full px-4 py-3 rounded-xl border border-[var(--border-mid)] bg-white text-sm text-[var(--text-primary)] placeholder-[var(--text-muted)] min-h-[44px]" />
+                    <input id="advisory-company" type="text" name="company" value={form.company} onChange={handleChange} required placeholder={copy.placeholders.company} className="advisory-form-input w-full px-4 py-3 rounded-xl border border-[var(--border-mid)] bg-[var(--bg-white)] text-sm text-[var(--text-primary)] placeholder-[var(--text-muted)] min-h-[44px]" />
                   </div>
                   <div>
                     <label className="block text-xs font-semibold text-[var(--navy-dark)] mb-1.5" htmlFor="advisory-role">{copy.fields.role}</label>
-                    <input id="advisory-role" type="text" name="role" value={form.role} onChange={handleChange} placeholder={copy.placeholders.role} className="advisory-form-input w-full px-4 py-3 rounded-xl border border-[var(--border-mid)] bg-white text-sm text-[var(--text-primary)] placeholder-[var(--text-muted)] min-h-[44px]" />
+                    <input id="advisory-role" type="text" name="role" value={form.role} onChange={handleChange} placeholder={copy.placeholders.role} className="advisory-form-input w-full px-4 py-3 rounded-xl border border-[var(--border-mid)] bg-[var(--bg-white)] text-sm text-[var(--text-primary)] placeholder-[var(--text-muted)] min-h-[44px]" />
                   </div>
                 </div>
 
                 <div>
                   <label className="block text-xs font-semibold text-[var(--navy-dark)] mb-1.5" htmlFor="advisory-service">{copy.fields.service}</label>
-                  <select id="advisory-service" name="service" value={form.service} onChange={handleChange} required className="advisory-form-input w-full px-4 py-3 rounded-xl border border-[var(--border-mid)] bg-white text-sm text-[var(--text-primary)] min-h-[44px] appearance-none">
+                  <select id="advisory-service" name="service" value={form.service} onChange={handleChange} required className="advisory-form-input w-full px-4 py-3 rounded-xl border border-[var(--border-mid)] bg-[var(--bg-white)] text-sm text-[var(--text-primary)] min-h-[44px] appearance-none">
                     <option value="">{copy.placeholders.service}</option>
                     {copy.services.map((service) => (
                       <option key={service} value={service}>{service}</option>
@@ -164,7 +164,7 @@ export function FourthContactSection({ locale = 'en' }) {
 
                 <div>
                   <label className="block text-xs font-semibold text-[var(--navy-dark)] mb-1.5" htmlFor="advisory-message">{copy.fields.message}</label>
-                  <textarea id="advisory-message" name="message" value={form.message} onChange={handleChange} required rows={4} placeholder={copy.placeholders.message} className="advisory-form-input w-full px-4 py-3 rounded-xl border border-[var(--border-mid)] bg-white text-sm text-[var(--text-primary)] placeholder-[var(--text-muted)] resize-none" />
+                  <textarea id="advisory-message" name="message" value={form.message} onChange={handleChange} required rows={4} placeholder={copy.placeholders.message} className="advisory-form-input w-full px-4 py-3 rounded-xl border border-[var(--border-mid)] bg-[var(--bg-white)] text-sm text-[var(--text-primary)] placeholder-[var(--text-muted)] resize-none" />
                 </div>
 
                 <button type="submit" disabled={loading} className="advisory-btn-primary w-full py-3.5 rounded-xl text-sm font-semibold flex items-center justify-center gap-2.5 min-h-[44px] disabled:opacity-70 disabled:cursor-not-allowed">

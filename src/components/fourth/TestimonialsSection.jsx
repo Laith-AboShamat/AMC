@@ -46,7 +46,7 @@ export function FourthTestimonialsSection({ locale = 'en' }) {
             <div
               key={testimonial.name}
               ref={(element) => { revealRefs.current[index + 1] = element }}
-              className={`advisory-reveal-hidden advisory-delay-${index * 100} advisory-testimonial-card bg-white rounded-3xl border border-[var(--border-light)] overflow-hidden flex flex-col`}
+              className={`advisory-reveal-hidden advisory-delay-${index * 100} advisory-testimonial-card bg-[var(--bg-white)] rounded-3xl border border-[var(--border-light)] overflow-hidden flex flex-col`}
             >
               <div className="px-7 pt-7 pb-0">
                 <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[var(--blue-pale)] text-[var(--blue-accent)] text-xs font-bold mb-5">

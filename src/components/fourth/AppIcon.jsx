@@ -46,6 +46,7 @@ const iconMap = {
   PlayIcon: Play,
   PuzzlePieceIcon: Puzzle,
   RocketLaunchIcon: Rocket,
+  SparklesIcon: Sparkles,
   StarIcon: Star,
   UserGroupIcon: Users,
   XMarkIcon: X,

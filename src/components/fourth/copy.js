@@ -7,56 +7,63 @@ export const advisoryCopy = {
         results: 'Results',
         contact: 'Contact',
       },
+      brandLine: 'Built for impact driven by purpose',
       toggleLanguage: 'Switch language',
       toggleTheme: 'Toggle dark mode',
     },
     hero: {
-      eyebrow: 'Your Partner in Organizational Excellence',
-      lines: ['We Do Right', 'Things Right,', 'First Time, Every Time.'],
+      eyebrow: {
+        lead: 'Your Partner',
+        accent: 'towards',
+        tail: 'Organizational Excellence',
+      },
+      lines: [
+        [{ text: 'We Do Right' }],
+        [{ text: 'Things Right,', accent: 'gold' }],
+        [{ text: 'First Time, ' }, { text: 'Every Time.', accent: 'gold' }],
+      ],
       description:
         'AMC empowers companies, small, medium, and large, by transferring honest expertise, building sustainable institutional systems, and approaching every client as a true partner.',
       contactCta: 'Get in Touch',
       servicesCta: 'Our Services',
       scrollLabel: 'Scroll to explore',
       stats: [
-        { value: '5', label: 'Service Areas' },
-        { value: 'SME', label: 'Focus' },
+        { value: '4', label: 'Service Areas' },
+        { value: 'Exceptional', label: 'Team' },
         { value: '100%', label: 'Commitment' },
-        { value: '1st', label: 'Time Right' },
+        { value: 'Partnership', label: 'Built on trust', accent: 'gold' },
       ],
     },
     about: {
-      label: 'Who We Are',
-      titleFirst: 'Built for impact,',
-      titleAccent: 'driven by purpose.',
+      label: 'About Us',
+      titleFirst: 'We Engineer',
+      titleAccent: 'High-Performing Organizations',
+      coreMessage:
+        'We work with organizations as true partners, solving real operational challenges, strengthening internal systems, and building the capabilities required to sustain performance. Our focus is simple: deliver measurable results, not theoretical advice.',
       visionTitle: 'Our Vision',
       visionText:
-        'To create a strong and sustainable business environment in the local economy where small and medium-sized enterprises are able to grow, thrive, plan skillfully, and manage their businesses efficiently.',
+        'To create a strong and sustainable business environment in the local economy that contributes to a better economic reality, where small and medium-sized enterprises are able to grow and thrive, plan skillfully, and manage their businesses efficiently, becoming competitive, sophisticated, and a key contributor to a stronger economy.',
       missionTitle: 'Our Mission',
       missionText:
-        'Empowering companies by transferring honest expertise and accurate knowledge, expanding internal perceptions, building sustainable institutional systems, and operating as true partners who share both challenge and success.',
-      motto: 'We Do Right Things Right, First Time, and Every Time',
+        'Empowering companies, whether small, medium, or large, industrial or service-oriented, by transferring honest expertise and accurate knowledge, expanding their internal perceptions, building sustainable institutional systems or assessing and improving existing ones, and approaching them as true partners who share their challenges and successes, to ensure long-term impact and continuous efficiency.',
+      motto: 'Built for impact, driven by purpose.',
+      approachLabel: 'Our Approach',
       values: [
         {
           icon: 'LightBulbIcon',
           title: 'Honest Expertise',
-          desc: 'We transfer accurate knowledge and honest expertise, expanding internal perceptions and building sustainable institutional systems.',
+          desc: 'We deliver clear, practical knowledge, focused on what works, not what sounds good.',
         },
         {
           icon: 'UserGroupIcon',
           title: 'True Partnership',
-          desc: 'We approach every client as a true partner who shares their challenges and successes, ensuring long-term impact and continuous efficiency.',
+          desc: 'We do not act as external consultants, we integrate, commit, and stay until results are achieved.',
         },
         {
           icon: 'ArrowTrendingUpIcon',
-          title: 'Sustainable Growth',
-          desc: 'We help enterprises grow, thrive, plan skillfully, and manage their businesses efficiently to become competitive contributors to a stronger economy.',
+          title: 'Sustainable Performance',
+          desc: 'We build systems that continue to perform, long after our engagement ends.',
         },
-      ],
-      stats: [
-        { value: '5', label: 'Service Areas' },
-        { value: 'SME', label: 'Focus' },
-        { value: '100%', label: 'Commitment' },
       ],
     },
     services: {
@@ -64,7 +71,7 @@ export const advisoryCopy = {
       titleFirst: 'What we do',
       titleAccent: 'exceptionally well.',
       intro:
-        'Five integrated service areas built for organizational excellence and sustainable growth.',
+        'Four focused service areas built to remove operational drag, strengthen control, and raise performance.',
       cta: 'Talk to an expert',
       cards: [
         {
@@ -74,9 +81,9 @@ export const advisoryCopy = {
           dark: false,
           icon: 'BuildingOffice2Icon',
           tag: 'Core Offering',
-          title: 'Enterprise Excellence',
+          title: 'Enterprise Excellence (Operational & Managerial)',
           description:
-            'Operational and managerial excellence programs designed to align your leadership, optimize processes, and build a culture of continuous improvement across your organization.',
+            'We do not just improve operations, we eliminate the problems holding your organization back. By restructuring how your organization works across management and operations, we remove inefficiencies, reduce waste, and bring discipline to execution. The result is higher efficiency, stronger internal control, and improved profitability, where operations are no longer a source of problems, but a driver of performance.',
           metric: 'Operational & Managerial',
           image: 'https://img.rocket.new/generatedImages/rocket_gen_img_1d0d71722-1772160480561.png',
           imageAlt: 'Business team reviewing strategy charts in a bright conference room',
@@ -89,10 +96,12 @@ export const advisoryCopy = {
           dark: true,
           icon: 'ClipboardDocumentCheckIcon',
           tag: 'Auditing',
-          title: 'Management Systems Auditing',
+          title: 'Management Systems Adoption & Auditing (1st & 2nd Party)',
           description:
-            'Comprehensive 1st and 2nd party management systems auditing to assess, verify, and improve your organizational processes, ensuring compliance and driving performance.',
+            'Management systems should not exist for certification, they should exist to make your organization perform better. We embed management systems into the core of your operations, ensuring they actively drive control, consistency, and improvement. Through internal audits, supplier evaluations, and risk-based assessments, we identify gaps and unlock real opportunities for performance improvement. Because the true value of a system is not in passing audits, but in how it elevates your organization every day.',
           metric: '1st & 2nd Party Audits',
+          image: 'https://img.rocket.new/generatedImages/rocket_gen_img_18b824279-1767883812278.png',
+          imageAlt: 'Business leaders reviewing governance and audit documentation',
           cta: 'Audit Services',
         },
         {
@@ -104,8 +113,10 @@ export const advisoryCopy = {
           tag: 'Training',
           title: 'Training & Capacity Building',
           description:
-            'Targeted training programs and capacity building initiatives that transfer honest expertise, expand internal perceptions, and develop your team for long-term impact.',
+            'Strong systems do not sustain themselves, people do. We build the capabilities needed to lead, operate, and continuously improve your systems with confidence. Our programs focus on developing practical skills, sound decision-making, and a performance-driven mindset across your teams. Because when your people are capable, your systems become reliable, and your results become consistent.',
           metric: 'Sustainable Capability',
+          image: 'https://img.rocket.new/generatedImages/rocket_gen_img_197ee41e5-1774398641466.png',
+          imageAlt: 'Workshop setting focused on professional learning and team capability building',
           cta: 'Training Programs',
         },
         {
@@ -117,35 +128,32 @@ export const advisoryCopy = {
           tag: 'Regulatory',
           title: 'Regulatory & Pharmaceutical Services',
           description:
-            'Specialized regulatory guidance and pharmaceutical services that help organizations navigate compliance requirements while maintaining strong quality standards.',
+            'In regulated industries, mistakes are costly, and delays are even more. We ensure your regulatory and pharmaceutical processes are handled with precision, reducing errors, shortening timelines, and securing full compliance from the start. Our structured approach allows you to move faster, with fewer risks and greater confidence in every step.',
           metric: 'Regulatory Compliance',
+          image: 'https://img.rocket.new/generatedImages/rocket_gen_img_1afa1ad2d-1763301474612.png',
+          imageAlt: 'Regulated operations environment representing precision and controlled execution',
           cta: 'Regulatory Services',
         },
-        {
-          id: 'tailored',
-          colSpan: 'lg:col-span-3',
-          rowSpan: '',
-          dark: false,
-          icon: 'PuzzlePieceIcon',
-          tag: 'Custom Solutions',
-          title: 'Tailored Solutions for Your Organizational Excellence',
-          description:
-            'Every organization is unique. We design bespoke solutions that address your specific challenges, build sustainable institutional systems, and approach your business as true partners who share your challenges and successes.',
-          metric: 'Bespoke to Your Needs',
-          cta: 'Discuss Your Needs',
-          wide: true,
-          sideLabel: 'Tailored to',
-          sideLabelSecond: 'your organization',
-        },
       ],
+      differentiator: {
+        label: 'What Distinguishes These Services',
+        title: 'Tailored Solutions for Organizational Excellence',
+        description:
+          'Every organization has its own challenges, but the goal is always the same: performance and excellence. We design tailored solutions that integrate seamlessly with your operations, addressing specific gaps while supporting your overall journey toward enterprise excellence. Because real impact comes from solutions that fit, not from templates that do not.',
+        note: 'This is what distinguishes the four services above and turns them into a solution set that fits your organization, not a generic package.',
+      },
     },
     statsBand: {
       items: [
-        { value: 340, suffix: '+', label: 'Enterprise Clients', sub: 'Across 18 countries' },
-        { value: 2.8, suffix: 'B', prefix: '$', label: 'Revenue Unlocked', sub: 'For our clients in 2023' },
-        { value: 97, suffix: '%', label: 'Client Retention', sub: 'Year-over-year average' },
-        { value: 22, suffix: '+', label: 'Years of Practice', sub: 'Proven track record' },
+        { title: 'Operational Clarity', sub: 'From complexity to structured, manageable systems' },
+        { title: 'Real Implementation', sub: 'Systems that work not documents' },
+        { title: 'Measurable Performance', sub: 'Every action tied to real results' },
+        { title: 'Committed Partnership', sub: 'We stay until results are achieved' },
       ],
+      closing: {
+        title: 'Results That Matter',
+        sub: 'Not promised delivered',
+      },
     },
     testimonials: {
       label: 'Client Results',
@@ -265,63 +273,70 @@ export const advisoryCopy = {
         results: 'النتائج',
         contact: 'تواصل',
       },
+      brandLine: 'نبني الأثر ويقودنا الهدف',
       toggleLanguage: 'تبديل اللغة',
       toggleTheme: 'تبديل الوضع',
     },
     hero: {
-      eyebrow: 'شريكك في التميز المؤسسي',
-      lines: ['ننـجز العمل', 'بالطريقة الصحيحة،', 'من أول مرة وفي كل مرة.'],
+      eyebrow: {
+        lead: 'شريكك',
+        accent: 'نحو',
+        tail: 'التميز المؤسسي',
+      },
+      lines: [
+        [{ text: 'ننـجز العمل' }],
+        [{ text: 'بالطريقة الصحيحة،', accent: 'gold' }],
+        [{ text: 'من أول مرة ' }, { text: 'وفي كل مرة.', accent: 'gold' }],
+      ],
       description:
         'تمكّن AMC الشركات الصغيرة والمتوسطة والكبيرة عبر نقل الخبرة الصادقة وبناء الأنظمة المؤسسية المستدامة والتعامل مع كل عميل كشريك حقيقي.',
       contactCta: 'تواصل معنا',
       servicesCta: 'خدماتنا',
       scrollLabel: 'تابع الاستكشاف',
       stats: [
-        { value: '5', label: 'مجالات خدمة' },
-        { value: 'SME', label: 'التركيز' },
+        { value: '4', label: 'مجالات خدمة' },
+        { value: 'فريق', label: 'استثنائي' },
         { value: '100%', label: 'الالتزام' },
-        { value: '1st', label: 'من أول مرة' },
+        { value: 'شراكة', label: 'مبنية على الثقة', accent: 'gold' },
       ],
     },
     about: {
-      label: 'من نحن',
-      titleFirst: 'نبني الأثر،',
-      titleAccent: 'ويقودنا الهدف.',
+      label: 'نبذة عنا',
+      titleFirst: 'نُهندس مؤسسات',
+      titleAccent: 'عالية الأداء',
+      coreMessage:
+        'نعمل مع المؤسسات كشركاء حقيقيين، نعالج التحديات التشغيلية الفعلية، ونعزز الأنظمة الداخلية، ونبني القدرات اللازمة لاستدامة الأداء. تركيزنا واضح: تحقيق نتائج قابلة للقياس، لا تقديم نصائح نظرية.',
       visionTitle: 'رؤيتنا',
       visionText:
-        'خلق بيئة أعمال قوية ومستدامة في الاقتصاد المحلي تُمكّن المنشآت الصغيرة والمتوسطة من النمو والازدهار والتخطيط المهاري والإدارة الكفؤة.',
+        'إيجاد بيئة أعمال قوية ومستدامة في الاقتصاد المحلي تسهم في واقع اقتصادي أفضل، حيث تتمكن المنشآت الصغيرة والمتوسطة من النمو والازدهار، والتخطيط بمهارة، وإدارة أعمالها بكفاءة، لتصبح أكثر تنافسية ونضجًا ومساهمة في اقتصاد أقوى.',
       missionTitle: 'رسالتنا',
       missionText:
-        'تمكين الشركات عبر نقل الخبرة الصادقة والمعرفة الدقيقة وتوسيع الإدراك الداخلي وبناء الأنظمة المؤسسية المستدامة والعمل كشريك حقيقي في التحديات والنجاحات.',
-      motto: 'نقوم بالشيء الصحيح بشكل صحيح، من أول مرة وفي كل مرة',
+        'تمكين الشركات، صغيرة كانت أو متوسطة أو كبيرة، صناعية أو خدمية، من خلال نقل الخبرة الصادقة والمعرفة الدقيقة، وتوسيع إدراكها الداخلي، وبناء الأنظمة المؤسسية المستدامة أو تقييم القائم منها وتحسينه، والتعامل معها كشركاء حقيقيين نشاركهم التحديات والنجاحات، بما يضمن أثرًا طويل المدى وكفاءة مستمرة.',
+      motto: 'نبني الأثر ويقودنا الهدف.',
+      approachLabel: 'منهجنا',
       values: [
         {
           icon: 'LightBulbIcon',
           title: 'خبرة صادقة',
-          desc: 'ننقل المعرفة الدقيقة والخبرة الصادقة بما يوسّع الإدراك الداخلي ويبني أنظمة مؤسسية مستدامة.',
+          desc: 'نقدم معرفة واضحة وعملية، تركز على ما ينجح فعليًا لا على ما يبدو جيدًا فقط.',
         },
         {
           icon: 'UserGroupIcon',
           title: 'شراكة حقيقية',
-          desc: 'نتعامل مع كل عميل كشريك حقيقي نشاركه التحديات والنجاحات لضمان أثر طويل المدى وكفاءة مستمرة.',
+          desc: 'لا نعمل كمستشارين خارجيين من بعيد، بل نندمج ونلتزم ونستمر حتى تتحقق النتائج.',
         },
         {
           icon: 'ArrowTrendingUpIcon',
-          title: 'نمو مستدام',
-          desc: 'نساعد المؤسسات على النمو والازدهار والتخطيط المهاري وإدارة الأعمال بكفاءة لتكون مساهمًا تنافسيًا في اقتصاد أقوى.',
+          title: 'أداء مستدام',
+          desc: 'نبني أنظمة تواصل الأداء بكفاءة حتى بعد انتهاء دورنا في العمل معكم.',
         },
-      ],
-      stats: [
-        { value: '5', label: 'مجالات خدمة' },
-        { value: 'SME', label: 'التركيز' },
-        { value: '100%', label: 'الالتزام' },
       ],
     },
     services: {
       label: 'خبراتنا',
       titleFirst: 'ما الذي نفعله',
       titleAccent: 'بتميّز حقيقي.',
-      intro: 'خمسة مجالات خدمية متكاملة بُنيت من أجل التميز المؤسسي والنمو المستدام.',
+      intro: 'أربع خدمات مركزة بُنيت لإزالة الهدر التشغيلي وتعزيز الضبط ورفع الأداء المؤسسي.',
       cta: 'تحدث مع خبير',
       cards: [
         {
@@ -331,9 +346,9 @@ export const advisoryCopy = {
           dark: false,
           icon: 'BuildingOffice2Icon',
           tag: 'الخدمة الأساسية',
-          title: 'التميز المؤسسي',
+          title: 'التميز المؤسسي (تشغيلي وإداري)',
           description:
-            'برامج التميز التشغيلي والإداري المصممة لمواءمة القيادة وتحسين العمليات وبناء ثقافة التحسين المستمر عبر المؤسسة.',
+            'نحن لا نحسن العمليات فقط، بل نزيل المشكلات التي تعيق منظمتك. من خلال إعادة هيكلة طريقة عمل المؤسسة على المستويين الإداري والتشغيلي، نزيل أوجه عدم الكفاءة، ونخفض الهدر، ونرسخ الانضباط في التنفيذ. والنتيجة هي كفاءة أعلى، وضبط داخلي أقوى، وربحية أفضل، حيث لا تعود العمليات مصدرًا للمشكلات بل محركًا للأداء.',
           metric: 'تشغيلي وإداري',
           image: 'https://img.rocket.new/generatedImages/rocket_gen_img_1d0d71722-1772160480561.png',
           imageAlt: 'فريق أعمال يراجع مخططات استراتيجية',
@@ -346,10 +361,12 @@ export const advisoryCopy = {
           dark: true,
           icon: 'ClipboardDocumentCheckIcon',
           tag: 'التدقيق',
-          title: 'تدقيق أنظمة الإدارة',
+          title: 'تبني وتدقيق أنظمة الإدارة (طرف أول وثان)',
           description:
-            'تدقيقات شاملة للطرف الأول والثاني لتقييم العمليات المؤسسية والتحقق منها وتحسينها بما يضمن الامتثال ويرفع الأداء.',
+            'يجب ألا توجد أنظمة الإدارة من أجل الشهادات فقط، بل من أجل أن تجعل مؤسستك تعمل بشكل أفضل. ندمج أنظمة الإدارة في صميم عملياتك لضمان أن تقود فعليًا الضبط والاتساق والتحسين. ومن خلال التدقيقات الداخلية، وتقييم الموردين، والتقييمات المبنية على المخاطر، نحدد الفجوات ونكشف فرصًا حقيقية لتحسين الأداء. لأن القيمة الحقيقية للنظام ليست في اجتياز التدقيق، بل في كيف يرفع مستوى مؤسستك كل يوم.',
           metric: 'تدقيقات الطرف الأول والثاني',
+          image: 'https://img.rocket.new/generatedImages/rocket_gen_img_18b824279-1767883812278.png',
+          imageAlt: 'قادة أعمال يراجعون وثائق الحوكمة والتدقيق',
           cta: 'خدمات التدقيق',
         },
         {
@@ -361,8 +378,10 @@ export const advisoryCopy = {
           tag: 'التدريب',
           title: 'التدريب وبناء القدرات',
           description:
-            'برامج تدريبية ومبادرات بناء قدرات تنقل الخبرة الصادقة وتوسّع الإدراك الداخلي وتطوّر فريقك لأثر طويل المدى.',
+            'الأنظمة القوية لا تحافظ على نفسها... الناس هم من يفعلون ذلك. نحن نبني القدرات اللازمة لقيادة أنظمتك وتشغيلها وتحسينها المستمر بثقة. تركز برامجنا على تطوير المهارات العملية، وصناعة القرار السليم، وعقلية قائمة على الأداء عبر فرقك. لأن الناس عندما يكونون قادرين، تصبح الأنظمة أكثر موثوقية، وتصبح النتائج أكثر اتساقًا.',
           metric: 'قدرات مستدامة',
+          image: 'https://img.rocket.new/generatedImages/rocket_gen_img_197ee41e5-1774398641466.png',
+          imageAlt: 'بيئة تدريب مهني تركّز على التعلم وبناء قدرات الفرق',
           cta: 'البرامج التدريبية',
         },
         {
@@ -374,35 +393,32 @@ export const advisoryCopy = {
           tag: 'التنظيم',
           title: 'الخدمات التنظيمية والدوائية',
           description:
-            'إرشاد تنظيمي متخصص وخدمات دوائية تساعد المؤسسات على التنقل بين متطلبات الامتثال مع الحفاظ على معايير الجودة العالية.',
+            'في القطاعات الخاضعة للتنظيم، الأخطاء مكلفة، والتأخير أكثر كلفة. نضمن إدارة عملياتك التنظيمية والدوائية بدقة، بما يقلل الأخطاء، ويختصر الجداول الزمنية، ويؤمن الامتثال الكامل منذ البداية. ويتيح لك نهجنا المنظم التحرك بسرعة أكبر، وبمخاطر أقل، وبثقة أعلى في كل خطوة.',
           metric: 'امتثال تنظيمي',
+          image: 'https://img.rocket.new/generatedImages/rocket_gen_img_1afa1ad2d-1763301474612.png',
+          imageAlt: 'بيئة عمليات منظمة تعبّر عن الدقة والتنفيذ المنضبط',
           cta: 'الخدمات التنظيمية',
         },
-        {
-          id: 'tailored',
-          colSpan: 'lg:col-span-3',
-          rowSpan: '',
-          dark: false,
-          icon: 'PuzzlePieceIcon',
-          tag: 'حلول مخصصة',
-          title: 'حلول مصممة لتميزك المؤسسي',
-          description:
-            'كل مؤسسة فريدة. نصمم حلولًا مخصصة تعالج تحدياتك الخاصة وتبني أنظمة مؤسسية مستدامة ونتعامل مع أعمالك كشريك حقيقي في التحديات والنجاحات.',
-          metric: 'مصمم لاحتياجك',
-          cta: 'ناقش احتياجك',
-          wide: true,
-          sideLabel: 'مصمم وفق',
-          sideLabelSecond: 'مؤسستك',
-        },
       ],
+      differentiator: {
+        label: 'ما الذي يميز هذه الخدمات',
+        title: 'حلول مخصصة للتميز المؤسسي',
+        description:
+          'لكل مؤسسة تحدياتها الخاصة، لكن الهدف دائمًا واحد: الأداء والتميّز. نصمم حلولًا مخصصة تندمج بسلاسة مع عملياتك، وتعالج الفجوات المحددة، وتدعم رحلتك الشاملة نحو التميز المؤسسي. لأن الأثر الحقيقي يأتي من حلول تناسبك، لا من قوالب لا تناسبك.',
+        note: 'هذا هو العنصر الذي يميز الخدمات الأربع أعلاه ويحوّلها إلى حلول مناسبة لمؤسستك، لا إلى باقة عامة موحدة.',
+      },
     },
     statsBand: {
       items: [
-        { value: 340, suffix: '+', label: 'عميل مؤسسي', sub: 'عبر 18 دولة' },
-        { value: 2.8, suffix: 'B', prefix: '$', label: 'قيمة مضافة', sub: 'لعملائنا خلال 2023' },
-        { value: 97, suffix: '%', label: 'الاحتفاظ بالعملاء', sub: 'كمتوسط سنوي' },
-        { value: 22, suffix: '+', label: 'سنوات خبرة', sub: 'سجل عملي مثبت' },
+        { title: 'وضوح تشغيلي', sub: 'من التعقيد إلى أنظمة منظمة وسهلة الإدارة' },
+        { title: 'تطبيق حقيقي', sub: 'أنظمة تعمل فعلًا لا مجرد وثائق' },
+        { title: 'أداء قابل للقياس', sub: 'كل خطوة مرتبطة بنتائج حقيقية' },
+        { title: 'شراكة ملتزمة', sub: 'نستمر حتى تتحقق النتائج' },
       ],
+      closing: {
+        title: 'نتائج تصنع الفرق',
+        sub: 'لا نعد بها فقط بل نحققها',
+      },
     },
     testimonials: {
       label: 'نتائج العملاء',
