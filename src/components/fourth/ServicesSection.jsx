@@ -104,7 +104,7 @@ export function FourthServicesSection({ locale = 'en', theme = 'light' }) {
     }
   }
 
-  const useDarkVariant = (service) => theme === 'dark' && service.dark
+  const useDarkVariant = () => theme === 'dark'
 
   return (
     <>
@@ -140,7 +140,7 @@ export function FourthServicesSection({ locale = 'en', theme = 'light' }) {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-5 lg:auto-rows-[minmax(360px,auto)]">
           {copy.cards.map((service, index) => (
             (() => {
-              const isDarkVariant = useDarkVariant(service)
+              const isDarkVariant = useDarkVariant()
 
               return (
             <div
@@ -230,7 +230,7 @@ export function FourthServicesSection({ locale = 'en', theme = 'light' }) {
       <AnimatePresence>
         {activeService ? (
           (() => {
-            const isDarkVariant = useDarkVariant(activeService)
+            const isDarkVariant = useDarkVariant()
 
             return (
           <motion.div
