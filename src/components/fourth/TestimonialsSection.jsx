@@ -30,7 +30,7 @@ export function FourthTestimonialsSection({ locale = 'en' }) {
   }, [])
 
   return (
-    <section id="results" className="py-20 lg:py-28 bg-[var(--bg-cool)]">
+    <section className="py-20 lg:py-28 bg-[var(--bg-cool)]">
       <div className="max-w-7xl mx-auto px-5 sm:px-6">
         <div className="advisory-reveal-hidden mb-14 text-center" ref={(element) => { revealRefs.current[0] = element }}>
           <span className="advisory-section-label block mb-3">{copy.label}</span>
@@ -72,15 +72,6 @@ export function FourthTestimonialsSection({ locale = 'en' }) {
                 </div>
               </div>
             </div>
-          ))}
-        </div>
-
-        <div className="advisory-reveal-hidden mt-14 flex flex-wrap items-center justify-center gap-8" ref={(element) => { revealRefs.current[4] = element }}>
-          <span className="text-[var(--text-muted)] text-xs font-semibold uppercase tracking-widest">{copy.trustLabel}</span>
-          {copy.companies.map((company) => (
-            <span key={company} className="text-sm font-semibold text-[var(--navy)] opacity-40 hover:opacity-70 transition-opacity cursor-default">
-              {company}
-            </span>
           ))}
         </div>
       </div>

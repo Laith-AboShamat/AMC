@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { AppIcon } from './AppIcon.jsx'
 import { AppImage } from './AppImage.jsx'
+import { GoldMotionAccent } from './GoldMotionAccent.jsx'
 import { getAdvisoryCopy } from './copy.js'
 
 export function FourthHeroSection({ locale = 'en' }) {
@@ -75,7 +76,7 @@ export function FourthHeroSection({ locale = 'en' }) {
                 loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
               }`}
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-[var(--gold)] advisory-pulse-dot flex-shrink-0" />
+              <GoldMotionAccent variant="inline" className="flex-shrink-0" />
               <span className="advisory-hero-intro-text">
                 {copy.eyebrow.lead}
                 <span className="advisory-hero-intro-accent"> {copy.eyebrow.accent} </span>
@@ -153,7 +154,7 @@ export function FourthHeroSection({ locale = 'en' }) {
 
         <div className={`advisory-scroll-cue flex items-center justify-center sm:justify-start gap-3 mt-8 transition-all duration-700 delay-700 ${loaded ? 'opacity-100' : 'opacity-0'}`}>
           <div className="advisory-scroll-indicator w-6 h-10 rounded-full border flex items-start justify-center pt-2">
-            <div className="w-1 h-2 rounded-full animate-bounce advisory-scroll-dot" />
+            <GoldMotionAccent variant="scroll" />
           </div>
           <span className="advisory-scroll-label text-xs uppercase tracking-[0.12em] font-semibold">{copy.scrollLabel}</span>
         </div>

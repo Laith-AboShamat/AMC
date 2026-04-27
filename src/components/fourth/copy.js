@@ -73,6 +73,10 @@ export const advisoryCopy = {
       intro:
         'Four focused service areas built to remove operational drag, strengthen control, and raise performance.',
       cta: 'Talk to an expert',
+      openDetailsLabel: 'Open details',
+      closeDetailsLabel: 'Close details',
+      modalEyebrow: 'Service focus',
+      modalValueLabel: 'What this unlocks',
       cards: [
         {
           id: 'enterprise',
@@ -155,8 +159,41 @@ export const advisoryCopy = {
         sub: 'Not promised delivered',
       },
     },
+    outcomes: {
+      title: 'What You Actually Get',
+      subtitle: 'Real operational change that translates into better business performance',
+      items: [
+        {
+          icon: 'ArrowTrendingUpIcon',
+          title: 'Higher Profitability',
+          description:
+            'Not by working harder, but by eliminating the hidden inefficiencies draining your time, cost, and resources.',
+          kicker: 'Profit Impact',
+        },
+        {
+          icon: 'CheckCircleIcon',
+          title: 'Controlled Operations',
+          description:
+            'No more chaos, overlap, or daily firefighting, just structured execution you can rely on.',
+          kicker: 'Execution Control',
+        },
+        {
+          icon: 'DocumentMagnifyingGlassIcon',
+          title: 'Faster, Better Decisions',
+          description:
+            'Clear data, defined processes, and full visibility; so you can make confident decisions without hesitation.',
+          kicker: 'Decision Clarity',
+        },
+        {
+          icon: 'RocketLaunchIcon',
+          title: 'Sustainable Growth',
+          description:
+            'Systems that allow your business to scale without losing control or performance.',
+          kicker: 'Scalable Systems',
+        },
+      ],
+    },
     testimonials: {
-      label: 'Client Results',
       titleFirst: 'What happens when',
       titleAccent: 'strategy meets execution.',
       trustLabel: 'Trusted by leaders at',
@@ -258,9 +295,11 @@ export const advisoryCopy = {
         { label: 'Results', href: '#results' },
         { label: 'Contact', href: '#contact' },
       ],
+      backToTop: 'Back to top',
       socials: [
-        { icon: 'LinkIcon', label: 'LinkedIn', href: '#' },
-        { icon: 'GlobeAltIcon', label: 'Website', href: '#' },
+        { icon: 'InstagramIcon', label: 'Instagram', href: 'https://www.instagram.com/amcco.ps/' },
+        { icon: 'FacebookIcon', label: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61579554502856' },
+        { icon: 'LinkedInIcon', label: 'LinkedIn', href: 'https://www.linkedin.com/company/ps-amc-co/?fbclid=IwY2xjawRcLEVleHRuA2FlbQIxMABicmlkETFEUWFycEZiQk9NZU53TDVVc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHm6Qm9kHTBovKS8GYuiqrKzx6DiZTr6jO-43xc_UfZZlENrmZD11WEfw2E_Q_aem_P8ZD0n25HO50HC_46hngRQ' },
       ],
       copyright: `AMC · info@amcco.ps · +970-592-397-405`,
     },
@@ -338,6 +377,10 @@ export const advisoryCopy = {
       titleAccent: 'بتميّز حقيقي.',
       intro: 'أربع خدمات مركزة بُنيت لإزالة الهدر التشغيلي وتعزيز الضبط ورفع الأداء المؤسسي.',
       cta: 'تحدث مع خبير',
+      openDetailsLabel: 'عرض التفاصيل',
+      closeDetailsLabel: 'إغلاق التفاصيل',
+      modalEyebrow: 'تركيز الخدمة',
+      modalValueLabel: 'ما الذي تحققه',
       cards: [
         {
           id: 'enterprise',
@@ -419,6 +462,40 @@ export const advisoryCopy = {
         title: 'نتائج تصنع الفرق',
         sub: 'لا نعد بها فقط بل نحققها',
       },
+    },
+    outcomes: {
+      title: 'What You Actually Get',
+      subtitle: 'تغيير تشغيلي حقيقي ينعكس مباشرة على أداء الأعمال بشكل أفضل',
+      items: [
+        {
+          icon: 'ArrowTrendingUpIcon',
+          title: 'ربحية أعلى',
+          description:
+            'ليس عبر العمل بجهد أكبر، بل عبر إزالة أوجه الهدر الخفية التي تستنزف وقتك وتكلفتك ومواردك.',
+          kicker: 'أثر ربحي',
+        },
+        {
+          icon: 'CheckCircleIcon',
+          title: 'عمليات مضبوطة',
+          description:
+            'لا مزيد من الفوضى أو التداخل أو إطفاء الحرائق اليومية، بل تنفيذ منظم يمكنك الاعتماد عليه.',
+          kicker: 'ضبط التنفيذ',
+        },
+        {
+          icon: 'DocumentMagnifyingGlassIcon',
+          title: 'قرارات أسرع وأفضل',
+          description:
+            'بيانات واضحة وعمليات محددة ورؤية كاملة، لتتخذ قرارات واثقة دون تردد.',
+          kicker: 'وضوح القرار',
+        },
+        {
+          icon: 'RocketLaunchIcon',
+          title: 'نمو مستدام',
+          description:
+            'أنظمة تسمح لأعمالك بالتوسع دون أن تفقد السيطرة أو مستوى الأداء.',
+          kicker: 'قابلية التوسع',
+        },
+      ],
     },
     testimonials: {
       label: 'نتائج العملاء',
@@ -523,9 +600,11 @@ export const advisoryCopy = {
         { label: 'النتائج', href: '#results' },
         { label: 'تواصل', href: '#contact' },
       ],
+      backToTop: 'العودة للأعلى',
       socials: [
-        { icon: 'LinkIcon', label: 'LinkedIn', href: '#' },
-        { icon: 'GlobeAltIcon', label: 'Website', href: '#' },
+        { icon: 'InstagramIcon', label: 'Instagram', href: 'https://www.instagram.com/amcco.ps/' },
+        { icon: 'FacebookIcon', label: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61579554502856' },
+        { icon: 'LinkedInIcon', label: 'LinkedIn', href: 'https://www.linkedin.com/company/ps-amc-co/?fbclid=IwY2xjawRcLEVleHRuA2FlbQIxMABicmlkETFEUWFycEZiQk9NZU53TDVVc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHm6Qm9kHTBovKS8GYuiqrKzx6DiZTr6jO-43xc_UfZZlENrmZD11WEfw2E_Q_aem_P8ZD0n25HO50HC_46hngRQ' },
       ],
       copyright: `AMC · info@amcco.ps · +970-592-397-405`,
     },
