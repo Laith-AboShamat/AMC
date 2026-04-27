@@ -252,7 +252,7 @@ export const advisoryCopy = {
         },
       ],
       contacts: [
-        { icon: 'EnvelopeIcon', label: 'Email Us', value: 'info@amcco.ps' },
+        { icon: 'EnvelopeIcon', label: 'Email Us', value: 'a.mahameed@amcco.ps' },
         { icon: 'PhoneIcon', label: 'Call Us', value: '+970-592-397-405' },
       ],
       submittedTitle: 'Message received.',
@@ -301,7 +301,7 @@ export const advisoryCopy = {
         { icon: 'FacebookIcon', label: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61579554502856' },
         { icon: 'LinkedInIcon', label: 'LinkedIn', href: 'https://www.linkedin.com/company/ps-amc-co/?fbclid=IwY2xjawRcLEVleHRuA2FlbQIxMABicmlkETFEUWFycEZiQk9NZU53TDVVc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHm6Qm9kHTBovKS8GYuiqrKzx6DiZTr6jO-43xc_UfZZlENrmZD11WEfw2E_Q_aem_P8ZD0n25HO50HC_46hngRQ' },
       ],
-      copyright: `AMC · info@amcco.ps · +970-592-397-405`,
+      copyright: `AMC · a.mahameed@amcco.ps · +970-592-397-405`,
     },
   },
   ar: {
@@ -557,7 +557,7 @@ export const advisoryCopy = {
         },
       ],
       contacts: [
-        { icon: 'EnvelopeIcon', label: 'راسلنا', value: 'info@amcco.ps' },
+        { icon: 'EnvelopeIcon', label: 'راسلنا', value: 'a.mahameed@amcco.ps' },
         { icon: 'PhoneIcon', label: 'اتصل بنا', value: '+970-592-397-405' },
       ],
       submittedTitle: 'تم استلام الرسالة.',
@@ -606,7 +606,7 @@ export const advisoryCopy = {
         { icon: 'FacebookIcon', label: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61579554502856' },
         { icon: 'LinkedInIcon', label: 'LinkedIn', href: 'https://www.linkedin.com/company/ps-amc-co/?fbclid=IwY2xjawRcLEVleHRuA2FlbQIxMABicmlkETFEUWFycEZiQk9NZU53TDVVc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHm6Qm9kHTBovKS8GYuiqrKzx6DiZTr6jO-43xc_UfZZlENrmZD11WEfw2E_Q_aem_P8ZD0n25HO50HC_46hngRQ' },
       ],
-      copyright: `AMC · info@amcco.ps · +970-592-397-405`,
+      copyright: `AMC · a.mahameed@amcco.ps · +970-592-397-405`,
     },
   },
 }

@@ -63,7 +63,7 @@ export function FourthFooter({ locale = 'en' }) {
               ))}
             </div>
             <span className="text-sm text-[var(--text-muted)] font-medium text-center sm:text-left">
-              © {new Date().getFullYear()} {copy.copyright}
+              <span dir="ltr" className="advisory-mixed-ltr">© {new Date().getFullYear()} {copy.copyright}</span>
             </span>
           </div>
         </div>

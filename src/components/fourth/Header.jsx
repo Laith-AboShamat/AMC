@@ -114,6 +114,7 @@ export function FourthHeader({ content, locale, theme, onLocaleChange, onThemeCh
               title={copy.header.toggleLanguage}
               aria-label={copy.header.toggleLanguage}
               onClick={toggleLocale}
+              dir="ltr"
               className="advisory-icon-button advisory-locale-toggle px-3 w-auto min-w-[4.5rem]"
             >
               <span className={`advisory-locale-token ${locale === 'en' ? 'is-active' : ''}`}>EN</span>
@@ -162,6 +163,7 @@ export function FourthHeader({ content, locale, theme, onLocaleChange, onThemeCh
               title={copy.header.toggleLanguage}
               aria-label={copy.header.toggleLanguage}
               onClick={toggleLocale}
+              dir="ltr"
               className="advisory-icon-button advisory-locale-toggle px-3 w-auto min-w-[4.5rem]"
             >
               <span className={`advisory-locale-token ${locale === 'en' ? 'is-active' : ''}`}>EN</span>

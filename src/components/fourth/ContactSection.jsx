@@ -97,7 +97,14 @@ export function FourthContactSection({ locale = 'en' }) {
                   </div>
                   <div>
                     <div className="text-xs text-[var(--text-muted)] font-medium mb-0.5">{contact.label}</div>
-                    <div className="text-sm font-semibold text-[var(--navy-dark)]">{contact.value}</div>
+                    <div
+                      dir={contact.icon === 'PhoneIcon' ? 'ltr' : undefined}
+                      className={`text-sm font-semibold text-[var(--navy-dark)] ${
+                        contact.icon === 'PhoneIcon' ? 'advisory-phone-value' : ''
+                      }`}
+                    >
+                      {contact.value}
+                    </div>
                   </div>
                 </div>
               ))}
