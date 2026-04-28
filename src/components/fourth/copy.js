@@ -2,6 +2,7 @@ export const advisoryCopy = {
   en: {
     header: {
       nav: {
+        home: 'Home',
         services: 'Services',
         about: 'About',
         results: 'Results',
@@ -9,7 +10,6 @@ export const advisoryCopy = {
       },
       brandLine: 'Built for impact driven by purpose',
       toggleLanguage: 'Switch language',
-      toggleTheme: 'Toggle dark mode',
     },
     hero: {
       eyebrow: {
@@ -144,7 +144,6 @@ export const advisoryCopy = {
         title: 'Tailored Solutions for Organizational Excellence',
         description:
           'Every organization has its own challenges, but the goal is always the same: performance and excellence. We design tailored solutions that integrate seamlessly with your operations, addressing specific gaps while supporting your overall journey toward enterprise excellence. Because real impact comes from solutions that fit, not from templates that do not.',
-        note: 'This is what distinguishes the four services above and turns them into a solution set that fits your organization, not a generic package.',
       },
     },
     statsBand: {
@@ -281,7 +280,6 @@ export const advisoryCopy = {
         'Management Systems Auditing (1st & 2nd Party)',
         'Training & Capacity Building',
         'Regulatory & Pharmaceutical Services',
-        'Tailored Solutions for Organizational Excellence',
         'General Inquiry',
       ],
       submitting: 'Sending...',
@@ -307,6 +305,7 @@ export const advisoryCopy = {
   ar: {
     header: {
       nav: {
+        home: 'الرئيسية',
         services: 'الخدمات',
         about: 'من نحن',
         results: 'النتائج',
@@ -314,7 +313,6 @@ export const advisoryCopy = {
       },
       brandLine: 'نبني الأثر ويقودنا الهدف',
       toggleLanguage: 'تبديل اللغة',
-      toggleTheme: 'تبديل الوضع',
     },
     hero: {
       eyebrow: {
@@ -448,7 +446,6 @@ export const advisoryCopy = {
         title: 'حلول مخصصة للتميز المؤسسي',
         description:
           'لكل مؤسسة تحدياتها الخاصة، لكن الهدف دائمًا واحد: الأداء والتميّز. نصمم حلولًا مخصصة تندمج بسلاسة مع عملياتك، وتعالج الفجوات المحددة، وتدعم رحلتك الشاملة نحو التميز المؤسسي. لأن الأثر الحقيقي يأتي من حلول تناسبك، لا من قوالب لا تناسبك.',
-        note: 'هذا هو العنصر الذي يميز الخدمات الأربع أعلاه ويحوّلها إلى حلول مناسبة لمؤسستك، لا إلى باقة عامة موحدة.',
       },
     },
     statsBand: {
@@ -586,7 +583,6 @@ export const advisoryCopy = {
         'تدقيق أنظمة الإدارة (الطرف الأول والثاني)',
         'التدريب وبناء القدرات',
         'الخدمات التنظيمية والدوائية',
-        'حلول مخصصة للتميز المؤسسي',
         'استفسار عام',
       ],
       submitting: 'جارٍ الإرسال...',

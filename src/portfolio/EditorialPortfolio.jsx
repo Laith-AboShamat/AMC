@@ -6,7 +6,7 @@ import { PortfolioRouteHeader } from '../components/PortfolioRouteHeader.jsx'
 import { PrinciplesSection } from '../components/PrinciplesSection.jsx'
 import { ServicesSection } from '../components/ServicesSection.jsx'
 
-export function EditorialPortfolio({ content, locale, theme, onLocaleChange, onThemeChange, direction }) {
+export function EditorialPortfolio({ content, locale, onLocaleChange, direction }) {
   const navItems = [
     { href: '#about', label: content.nav.about },
     { href: '#methodology', label: content.nav.methodology },
@@ -19,9 +19,7 @@ export function EditorialPortfolio({ content, locale, theme, onLocaleChange, onT
       <PortfolioRouteHeader
         content={content}
         locale={locale}
-        theme={theme}
         onLocaleChange={onLocaleChange}
-        onThemeChange={onThemeChange}
         navItems={navItems}
       />
 

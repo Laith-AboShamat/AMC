@@ -49,6 +49,46 @@ export function FourthHeroSection({ locale = 'en' }) {
     </span>
   )
 
+  const renderHeroIntro = (className = '') => (
+    <div
+      className={`advisory-hero-intro w-fit max-w-full transition-all duration-700 ${
+        loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+      } ${className}`}
+    >
+      <span className="advisory-hero-intro-kicker">{copy.eyebrow.lead}</span>
+      <span className="advisory-hero-intro-text">
+        <span className="advisory-hero-intro-accent">{copy.eyebrow.accent}</span>
+        <span className="advisory-hero-intro-tail">{copy.eyebrow.tail}</span>
+      </span>
+    </div>
+  )
+
+  const renderStatsGrid = () => (
+    <div className="advisory-hero-stat-grid grid grid-cols-2 gap-3 sm:gap-4">
+      <div className="advisory-sparkle advisory-sparkle-one" aria-hidden="true" />
+      <div className="advisory-sparkle advisory-sparkle-two" aria-hidden="true" />
+      {copy.stats.map((stat, index) => (
+        <div
+          key={stat.label}
+          className={`advisory-hero-stat-card advisory-hero-stat-${index + 1} p-5 border rounded-2xl text-center ${
+            stat.accent === 'gold' ? 'advisory-gold-glow-card' : ''
+          }`}
+        >
+          <div
+            className={`advisory-display advisory-hero-stat-value mb-1 leading-none ${
+              String(stat.value).length > 8 ? 'text-[2rem]' : 'text-3xl'
+            } ${stat.accent === 'gold' ? 'advisory-hero-stat-value-gold' : ''}`}
+          >
+            {stat.value}
+          </div>
+          <div className="advisory-hero-stat-label text-[11px] font-semibold uppercase tracking-[0.15em]">
+            {stat.label}
+          </div>
+        </div>
+      ))}
+    </div>
+  )
+
   return (
     <section id="hero" className="relative min-h-screen flex flex-col overflow-hidden" style={{ minHeight: '100svh' }}>
       <div className="absolute inset-0 z-0 overflow-hidden" ref={bgRef}>
@@ -68,24 +108,12 @@ export function FourthHeroSection({ locale = 'en' }) {
       <div className="absolute top-[18%] right-[12%] w-56 h-56 sm:w-80 sm:h-80 lg:w-[500px] lg:h-[500px] rounded-full bg-[var(--blue-accent)] opacity-10 blur-[90px] lg:blur-[120px] advisory-blob pointer-events-none z-0" />
       <div className="absolute bottom-[22%] left-[8%] w-48 h-48 sm:w-72 sm:h-72 lg:bottom-1/3 lg:left-1/3 lg:w-[400px] lg:h-[400px] rounded-full bg-[var(--navy)] opacity-15 blur-[80px] lg:blur-[100px] advisory-blob-slow pointer-events-none z-0" />
 
-      <div className="relative z-10 flex-1 flex flex-col max-w-7xl mx-auto px-4 sm:px-6 w-full pt-28 sm:pt-32 lg:pt-36 pb-12 sm:pb-16">
-        <div className="flex flex-col lg:flex-row items-start lg:items-end gap-10 sm:gap-12 lg:gap-20 flex-1">
-          <div className="lg:w-7/12 flex flex-col justify-center flex-1">
-            <div
-              className={`advisory-hero-intro inline-flex max-w-full items-center gap-2 sm:gap-2.5 px-3.5 sm:px-5 py-2.5 rounded-full text-[10px] sm:text-[11px] font-semibold tracking-[0.14em] sm:tracking-[0.2em] uppercase mb-6 sm:mb-8 w-fit transition-all duration-700 ${
-                loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-              }`}
-            >
-              <GoldMotionAccent variant="inline" className="flex-shrink-0" />
-              <span className="advisory-hero-intro-text">
-                {copy.eyebrow.lead}
-                <span className="advisory-hero-intro-accent"> {copy.eyebrow.accent} </span>
-                {copy.eyebrow.tail}
-              </span>
-              <AppIcon name="SparklesIcon" size={12} className="text-[var(--gold-light)] advisory-spark-inline" />
-            </div>
+      <div className="relative z-10 flex-1 flex flex-col max-w-7xl mx-auto px-4 sm:px-6 w-full pt-28 sm:pt-32 lg:pt-28 pb-12 sm:pb-16">
+        <div className="flex flex-col lg:flex-row items-start lg:items-start gap-10 sm:gap-12 lg:gap-16 flex-1">
+          <div className="lg:w-3/5 flex flex-col justify-center flex-1">
+            {renderHeroIntro('advisory-hero-intro-mobile mb-6 sm:mb-8')}
 
-            <h1 ref={titleRef} className="advisory-display advisory-hero-title advisory-hero-heading text-[2.9rem] sm:text-6xl lg:text-7xl mb-5 sm:mb-6 leading-[1.06] sm:leading-[1.05] max-w-[11ch] sm:max-w-none">
+            <h1 ref={titleRef} className="advisory-display advisory-hero-title advisory-hero-heading text-[2.9rem] sm:text-6xl lg:text-[5.35rem] xl:text-[5.85rem] mb-5 sm:mb-6 leading-[0.98] sm:leading-[0.98] max-w-[11ch] sm:max-w-none lg:max-w-[8.6ch] xl:max-w-[8.9ch]">
               {copy.lines.map((line, lineIndex) => renderLine(line, lineIndex))}
             </h1>
 
@@ -121,35 +149,16 @@ export function FourthHeroSection({ locale = 'en' }) {
             </div>
           </div>
 
-          <div
-            className={`hidden lg:block lg:w-5/12 transition-all duration-700 delay-500 ${
+          <aside
+            className={`hidden lg:flex lg:w-[46%] xl:w-[44%] transition-all duration-700 delay-500 ${
               loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
-            <div className="advisory-gold-sparkle-zone grid grid-cols-2 gap-3">
-              <div className="advisory-sparkle advisory-sparkle-one" aria-hidden="true" />
-              <div className="advisory-sparkle advisory-sparkle-two" aria-hidden="true" />
-              {copy.stats.map((stat, index) => (
-                <div
-                  key={stat.label}
-                  className={`advisory-hero-stat-card advisory-hero-stat-${index + 1} p-5 border rounded-2xl text-center ${
-                    stat.accent === 'gold' ? 'advisory-gold-glow-card' : ''
-                  }`}
-                >
-                  <div
-                    className={`advisory-display advisory-hero-stat-value mb-1 leading-none ${
-                      String(stat.value).length > 8 ? 'text-[2rem]' : 'text-3xl'
-                    } ${stat.accent === 'gold' ? 'advisory-hero-stat-value-gold' : ''}`}
-                  >
-                    {stat.value}
-                  </div>
-                  <div className="advisory-hero-stat-label text-[11px] font-semibold uppercase tracking-[0.15em]">
-                    {stat.label}
-                  </div>
-                </div>
-              ))}
+            <div className="advisory-hero-side ml-auto w-full max-w-[30rem] xl:max-w-[32rem]">
+              {renderHeroIntro('advisory-hero-intro-desktop')}
+              {renderStatsGrid()}
             </div>
-          </div>
+          </aside>
         </div>
 
         <div className={`advisory-scroll-cue flex items-center justify-center sm:justify-start gap-3 mt-8 transition-all duration-700 delay-700 ${loaded ? 'opacity-100' : 'opacity-0'}`}>

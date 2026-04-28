@@ -1,58 +1,53 @@
 import { useEffect, useState } from 'react'
-import { MoonStar, SunMedium } from 'lucide-react'
 import { AppIcon } from './AppIcon.jsx'
 import { AppLogo } from './AppLogo.jsx'
 import { getAdvisoryCopy } from './copy.js'
 
-export function FourthHeader({ content, locale, theme, onLocaleChange, onThemeChange }) {
+export function FourthHeader({ content, locale, onLocaleChange }) {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('hero')
   const copy = getAdvisoryCopy(locale)
   const navLinks = [
-    { label: copy.header.nav.services, href: '#services' },
-    { label: copy.header.nav.about, href: '#about' },
-    { label: copy.header.nav.results, href: '#results' },
-    { label: copy.header.nav.contact, href: '#contact' },
+    { id: 'hero', label: copy.header.nav.home, href: '#hero' },
+    { id: 'services', label: copy.header.nav.services, href: '#services' },
+    { id: 'about', label: copy.header.nav.about, href: '#about' },
+    { id: 'results', label: copy.header.nav.results, href: '#results' },
+    { id: 'contact', label: copy.header.nav.contact, href: '#contact' },
   ]
 
   const toggleLocale = () => onLocaleChange(locale === 'ar' ? 'en' : 'ar')
-  const toggleTheme = () => onThemeChange(theme === 'dark' ? 'light' : 'dark')
 
   useEffect(() => {
+    const sectionIds = ['hero', 'services', 'about', 'results', 'contact']
+    const headerOffset = 150
+
     const handleScroll = () => {
       setScrolled(window.scrollY > 40)
       if (menuOpen && window.scrollY > 100) {
         setMenuOpen(false)
       }
+
+      const scrollMarker = window.scrollY + headerOffset
+      let nextActiveSection = 'hero'
+
+      sectionIds.forEach((id) => {
+        const element = document.getElementById(id)
+        if (element && scrollMarker >= element.offsetTop) {
+          nextActiveSection = id
+        }
+      })
+
+      setActiveSection(nextActiveSection)
     }
 
-    const sectionIds = ['hero', 'services', 'about', 'results', 'contact']
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visibleEntry = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((left, right) => right.intersectionRatio - left.intersectionRatio)[0]
-
-        if (visibleEntry?.target?.id) {
-          setActiveSection(visibleEntry.target.id)
-        }
-      },
-      { threshold: [0.2, 0.45, 0.7], rootMargin: '-20% 0px -45% 0px' },
-    )
-
-    sectionIds.forEach((id) => {
-      const element = document.getElementById(id)
-      if (element) {
-        observer.observe(element)
-      }
-    })
-
+    handleScroll()
     window.addEventListener('scroll', handleScroll, { passive: true })
+    window.addEventListener('resize', handleScroll)
 
     return () => {
-      observer.disconnect()
       window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('resize', handleScroll)
     }
   }, [menuOpen])
 
@@ -61,7 +56,9 @@ export function FourthHeader({ content, locale, theme, onLocaleChange, onThemeCh
     const id = href.replace('#', '')
     const element = document.getElementById(id)
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      const headerOffset = 110
+      const top = element.getBoundingClientRect().top + window.scrollY - headerOffset
+      window.scrollTo({ top, behavior: 'smooth' })
     }
   }
 
@@ -97,7 +94,7 @@ export function FourthHeader({ content, locale, theme, onLocaleChange, onThemeCh
               type="button"
               onClick={() => handleNavClick(link.href)}
               className={`advisory-nav-link px-5 py-2 rounded-full text-xs font-semibold tracking-wide transition-all duration-300 ${
-                activeSection === link.href.replace('#', '')
+                activeSection === link.id
                   ? 'bg-[var(--blue-accent)] text-white shadow-sm'
                   : 'text-[var(--text-secondary)] hover:text-[var(--navy-dark)]'
               }`}
@@ -120,15 +117,6 @@ export function FourthHeader({ content, locale, theme, onLocaleChange, onThemeCh
               <span className={`advisory-locale-token ${locale === 'en' ? 'is-active' : ''}`}>EN</span>
               <span className="advisory-locale-divider" aria-hidden="true">|</span>
               <span className={`advisory-locale-token ${locale === 'ar' ? 'is-active' : ''}`}>AR</span>
-            </button>
-            <button
-              type="button"
-              title={copy.header.toggleTheme}
-              aria-label={copy.header.toggleTheme}
-              onClick={toggleTheme}
-              className="advisory-icon-button"
-            >
-              {theme === 'dark' ? <SunMedium size={16} /> : <MoonStar size={16} />}
             </button>
           </div>
           <button
@@ -170,15 +158,6 @@ export function FourthHeader({ content, locale, theme, onLocaleChange, onThemeCh
               <span className="advisory-locale-divider" aria-hidden="true">|</span>
               <span className={`advisory-locale-token ${locale === 'ar' ? 'is-active' : ''}`}>AR</span>
             </button>
-            <button
-              type="button"
-              title={copy.header.toggleTheme}
-              aria-label={copy.header.toggleTheme}
-              onClick={toggleTheme}
-              className="advisory-icon-button"
-            >
-              {theme === 'dark' ? <SunMedium size={16} /> : <MoonStar size={16} />}
-            </button>
           </div>
 
           {navLinks.map((link) => (
@@ -186,7 +165,11 @@ export function FourthHeader({ content, locale, theme, onLocaleChange, onThemeCh
               key={link.href}
               type="button"
               onClick={() => handleNavClick(link.href)}
-              className="text-left px-4 py-3 rounded-xl text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--navy)] hover:bg-[var(--bg-cool)] transition-colors min-h-[44px]"
+              className={`text-left px-4 py-3 rounded-xl text-sm font-medium transition-colors min-h-[44px] ${
+                activeSection === link.id
+                  ? 'bg-[var(--blue-accent)] text-white'
+                  : 'text-[var(--text-secondary)] hover:text-[var(--navy)] hover:bg-[var(--bg-cool)]'
+              }`}
             >
               {link.label}
             </button>

@@ -172,7 +172,7 @@ function PreviewPanel({ design, index, openLabel }) {
   )
 }
 
-export function DesignSelectorPage({ content, locale, theme, onLocaleChange, onThemeChange }) {
+export function DesignSelectorPage({ content, locale, onLocaleChange }) {
   return (
     <div className="px-4 py-6 sm:px-6 lg:px-10 lg:py-8">
       <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-4 rounded-card bg-base-100/78 px-4 py-3 shadow-ambient backdrop-blur-xl sm:px-6">
@@ -192,9 +192,7 @@ export function DesignSelectorPage({ content, locale, theme, onLocaleChange, onT
           <DesignControls
             content={content}
             locale={locale}
-            theme={theme}
             onLocaleChange={onLocaleChange}
-            onThemeChange={onThemeChange}
           />
         </div>
       </div>

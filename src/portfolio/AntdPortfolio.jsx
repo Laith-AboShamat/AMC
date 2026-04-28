@@ -25,8 +25,8 @@ import { PortfolioRouteHeader } from '../components/PortfolioRouteHeader.jsx'
 const { Content } = Layout
 const { Title, Paragraph, Text } = Typography
 
-export function AntdPortfolio({ content, locale, theme, onLocaleChange, onThemeChange }) {
-  const isDark = theme === 'dark'
+export function AntdPortfolio({ content, locale, onLocaleChange }) {
+  const isDark = true
   const navItems = [
     { href: '#executive-summary', label: content.nav.about },
     { href: '#executive-method', label: content.nav.methodology },
@@ -50,9 +50,7 @@ export function AntdPortfolio({ content, locale, theme, onLocaleChange, onThemeC
       <PortfolioRouteHeader
         content={content}
         locale={locale}
-        theme={theme}
         onLocaleChange={onLocaleChange}
-        onThemeChange={onThemeChange}
         navItems={navItems}
       />
 

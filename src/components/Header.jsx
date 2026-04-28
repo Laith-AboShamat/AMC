@@ -1,5 +1,5 @@
 import { createElement, useState } from 'react'
-import { Languages, Menu, MoonStar, SunMedium, X } from 'lucide-react'
+import { Languages, Menu, X } from 'lucide-react'
 
 function ControlButton({ active, icon, label, onClick, children }) {
   const Icon = icon
@@ -23,7 +23,7 @@ function ControlButton({ active, icon, label, onClick, children }) {
   )
 }
 
-function UnifiedControls({ content, locale, theme, onLocaleChange, onThemeChange }) {
+function UnifiedControls({ content, locale, onLocaleChange }) {
   return (
     <div className="flex items-center rounded-full bg-base-200/90 p-1 text-xs shadow-ambient backdrop-blur-md max-sm:gap-0.5 max-sm:p-0.5">
       <div className="flex items-center gap-1 pr-1">
@@ -41,27 +41,6 @@ function UnifiedControls({ content, locale, theme, onLocaleChange, onThemeChange
           onClick={() => onLocaleChange('ar')}
         >
           {content.controls.arabic}
-        </ControlButton>
-      </div>
-
-      <span className="h-6 w-px bg-base-content/10" aria-hidden="true" />
-
-      <div className="flex items-center gap-1 pl-1">
-        <ControlButton
-          active={theme === 'light'}
-          icon={SunMedium}
-          label={content.controls.light}
-          onClick={() => onThemeChange('light')}
-        >
-          {content.controls.light}
-        </ControlButton>
-        <ControlButton
-          active={theme === 'dark'}
-          icon={MoonStar}
-          label={content.controls.dark}
-          onClick={() => onThemeChange('dark')}
-        >
-          {content.controls.dark}
         </ControlButton>
       </div>
     </div>
@@ -90,7 +69,7 @@ function MobileMenu({ content, onNavigate }) {
   )
 }
 
-export function Header({ content, locale, theme, onLocaleChange, onThemeChange }) {
+export function Header({ content, locale, onLocaleChange }) {
   const [menuOpen, setMenuOpen] = useState(false)
 
   const closeMenu = () => setMenuOpen(false)
@@ -130,9 +109,7 @@ export function Header({ content, locale, theme, onLocaleChange, onThemeChange }
           <UnifiedControls
             content={content}
             locale={locale}
-            theme={theme}
             onLocaleChange={onLocaleChange}
-            onThemeChange={onThemeChange}
           />
 
           <a href="#contact" className="hidden btn btn-primary rounded-card border-0 px-5 text-sm font-semibold normal-case shadow-none md:inline-flex">

@@ -2,7 +2,7 @@ import { Menu, X } from 'lucide-react'
 import { useState } from 'react'
 import { DesignControls } from './DesignControls.jsx'
 
-export function PortfolioRouteHeader({ content, locale, theme, onLocaleChange, onThemeChange, navItems = [] }) {
+export function PortfolioRouteHeader({ content, locale, onLocaleChange, navItems = [] }) {
   const [menuOpen, setMenuOpen] = useState(false)
 
   return (
@@ -34,9 +34,7 @@ export function PortfolioRouteHeader({ content, locale, theme, onLocaleChange, o
           <DesignControls
             content={content}
             locale={locale}
-            theme={theme}
             onLocaleChange={onLocaleChange}
-            onThemeChange={onThemeChange}
           />
 
           <button

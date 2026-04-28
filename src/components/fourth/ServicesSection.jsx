@@ -4,7 +4,7 @@ import { AppIcon } from './AppIcon.jsx'
 import { AppImage } from './AppImage.jsx'
 import { getAdvisoryCopy } from './copy.js'
 
-export function FourthServicesSection({ locale = 'en', theme = 'light' }) {
+export function FourthServicesSection({ locale = 'en' }) {
   const sectionRef = useRef(null)
   const cardRefs = useRef([])
   const differentiatorRef = useRef(null)
@@ -104,8 +104,6 @@ export function FourthServicesSection({ locale = 'en', theme = 'light' }) {
     }
   }
 
-  const useDarkVariant = () => theme === 'dark'
-
   return (
     <>
       <section id="services" ref={sectionRef} className="py-20 lg:py-28 bg-[var(--bg-cool)]">
@@ -140,7 +138,7 @@ export function FourthServicesSection({ locale = 'en', theme = 'light' }) {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-5 lg:auto-rows-[minmax(360px,auto)]">
           {copy.cards.map((service, index) => (
             (() => {
-              const isDarkVariant = useDarkVariant()
+              const isDarkVariant = true
 
               return (
             <div
@@ -204,25 +202,14 @@ export function FourthServicesSection({ locale = 'en', theme = 'light' }) {
           ))}
         </div>
 
-        <div ref={differentiatorRef} className={`advisory-reveal-hidden ${differentiatorVisible ? 'is-visible' : ''} advisory-delay-500 mt-8 sm:mt-10 rounded-[2rem] border border-[var(--border-light)] bg-[var(--bg-white)] p-6 sm:p-8 lg:p-10 advisory-card-lift`}>
-          <div className="grid grid-cols-1 lg:grid-cols-[auto,1fr] gap-5 sm:gap-6 items-start">
-            <div className="w-14 h-14 rounded-2xl bg-[var(--gold-pale)] text-[var(--gold)] flex items-center justify-center flex-shrink-0">
-              <AppIcon name="PuzzlePieceIcon" size={28} />
-            </div>
-            <div>
-              <span className="advisory-section-label block mb-3">{copy.differentiator.label}</span>
-              <h3 className="advisory-display text-2xl sm:text-3xl text-[var(--navy-dark)] leading-tight mb-4">
-                {copy.differentiator.title}
-              </h3>
-              <p className="text-[var(--text-secondary)] text-sm sm:text-base leading-relaxed mb-4 max-w-4xl">
-                {copy.differentiator.description}
-              </p>
-              <div className="inline-flex items-center gap-2 rounded-full bg-[var(--bg-cool)] border border-[var(--border-light)] px-4 py-2 text-xs sm:text-sm font-semibold text-[var(--navy)]">
-                <AppIcon name="SparklesIcon" size={14} className="text-[var(--gold)]" />
-                {copy.differentiator.note}
-              </div>
-            </div>
-          </div>
+        <div ref={differentiatorRef} className={`advisory-reveal-hidden ${differentiatorVisible ? 'is-visible' : ''} advisory-delay-500 mt-10 sm:mt-12 text-center max-w-5xl mx-auto`}>
+          <span className="advisory-section-label block mb-3">{copy.differentiator.label}</span>
+          <h3 className="advisory-display text-3xl sm:text-4xl lg:text-[3.2rem] text-[var(--navy-dark)] leading-[1.02] mb-4 sm:mb-5">
+            {copy.differentiator.title}
+          </h3>
+          <p className="text-[var(--text-secondary)] text-sm sm:text-base lg:text-[1.05rem] leading-relaxed max-w-4xl mx-auto">
+            {copy.differentiator.description}
+          </p>
         </div>
         </div>
       </section>
@@ -230,7 +217,7 @@ export function FourthServicesSection({ locale = 'en', theme = 'light' }) {
       <AnimatePresence>
         {activeService ? (
           (() => {
-            const isDarkVariant = useDarkVariant()
+            const isDarkVariant = true
 
             return (
           <motion.div

@@ -1,5 +1,5 @@
 import { createElement } from 'react'
-import { Languages, MoonStar, SunMedium } from 'lucide-react'
+import { Languages } from 'lucide-react'
 
 function ControlButton({ active, icon, label, onClick, children }) {
   const Icon = icon
@@ -23,7 +23,7 @@ function ControlButton({ active, icon, label, onClick, children }) {
   )
 }
 
-export function DesignControls({ content, locale, theme, onLocaleChange, onThemeChange }) {
+export function DesignControls({ content, locale, onLocaleChange }) {
   return (
     <div className="flex items-center rounded-full bg-base-200/90 p-1 text-xs shadow-ambient backdrop-blur-md max-sm:gap-0.5 max-sm:p-0.5">
       <div className="flex items-center gap-1 pr-1">
@@ -41,27 +41,6 @@ export function DesignControls({ content, locale, theme, onLocaleChange, onTheme
           onClick={() => onLocaleChange('ar')}
         >
           {content.controls.arabic}
-        </ControlButton>
-      </div>
-
-      <span className="h-6 w-px bg-base-content/10" aria-hidden="true" />
-
-      <div className="flex items-center gap-1 pl-1">
-        <ControlButton
-          active={theme === 'light'}
-          icon={SunMedium}
-          label={content.controls.light}
-          onClick={() => onThemeChange('light')}
-        >
-          {content.controls.light}
-        </ControlButton>
-        <ControlButton
-          active={theme === 'dark'}
-          icon={MoonStar}
-          label={content.controls.dark}
-          onClick={() => onThemeChange('dark')}
-        >
-          {content.controls.dark}
         </ControlButton>
       </div>
     </div>

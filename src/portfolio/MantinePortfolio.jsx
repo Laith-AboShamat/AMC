@@ -35,8 +35,8 @@ import {
 } from '@mantine/core'
 import { PortfolioRouteHeader } from '../components/PortfolioRouteHeader.jsx'
 
-export function MantinePortfolio({ content, locale, theme, onLocaleChange, onThemeChange }) {
-  const isDark = theme === 'dark'
+export function MantinePortfolio({ content, locale, onLocaleChange }) {
+  const isDark = true
   const accent = isDark ? '#96b4ff' : '#274874'
   const softPanel = isDark ? '#16263e' : '#eef4ff'
   const cardBg = isDark ? '#132033' : '#ffffff'
@@ -52,9 +52,7 @@ export function MantinePortfolio({ content, locale, theme, onLocaleChange, onThe
       <PortfolioRouteHeader
         content={content}
         locale={locale}
-        theme={theme}
         onLocaleChange={onLocaleChange}
-        onThemeChange={onThemeChange}
         navItems={navItems}
       />
 

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { AppIcon } from './AppIcon.jsx'
 import { AppLogo } from './AppLogo.jsx'
 import { getAdvisoryCopy } from './copy.js'
@@ -39,32 +39,51 @@ export function FourthFooter({ locale = 'en' }) {
       </button>
 
       <div className="max-w-7xl mx-auto px-5 sm:px-6 py-8">
-        <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-6">
-          <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-8 text-center sm:text-left">
-            <button type="button" onClick={() => handleNav('#hero')} className="flex items-center gap-2">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] lg:items-center">
+          <div className="advisory-footer-left flex flex-col items-center gap-4 text-center sm:flex-row sm:flex-wrap sm:items-center sm:justify-start sm:text-left lg:justify-self-start">
+            <button type="button" onClick={() => handleNav('#hero')} className="advisory-footer-brand flex items-center gap-2 rounded-full px-2 py-1.5 transition-all duration-200">
               <AppLogo src="/amc1.png" size={32} className="rounded-lg overflow-hidden bg-[var(--navy-dark)] p-1" />
               <span className="advisory-display font-semibold text-base text-[var(--navy-dark)]">AMC</span>
             </button>
-            <div className="flex items-center gap-4 sm:gap-6 flex-wrap justify-center sm:justify-start">
+            <div className="advisory-footer-nav flex items-center gap-2 sm:gap-3 flex-wrap justify-center sm:justify-start">
               {copy.nav.map((link) => (
-                <button key={link.href} type="button" onClick={() => handleNav(link.href)} className="text-sm font-medium text-[var(--text-muted)] hover:text-[var(--navy)] transition-colors min-h-[44px] flex items-center">
+                <button
+                  key={link.href}
+                  type="button"
+                  onClick={() => handleNav(link.href)}
+                  className="advisory-footer-nav-link min-h-[44px] rounded-full px-3 py-2 text-sm font-medium transition-all duration-200"
+                >
                   {link.label}
                 </button>
               ))}
             </div>
+            <span className="advisory-footer-copyright w-full text-sm text-[var(--text-muted)] font-medium sm:text-left">
+              <span dir="ltr" className="advisory-mixed-ltr">© {new Date().getFullYear()} AMC</span>
+            </span>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center gap-4">
-            <div className="flex items-center gap-4">
-              {copy.socials.map((social) => (
-                <a key={social.label} href={social.href} target="_blank" rel="noreferrer" aria-label={social.label} className="w-11 h-11 rounded-full border border-[var(--border-light)] flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--navy)] hover:border-[var(--navy)] transition-all">
-                  <AppIcon name={social.icon} size={16} />
-                </a>
-              ))}
-            </div>
-            <span className="text-sm text-[var(--text-muted)] font-medium text-center sm:text-left">
-              <span dir="ltr" className="advisory-mixed-ltr">© {new Date().getFullYear()} {copy.copyright}</span>
-            </span>
+          <div className="advisory-footer-socials flex items-center justify-center gap-4 lg:justify-self-center">
+            {copy.socials.map((social) => (
+              <a
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={social.label}
+                className="advisory-footer-social w-11 h-11 rounded-full border flex items-center justify-center transition-all"
+              >
+                <AppIcon name={social.icon} size={16} />
+              </a>
+            ))}
+          </div>
+
+          <div className="advisory-footer-contact flex flex-col items-center gap-1.5 text-center lg:items-end lg:justify-self-end lg:text-right">
+            <a href="mailto:a.mahameed@amcco.ps" className="advisory-footer-contact-line advisory-footer-contact-link text-sm font-medium">
+              <span dir="ltr" className="advisory-mixed-ltr">a.mahameed@amcco.ps</span>
+            </a>
+            <a href="tel:+970592397405" className="advisory-footer-contact-line advisory-footer-contact-link text-sm font-medium">
+              <span dir="ltr" className="advisory-mixed-ltr">+970-592-397-405</span>
+            </a>
           </div>
         </div>
       </div>
