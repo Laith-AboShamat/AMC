@@ -150,7 +150,7 @@ function PreviewPanel({ design, index, openLabel }) {
             <div className="rounded-[1.3rem] border border-[#d7e0ee] bg-[linear-gradient(180deg,#ffffff_0%,#f4f7fb_100%)] p-5">
               <div className="flex items-center justify-between gap-3">
                 <div className="inline-flex rounded-full bg-[#eef4ff] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#2d6cdf]">
-                  Healthcare-grade
+                  New UI direction
                 </div>
                 <div className="h-8 w-8 rounded-full bg-[#0f172a]" />
               </div>

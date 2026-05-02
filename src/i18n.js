@@ -42,7 +42,7 @@ export const translations = {
         { label: 'Option 02', value: 'Soft executive dashboard feel built with Mantine.' },
         { label: 'Option 03', value: 'Structured corporate presentation built with Ant Design.' },
         { label: 'Option 04', value: 'Immersive consulting landing page with bespoke animated sections.' },
-        { label: 'Option 05', value: 'IQVIA-inspired enterprise experience with white and grey healthcare-grade surfaces.' },
+        { label: 'Option 05', value: 'Enterprise experience inspired by new components and new UI designs.' },
       ],
       designs: [
         {
@@ -87,8 +87,8 @@ export const translations = {
           title: 'Immersive Advisory',
           library: 'Tailwind + Framer Motion',
           description:
-            'A light, IQVIA-inspired enterprise direction with healthcare-grade clarity, layered white and gray surfaces, and sharper information modules.',
-          bullets: ['White and gray enterprise palette', 'Healthcare-style solution modules', 'Crisp motion-led hierarchy'],
+            'A light enterprise direction inspired by new components, new UI designs, layered white and gray surfaces, and sharper information modules.',
+          bullets: ['White and gray enterprise palette', 'New component-driven modules', 'Crisp motion-led hierarchy'],
         },
       ],
     },
@@ -341,7 +341,7 @@ export const translations = {
         { label: 'الخيار 02', value: 'أسلوب تنفيذي هادئ مبني باستخدام Mantine.' },
         { label: 'الخيار 03', value: 'عرض مؤسسي منظم مبني باستخدام Ant Design.' },
         { label: 'الخيار 04', value: 'صفحة استشارية غامرة بمقاطع متحركة وسرد بصري أكثر جرأة.' },
-        { label: 'الخيار 05', value: 'اتجاه مؤسسي مستلهم من IQVIA بأسطح بيضاء ورمادية وتجربة أكثر دقة ووضوحاً.' },
+        { label: 'الخيار 05', value: 'اتجاه مؤسسي بأسطح بيضاء ورمادية وتجربة أكثر دقة ووضوحاً.' },
       ],
       designs: [
         {
@@ -386,8 +386,8 @@ export const translations = {
           title: 'الاستشاري الغامر',
           library: 'Tailwind + Framer Motion',
           description:
-            'اتجاه مؤسسي فاتح مستلهم من IQVIA يعتمد على وضوح عالٍ وأسطح بيضاء ورمادية ووحدات معلومات أكثر دقة.',
-          bullets: ['لوحة بيضاء ورمادية', 'وحدات حلول بطابع صحي مؤسسي', 'هرمية بصرية مع حركة انسيابية'],
+            'اتجاه مؤسسي فاتح مستلهم من مكونات جديدة وتصاميم واجهات جديدة مع وضوح عالٍ وأسطح بيضاء ورمادية ووحدات معلومات أكثر دقة.',
+          bullets: ['لوحة بيضاء ورمادية', 'وحدات مبنية على مكونات جديدة', 'هرمية بصرية مع حركة انسيابية'],
         },
       ],
     },

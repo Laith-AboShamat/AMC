@@ -8,7 +8,6 @@ export const advisoryCopy = {
         results: 'Results',
         contact: 'Contact',
       },
-      brandLine: 'Built for impact driven by purpose',
       toggleLanguage: 'Switch language',
     },
     hero: {

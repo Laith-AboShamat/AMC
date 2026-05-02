@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { ArrowRight, Play } from 'lucide-react'
 import { AppImage } from '../fourth/AppImage.jsx'
 import { getAdvisoryCopy } from '../fourth/copy.js'
+import { FifthHeroBeams } from './FifthHeroBeams.jsx'
 
 const MotionDiv = motion.div
 const MotionH1 = motion.h1
@@ -45,6 +46,9 @@ export function FifthHeroSection({ locale = 'en' }) {
     <section id="hero" className="relative overflow-hidden px-4 pb-8 pt-6 sm:px-6 lg:px-10">
       <div className="relative mx-auto max-w-[1380px] overflow-hidden rounded-[2.25rem] border border-slate-200 bg-[linear-gradient(180deg,#ffffff_0%,#f5f7fa_100%)] shadow-[0_30px_90px_rgba(15,23,42,0.07)]">
         <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_top_left,rgba(45,108,223,0.08),transparent_40%),radial-gradient(circle_at_bottom_right,rgba(148,163,184,0.06),transparent_40%),linear-gradient(180deg,rgba(255,255,255,0.16),rgba(245,247,250,0.28))]" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 top-[44%] z-0 hidden lg:block">
+          <FifthHeroBeams className="opacity-75 [mask-image:linear-gradient(180deg,transparent_0%,rgba(0,0,0,0.86)_24%,rgba(0,0,0,0.92)_100%)]" />
+        </div>
 
         <div className="relative z-10 grid gap-10 px-6 py-8 sm:px-8 sm:py-10 lg:grid-cols-[1.02fr_0.98fr] lg:items-start lg:px-12 lg:py-14">
           <MotionDiv variants={container} initial="hidden" animate="visible" className="relative z-10 flex flex-col justify-center">
