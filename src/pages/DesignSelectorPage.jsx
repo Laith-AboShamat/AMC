@@ -1,4 +1,4 @@
-import { ArrowRight, Building2, LayoutTemplate, Layers3, Palette } from 'lucide-react'
+import { Activity, ArrowRight, Building2, LayoutTemplate, Layers3, Palette } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { DesignControls } from '../components/DesignControls.jsx'
 import { motion } from 'framer-motion'
@@ -13,7 +13,7 @@ const reveal = {
   transition: { duration: 0.6, ease: 'easeOut' },
 }
 
-const designIcons = [LayoutTemplate, Layers3, Palette, Building2]
+const designIcons = [LayoutTemplate, Layers3, Palette, Building2, Activity]
 
 function PreviewPanel({ design, index, openLabel }) {
   const Icon = designIcons[index]
@@ -141,6 +141,38 @@ function PreviewPanel({ design, index, openLabel }) {
                 <div className="h-16 rounded-xl bg-[#0d1b2a]" />
                 <div className="h-16 rounded-xl bg-[#f5ecd8]" />
               </div>
+            </div>
+          </>
+        ) : null}
+
+        {design.slug === 'fifth' ? (
+          <>
+            <div className="rounded-[1.3rem] border border-[#d7e0ee] bg-[linear-gradient(180deg,#ffffff_0%,#f4f7fb_100%)] p-5">
+              <div className="flex items-center justify-between gap-3">
+                <div className="inline-flex rounded-full bg-[#eef4ff] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#2d6cdf]">
+                  Healthcare-grade
+                </div>
+                <div className="h-8 w-8 rounded-full bg-[#0f172a]" />
+              </div>
+              <div className="mt-4 h-3 w-3/4 rounded-full bg-[#0f172a]" />
+              <div className="mt-2 h-2 w-2/3 rounded-full bg-[#94a3b8]" />
+            </div>
+            <div className="mt-4 grid grid-cols-[1.1fr_0.9fr] gap-3">
+              <div className="rounded-[1.1rem] bg-white p-4 shadow-[0_10px_24px_rgba(17,24,39,0.06)] ring-1 ring-slate-200/70">
+                <div className="h-2 w-16 rounded-full bg-[#2d6cdf]/20" />
+                <div className="mt-4 space-y-2">
+                  <div className="h-2 rounded-full bg-slate-200" />
+                  <div className="h-2 w-4/5 rounded-full bg-slate-200" />
+                </div>
+              </div>
+              <div className="rounded-[1.1rem] bg-[#f4f7fb] p-4 ring-1 ring-slate-200/70">
+                <div className="h-10 w-10 rounded-2xl bg-[#dce8ff]" />
+                <div className="mt-4 h-2 w-12 rounded-full bg-[#2d6cdf]/25" />
+              </div>
+            </div>
+            <div className="mt-4 flex gap-3">
+              <div className="h-10 flex-1 rounded-[0.9rem] bg-[#0f172a]" />
+              <div className="h-10 w-1/3 rounded-[0.9rem] bg-[#eef4ff]" />
             </div>
           </>
         ) : null}

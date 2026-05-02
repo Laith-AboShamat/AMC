@@ -1,5 +1,6 @@
 import { Menu, X } from 'lucide-react'
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { DesignControls } from './DesignControls.jsx'
 
 export function PortfolioRouteHeader({ content, locale, onLocaleChange, navItems = [] }) {
@@ -9,6 +10,9 @@ export function PortfolioRouteHeader({ content, locale, onLocaleChange, navItems
     <header className="sticky top-0 z-50 px-4 py-4 sm:px-6 lg:px-10">
       <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-4 rounded-card bg-base-100/78 px-4 py-3 shadow-ambient backdrop-blur-xl sm:px-6">
         <div className="flex items-center gap-3">
+          <Link to="/" className="hidden rounded-full bg-base-200/90 px-3 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-secondary transition hover:text-primary sm:inline-flex">
+            {content.selector.backToChoices}
+          </Link>
           <div className="flex min-w-0 items-center gap-3">
             <img src="/amc2.png" alt={content.brand.logoAlt} className="h-11 w-11" />
             <div className="min-w-0">

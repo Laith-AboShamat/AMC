@@ -48,6 +48,37 @@ a {
   color: #191c1e;
 }
 
+.fifth-shell,
+.fifth-shell * {
+  font-family: 'Inter', sans-serif !important;
+  font-style: normal !important;
+}
+
+.fifth-shell h1,
+.fifth-shell h2,
+.fifth-shell h3,
+.fifth-shell h4,
+.fifth-shell h5,
+.fifth-shell h6 {
+  font-family: 'Manrope', 'Inter', sans-serif !important;
+  font-style: normal !important;
+  font-weight: 800 !important;
+}
+
+.locale-ar .fifth-shell,
+.locale-ar .fifth-shell * {
+  font-family: 'Cairo', 'Inter', sans-serif !important;
+}
+
+.locale-ar .fifth-shell h1,
+.locale-ar .fifth-shell h2,
+.locale-ar .fifth-shell h3,
+.locale-ar .fifth-shell h4,
+.locale-ar .fifth-shell h5,
+.locale-ar .fifth-shell h6 {
+  font-family: 'Cairo', 'Inter', sans-serif !important;
+}
+
 .app-shell section,
 .app-shell article,
 .app-shell p,

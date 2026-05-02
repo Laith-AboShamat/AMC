@@ -24,6 +24,14 @@ export const advisoryCopy = {
       ],
       description:
         'AMC empowers companies, small, medium, and large, by transferring honest expertise, building sustainable institutional systems, and approaching every client as a true partner.',
+      visualEyebrow: 'Enterprise performance system',
+      visualCardEyebrow: 'Operational excellence brief',
+      visualCardTitle: 'We align systems, operations, and leadership around repeatable execution.',
+      visualAlt: 'Institutional architectural detail',
+      visualFocusTitle: 'Focus areas',
+      visualNoteLabel: 'Operating note',
+      visualNoteTitle: 'Structured transformation with measurable operational control.',
+      visualPrincipleLabel: 'Partnership principle',
       contactCta: 'Get in Touch',
       servicesCta: 'Our Services',
       scrollLabel: 'Scroll to explore',
@@ -36,6 +44,8 @@ export const advisoryCopy = {
     },
     about: {
       label: 'About Us',
+      brandName: 'AMC',
+      brandLogoAlt: 'AMC logo',
       titleFirst: 'We Engineer',
       titleAccent: 'High-Performing Organizations',
       coreMessage:
@@ -159,6 +169,7 @@ export const advisoryCopy = {
       },
     },
     outcomes: {
+      label: 'Strategic outcomes',
       title: 'What You Actually Get',
       subtitle: 'Real operational change that translates into better business performance',
       items: [
@@ -327,6 +338,14 @@ export const advisoryCopy = {
       ],
       description:
         'تمكّن AMC الشركات الصغيرة والمتوسطة والكبيرة عبر نقل الخبرة الصادقة وبناء الأنظمة المؤسسية المستدامة والتعامل مع كل عميل كشريك حقيقي.',
+      visualEyebrow: 'منظومة الأداء المؤسسي',
+      visualCardEyebrow: 'ملخص التميز التشغيلي',
+      visualCardTitle: 'نُوائم الأنظمة والعمليات والقيادة حول تنفيذ منضبط قابل للتكرار.',
+      visualAlt: 'تفاصيل معمارية مؤسسية',
+      visualFocusTitle: 'مجالات التركيز',
+      visualNoteLabel: 'ملاحظة تشغيلية',
+      visualNoteTitle: 'تحول منظم مع ضبط تشغيلي قابل للقياس.',
+      visualPrincipleLabel: 'مبدأ الشراكة',
       contactCta: 'تواصل معنا',
       servicesCta: 'خدماتنا',
       scrollLabel: 'تابع الاستكشاف',
@@ -339,6 +358,8 @@ export const advisoryCopy = {
     },
     about: {
       label: 'نبذة عنا',
+      brandName: 'AMC',
+      brandLogoAlt: 'شعار AMC',
       titleFirst: 'نُهندس مؤسسات',
       titleAccent: 'عالية الأداء',
       coreMessage:
@@ -461,7 +482,8 @@ export const advisoryCopy = {
       },
     },
     outcomes: {
-      title: 'What You Actually Get',
+      label: 'النتائج الاستراتيجية',
+      title: 'ما الذي تحصل عليه فعلياً',
       subtitle: 'تغيير تشغيلي حقيقي ينعكس مباشرة على أداء الأعمال بشكل أفضل',
       items: [
         {
@@ -574,7 +596,7 @@ export const advisoryCopy = {
         name: 'الاسم الكامل',
         email: 'name@company.com',
         company: 'اسم الشركة',
-        role: 'CEO / VP Strategy',
+        role: 'المدير التنفيذي / نائب الرئيس للاستراتيجية',
         service: 'اختر مجال الخدمة',
         message: 'صف بإيجاز التحدي أو الفرصة التي تواجهها المؤسسة...',
       },
@@ -598,9 +620,9 @@ export const advisoryCopy = {
       ],
       backToTop: 'العودة للأعلى',
       socials: [
-        { icon: 'InstagramIcon', label: 'Instagram', href: 'https://www.instagram.com/amcco.ps/' },
-        { icon: 'FacebookIcon', label: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61579554502856' },
-        { icon: 'LinkedInIcon', label: 'LinkedIn', href: 'https://www.linkedin.com/company/ps-amc-co/?fbclid=IwY2xjawRcLEVleHRuA2FlbQIxMABicmlkETFEUWFycEZiQk9NZU53TDVVc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHm6Qm9kHTBovKS8GYuiqrKzx6DiZTr6jO-43xc_UfZZlENrmZD11WEfw2E_Q_aem_P8ZD0n25HO50HC_46hngRQ' },
+        { icon: 'InstagramIcon', label: 'إنستغرام', href: 'https://www.instagram.com/amcco.ps/' },
+        { icon: 'FacebookIcon', label: 'فيسبوك', href: 'https://www.facebook.com/profile.php?id=61579554502856' },
+        { icon: 'LinkedInIcon', label: 'لينكدإن', href: 'https://www.linkedin.com/company/ps-amc-co/?fbclid=IwY2xjawRcLEVleHRuA2FlbQIxMABicmlkETFEUWFycEZiQk9NZU53TDVVc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHm6Qm9kHTBovKS8GYuiqrKzx6DiZTr6jO-43xc_UfZZlENrmZD11WEfw2E_Q_aem_P8ZD0n25HO50HC_46hngRQ' },
       ],
       copyright: `AMC · a.mahameed@amcco.ps · +970-592-397-405`,
     },

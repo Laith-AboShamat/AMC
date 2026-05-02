@@ -1,7 +1,16 @@
-import { useEffect, useMemo, useState } from 'react'
+import { Suspense, lazy, useEffect, useMemo, useState } from 'react'
 import { MantineProvider } from '@mantine/core'
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import { translations } from './i18n.js'
-import { AdvisoryPortfolio } from './portfolio/AdvisoryPortfolio.jsx'
+import { DesignSelectorPage } from './pages/DesignSelectorPage.jsx'
+
+const EditorialPortfolio = lazy(() => import('./portfolio/EditorialPortfolio.jsx').then((module) => ({ default: module.EditorialPortfolio })))
+const MantinePortfolio = lazy(() => import('./portfolio/MantinePortfolio.jsx').then((module) => ({ default: module.MantinePortfolio })))
+const AntdPortfolio = lazy(() => import('./portfolio/AntdPortfolio.jsx').then((module) => ({ default: module.AntdPortfolio })))
+const AdvisoryPortfolio = lazy(() => import('./portfolio/AdvisoryPortfolio.jsx').then((module) => ({ default: module.AdvisoryPortfolio })))
+const FifthPortfolio = lazy(() => import('./portfolio/FifthPortfolio.jsx').then((module) => ({ default: module.FifthPortfolio })))
+
+const darkRoutes = new Set(['/design/mantine', '/design/executive', '/design/advisory'])
 
 const STORAGE_KEYS = {
   locale: 'amc-locale',
@@ -20,18 +29,29 @@ function getInitialLocale() {
   return window.navigator.language?.toLowerCase().startsWith('ar') ? 'ar' : 'en'
 }
 
+const routeTitles = {
+  '/': (content) => content.selector.pageTitle,
+  '/design/editorial': (content) => `${content.brand.name} | ${content.selector.designs[0].title}`,
+  '/design/mantine': (content) => `${content.brand.name} | ${content.selector.designs[1].title}`,
+  '/design/executive': (content) => `${content.brand.name} | ${content.selector.designs[2].title}`,
+  '/design/advisory': (content) => `${content.brand.name} | ${content.selector.designs[3].title}`,
+  '/design/fifth': (content) => `${content.brand.name} | ${content.selector.designs[4].title}`,
+}
+
 function App() {
   const [locale, setLocale] = useState(getInitialLocale)
+  const location = useLocation()
 
   const content = useMemo(() => translations[locale] ?? translations.en, [locale])
   const direction = locale === 'ar' ? 'rtl' : 'ltr'
+  const isDarkRoute = darkRoutes.has(location.pathname)
 
   useEffect(() => {
     const root = document.documentElement
     root.lang = locale
     root.dir = direction
-    root.setAttribute('data-theme', 'amcDark')
-    root.style.colorScheme = 'dark'
+    root.setAttribute('data-theme', isDarkRoute ? 'amcDark' : 'amc')
+    root.style.colorScheme = isDarkRoute ? 'dark' : 'light'
 
     window.localStorage.setItem(STORAGE_KEYS.locale, locale)
 
@@ -40,8 +60,9 @@ function App() {
       metaDescription.setAttribute('content', content.meta.description)
     }
 
-    document.title = content.meta.title
-  }, [content.meta.description, content.meta.title, direction, locale])
+    const resolveTitle = routeTitles[location.pathname]
+    document.title = resolveTitle ? resolveTitle(content) : content.meta.title
+  }, [content, direction, isDarkRoute, locale, location.pathname])
 
   return (
     <MantineProvider defaultColorScheme="dark">
@@ -51,11 +72,72 @@ function App() {
           locale === 'ar' ? 'locale-ar' : 'locale-en'
         }`}
       >
-        <AdvisoryPortfolio
-          content={content}
-          locale={locale}
-          onLocaleChange={setLocale}
-        />
+        <Suspense fallback={<div className="min-h-screen bg-surface" aria-hidden="true" />}>
+          <Routes>
+            <Route
+              path="/"
+              element={(
+                <DesignSelectorPage
+                  content={content}
+                  locale={locale}
+                  onLocaleChange={setLocale}
+                />
+              )}
+            />
+            <Route
+              path="/design/editorial"
+              element={(
+                <EditorialPortfolio
+                  content={content}
+                  locale={locale}
+                  onLocaleChange={setLocale}
+                  direction={direction}
+                />
+              )}
+            />
+            <Route
+              path="/design/mantine"
+              element={(
+                <MantinePortfolio
+                  content={content}
+                  locale={locale}
+                  onLocaleChange={setLocale}
+                />
+              )}
+            />
+            <Route
+              path="/design/executive"
+              element={(
+                <AntdPortfolio
+                  content={content}
+                  locale={locale}
+                  onLocaleChange={setLocale}
+                />
+              )}
+            />
+            <Route
+              path="/design/advisory"
+              element={(
+                <AdvisoryPortfolio
+                  content={content}
+                  locale={locale}
+                  onLocaleChange={setLocale}
+                />
+              )}
+            />
+            <Route
+              path="/design/fifth"
+              element={(
+                <FifthPortfolio
+                  content={content}
+                  locale={locale}
+                  onLocaleChange={setLocale}
+                />
+              )}
+            />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </Suspense>
       </div>
     </MantineProvider>
   )

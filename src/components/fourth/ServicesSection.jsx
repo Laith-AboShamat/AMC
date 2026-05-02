@@ -4,6 +4,9 @@ import { AppIcon } from './AppIcon.jsx'
 import { AppImage } from './AppImage.jsx'
 import { getAdvisoryCopy } from './copy.js'
 
+const MotionDiv = motion.div
+const MotionButton = motion.button
+
 export function FourthServicesSection({ locale = 'en' }) {
   const sectionRef = useRef(null)
   const cardRefs = useRef([])
@@ -220,13 +223,13 @@ export function FourthServicesSection({ locale = 'en' }) {
             const isDarkVariant = true
 
             return (
-          <motion.div
+          <MotionDiv
             className="advisory-service-modal fixed inset-0 z-[120] flex items-end justify-center p-3 sm:p-6 lg:items-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            <motion.button
+            <MotionButton
               type="button"
               className="absolute inset-0 advisory-service-modal-backdrop"
               onClick={closeService}
@@ -236,7 +239,7 @@ export function FourthServicesSection({ locale = 'en' }) {
               exit={{ opacity: 0 }}
             />
 
-            <motion.div
+            <MotionDiv
               role="dialog"
               aria-modal="true"
               aria-labelledby={`service-dialog-title-${activeService.id}`}
@@ -336,8 +339,8 @@ export function FourthServicesSection({ locale = 'en' }) {
                   </div>
                 </div>
               </div>
-            </motion.div>
-          </motion.div>
+            </MotionDiv>
+          </MotionDiv>
             )
           })()
         ) : null}

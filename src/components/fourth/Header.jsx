@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { AppIcon } from './AppIcon.jsx'
 import { AppLogo } from './AppLogo.jsx'
 import { getAdvisoryCopy } from './copy.js'
@@ -70,6 +71,9 @@ export function FourthHeader({ content, locale, onLocaleChange }) {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between gap-3 sm:gap-4">
         <div className="flex items-center gap-3 min-w-0">
+          <Link to="/" className="hidden sm:inline-flex rounded-full border border-[var(--border-light)] bg-[rgba(255,255,255,0.72)] px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-secondary)] backdrop-blur-sm transition hover:text-[var(--navy)]">
+            {content.selector.backToChoices}
+          </Link>
           <button className="flex items-center gap-3 group min-w-0" onClick={() => handleNavClick('#hero')} type="button">
             <AppLogo
               src="/amc1.png"

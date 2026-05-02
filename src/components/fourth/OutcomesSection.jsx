@@ -2,6 +2,9 @@ import { motion } from 'framer-motion'
 import { AppIcon } from './AppIcon.jsx'
 import { getAdvisoryCopy } from './copy.js'
 
+const MotionDiv = motion.div
+const MotionArticle = motion.article
+
 export function FourthOutcomesSection({ locale = 'en' }) {
   const copy = getAdvisoryCopy(locale).outcomes
   const isRtl = locale === 'ar'
@@ -13,25 +16,25 @@ export function FourthOutcomesSection({ locale = 'en' }) {
       <div className="advisory-outcomes-orb advisory-outcomes-orb-two" aria-hidden="true" />
       <div className="advisory-outcomes-gridline" aria-hidden="true" />
       <div className="max-w-7xl mx-auto px-5 sm:px-6">
-        <motion.div
+        <MotionDiv
           className={`mb-14 text-center ${isRtl ? 'lg:text-right' : 'lg:text-center'}`}
           initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.35 }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
-          <span className="advisory-section-label advisory-outcomes-label block mb-4">Strategic outcomes</span>
+          <span className="advisory-section-label advisory-outcomes-label block mb-4">{copy.label}</span>
           <h2 className="advisory-display text-5xl sm:text-6xl leading-[0.96] max-w-4xl mx-auto advisory-outcomes-heading">
             <span className="advisory-gold-shimmer">{copy.title}</span>
           </h2>
           <p className="mt-5 max-w-3xl mx-auto advisory-outcomes-subtitle text-base sm:text-lg leading-8">
             {copy.subtitle}
           </p>
-        </motion.div>
+        </MotionDiv>
 
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5 xl:gap-6 items-start">
           {copy.items.map((item, index) => (
-            <motion.article
+            <MotionArticle
               key={item.title}
               className={`advisory-outcome-card ${cardOffsets[index] ?? ''} relative overflow-hidden rounded-[2rem] border flex flex-col group`}
               initial={{ opacity: 0, y: 34, rotate: index % 2 === 0 ? -1.2 : 1.2 }}
@@ -76,7 +79,7 @@ export function FourthOutcomesSection({ locale = 'en' }) {
                   </div>
                 </div>
               </div>
-            </motion.article>
+            </MotionArticle>
           ))}
         </div>
       </div>
