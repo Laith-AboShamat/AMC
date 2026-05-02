@@ -48,6 +48,43 @@ a {
   color: #191c1e;
 }
 
+.fifth-shell {
+  position: relative;
+  isolation: isolate;
+  --fifth-header-start: rgba(2, 16, 45, 0.98);
+  --fifth-header-end: rgba(7, 24, 62, 0.94);
+  --fifth-footer-start: #081a42;
+  --fifth-footer-end: #04112f;
+  background:
+    radial-gradient(circle at 50% 48%, rgba(205, 220, 244, 0.28), transparent 16%),
+    radial-gradient(circle at bottom center, rgba(82, 111, 171, 0.14), transparent 22%),
+    linear-gradient(
+      180deg,
+      var(--fifth-header-start) 0%,
+      var(--fifth-header-end) 14%,
+      #17356d 34%,
+      #cad8ee 52%,
+      #eef3fb 60%,
+      #b8cae8 72%,
+      #284777 86%,
+      var(--fifth-footer-start) 95%,
+      var(--fifth-footer-end) 100%
+    );
+}
+
+.fifth-shell::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.015), transparent 14%, transparent 78%, rgba(255, 255, 255, 0.02) 100%),
+    radial-gradient(circle at 84% 10%, rgba(255, 255, 255, 0.025), transparent 16%),
+    radial-gradient(circle at 50% 38%, rgba(9, 28, 73, 0.16), transparent 34%),
+    radial-gradient(circle at 50% 92%, rgba(4, 17, 47, 0.22), transparent 22%);
+  pointer-events: none;
+  z-index: 0;
+}
+
 .fifth-shell,
 .fifth-shell * {
   font-family: 'Inter', sans-serif !important;

@@ -16,12 +16,12 @@ export function FifthFooter({ locale = 'en' }) {
   }
 
   return (
-    <footer className="px-4 pb-8 pt-4 sm:px-6 lg:px-10 lg:pb-10">
-      <div className="mx-auto max-w-[1380px] rounded-[2rem] border border-slate-200 bg-white px-6 py-6 shadow-[0_20px_60px_rgba(15,23,42,0.05)] sm:px-8">
+    <footer className="relative z-10 mt-10 w-full border-t border-white/10 bg-[linear-gradient(180deg,#081a42_0%,#04112f_100%)] px-4 pb-8 pt-10 text-white sm:px-6 lg:px-10 lg:pb-10">
+      <div className="mx-auto max-w-[1380px] px-2 sm:px-0">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
           <div>
-            <div className="text-sm font-bold uppercase tracking-[0.22em] text-slate-950">AMC</div>
-            <div className="mt-2 text-sm leading-7 text-slate-500">{copy.copyright}</div>
+            <div className="text-sm font-bold uppercase tracking-[0.22em] text-white">AMC</div>
+            <div className="mt-2 max-w-xl text-sm leading-7 text-white/62">{copy.copyright}</div>
           </div>
 
           <div className="flex flex-wrap items-center gap-2">
@@ -30,7 +30,7 @@ export function FifthFooter({ locale = 'en' }) {
                 key={item.href}
                 type="button"
                 onClick={() => scrollTo(item.href)}
-                className="rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-semibold text-slate-600 transition hover:border-slate-300 hover:text-slate-950"
+                className="rounded-full border border-white/12 bg-white/8 px-4 py-2 text-sm font-semibold text-white/74 transition hover:border-white/20 hover:bg-white/12 hover:text-white"
               >
                 {item.label}
               </button>
@@ -38,7 +38,7 @@ export function FifthFooter({ locale = 'en' }) {
           </div>
         </div>
 
-        <div className="mt-6 flex flex-col gap-4 border-t border-slate-200 pt-6 lg:flex-row lg:items-center lg:justify-between">
+        <div className="mt-6 flex flex-col gap-4 border-t border-white/10 pt-6 lg:flex-row lg:items-center lg:justify-between">
           <div className="flex flex-wrap items-center gap-3">
             {copy.socials.map((item) => (
               <a
@@ -46,7 +46,7 @@ export function FifthFooter({ locale = 'en' }) {
                 href={item.href}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-[#2d6cdf] hover:text-[#2d6cdf]"
+                className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-white/12 bg-white/8 px-4 py-2 text-sm font-semibold text-white/76 transition hover:border-white/20 hover:bg-white/12 hover:text-white"
               >
                 <AppIcon name={item.icon} size={16} />
                 {item.label}
@@ -57,7 +57,7 @@ export function FifthFooter({ locale = 'en' }) {
           <button
             type="button"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="inline-flex min-h-[44px] items-center justify-center rounded-full bg-slate-950 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-800"
+            className="inline-flex min-h-[44px] items-center justify-center rounded-full border border-white/12 bg-white px-5 py-2.5 text-sm font-semibold text-[#081a42] transition hover:bg-white/92"
           >
             {copy.backToTop}
           </button>

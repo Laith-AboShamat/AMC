@@ -8,9 +8,9 @@ import { FifthServicesSection } from '../components/fifth/FifthServicesSection.j
 
 export function FifthPortfolio({ content, locale, onLocaleChange }) {
   return (
-    <div className="fifth-shell min-h-screen bg-[#f3f6f9] text-slate-950">
+    <div className="fifth-shell min-h-screen text-slate-950">
       <FifthHeader content={content} locale={locale} onLocaleChange={onLocaleChange} />
-      <main>
+      <main className="relative z-10">
         <FifthHeroSection locale={locale} />
         <FifthServicesSection locale={locale} />
         <FifthAboutSection locale={locale} />
