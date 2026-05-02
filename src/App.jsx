@@ -64,6 +64,10 @@ function App() {
     document.title = resolveTitle ? resolveTitle(content) : content.meta.title
   }, [content, direction, isDarkRoute, locale, location.pathname])
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+  }, [location.pathname])
+
   return (
     <MantineProvider defaultColorScheme="dark">
       <div
