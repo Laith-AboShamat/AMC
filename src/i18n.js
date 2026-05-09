@@ -32,7 +32,7 @@ export const translations = {
     selector: {
       pageTitle: 'AMC | Choose a Design Direction',
       eyebrow: 'Portfolio Design Directions',
-      title: 'Choose one of five distinct portfolio experiences for presentation.',
+      title: 'Choose one of six distinct portfolio experiences for presentation.',
       description:
         'Each direction presents the same AMC content through a different visual language so the client can compare tone, hierarchy, and professionalism before making a final choice.',
       openDesign: 'Open design',
@@ -43,6 +43,7 @@ export const translations = {
         { label: 'Option 03', value: 'Structured corporate presentation built with Ant Design.' },
         { label: 'Option 04', value: 'Immersive consulting landing page with bespoke animated sections.' },
         { label: 'Option 05', value: 'Enterprise experience inspired by new components and new UI designs.' },
+        { label: 'Option 06', value: 'Full-width enterprise bands with restrained section colors and scroll-led motion.' },
       ],
       designs: [
         {
@@ -89,6 +90,15 @@ export const translations = {
           description:
             'A light enterprise direction inspired by new components, new UI designs, layered white and gray surfaces, and sharper information modules.',
           bullets: ['White and gray enterprise palette', 'New component-driven modules', 'Crisp motion-led hierarchy'],
+        },
+        {
+          slug: 'sixth',
+          href: '/design/sixth',
+          title: 'Sectioned Enterprise',
+          library: 'Tailwind + Framer Motion',
+          description:
+            'A simpler IQVIA-inspired variant of the fifth direction with full-width color bands, restrained white content zones, and section-by-section reveal motion.',
+          bullets: ['Full-width section backgrounds', 'Hero without stat cards', 'Simple enterprise rhythm'],
         },
       ],
     },
@@ -331,7 +341,7 @@ export const translations = {
     selector: {
       pageTitle: 'AMC | اختر الاتجاه التصميمي',
       eyebrow: 'اتجاهات تصميم الملف التعريفي',
-      title: 'اختر واحدة من خمس تجارب تصميم مختلفة لعرض الملف التعريفي.',
+      title: 'اختر واحدة من ست تجارب تصميم مختلفة لعرض الملف التعريفي.',
       description:
         'كل اتجاه يعرض نفس محتوى AMC بلغة بصرية مختلفة حتى يتمكن العميل من مقارنة الطابع والهرمية والاحترافية قبل اعتماد النسخة النهائية.',
       openDesign: 'فتح التصميم',
@@ -342,6 +352,7 @@ export const translations = {
         { label: 'الخيار 03', value: 'عرض مؤسسي منظم مبني باستخدام Ant Design.' },
         { label: 'الخيار 04', value: 'صفحة استشارية غامرة بمقاطع متحركة وسرد بصري أكثر جرأة.' },
         { label: 'الخيار 05', value: 'اتجاه مؤسسي بأسطح بيضاء ورمادية وتجربة أكثر دقة ووضوحاً.' },
+        { label: 'الخيار 06', value: 'اتجاه أبسط بخلفيات ممتدة على عرض الصفحة وحركة ظهور لكل قسم عند التمرير.' },
       ],
       designs: [
         {
@@ -388,6 +399,15 @@ export const translations = {
           description:
             'اتجاه مؤسسي فاتح مستلهم من مكونات جديدة وتصاميم واجهات جديدة مع وضوح عالٍ وأسطح بيضاء ورمادية ووحدات معلومات أكثر دقة.',
           bullets: ['لوحة بيضاء ورمادية', 'وحدات مبنية على مكونات جديدة', 'هرمية بصرية مع حركة انسيابية'],
+        },
+        {
+          slug: 'sixth',
+          href: '/design/sixth',
+          title: 'المؤسسي المقطعي',
+          library: 'Tailwind + Framer Motion',
+          description:
+            'نسخة أبسط مستلهمة من إيقاع المواقع المؤسسية الحديثة مع مقاطع لونية ممتدة على كامل العرض ومحتوى داخلي أكثر هدوءاً.',
+          bullets: ['خلفيات مقاطع ممتدة', 'هيرو بدون بطاقات', 'إيقاع بصري أبسط'],
         },
       ],
     },

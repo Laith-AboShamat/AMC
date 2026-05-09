@@ -13,10 +13,10 @@ const reveal = {
   transition: { duration: 0.6, ease: 'easeOut' },
 }
 
-const designIcons = [LayoutTemplate, Layers3, Palette, Building2, Activity]
+const designIcons = [LayoutTemplate, Layers3, Palette, Building2, Activity, LayoutTemplate]
 
 function PreviewPanel({ design, index, openLabel }) {
-  const Icon = designIcons[index]
+  const Icon = designIcons[index] ?? LayoutTemplate
 
   return (
     <MotionArticle {...reveal} className="group flex h-full flex-col overflow-hidden rounded-[2rem] bg-surfaceLowest p-6 shadow-ambient ring-1 ring-primary/5 transition duration-300 hover:-translate-y-1 hover:ring-primary/15 sm:p-7">
@@ -173,6 +173,38 @@ function PreviewPanel({ design, index, openLabel }) {
             <div className="mt-4 flex gap-3">
               <div className="h-10 flex-1 rounded-[0.9rem] bg-[#0f172a]" />
               <div className="h-10 w-1/3 rounded-[0.9rem] bg-[#eef4ff]" />
+            </div>
+          </>
+        ) : null}
+
+        {design.slug === 'sixth' ? (
+          <>
+            <div className="rounded-[1.3rem] bg-[linear-gradient(180deg,#04112f_0%,#0a2a66_100%)] p-5 text-white">
+              <div className="inline-flex rounded-full border border-white/12 bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-white/84">
+                Sectioned enterprise
+              </div>
+              <div className="mt-4 h-3 w-3/4 rounded-full bg-white/85" />
+              <div className="mt-2 h-2 w-2/3 rounded-full bg-white/30" />
+              <div className="mt-6 grid grid-cols-3 gap-3 border-t border-white/12 pt-4">
+                <div className="h-8 rounded-full bg-white/10" />
+                <div className="h-8 rounded-full bg-white/10" />
+                <div className="h-8 rounded-full bg-white/10" />
+              </div>
+            </div>
+            <div className="mt-4 space-y-3">
+              <div className="rounded-[1.1rem] bg-white p-4 shadow-[0_10px_24px_rgba(17,24,39,0.06)] ring-1 ring-slate-200/70">
+                <div className="h-2 w-20 rounded-full bg-[#2d6cdf]/20" />
+                <div className="mt-4 grid gap-2">
+                  <div className="h-2 rounded-full bg-slate-200" />
+                  <div className="h-2 w-5/6 rounded-full bg-slate-200" />
+                </div>
+              </div>
+              <div className="rounded-[1.1rem] bg-[#f5f7fb] p-4 ring-1 ring-slate-200/70">
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="h-16 rounded-[0.95rem] bg-white" />
+                  <div className="h-16 rounded-[0.95rem] bg-white" />
+                </div>
+              </div>
             </div>
           </>
         ) : null}

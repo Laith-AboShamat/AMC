@@ -9,6 +9,7 @@ const MantinePortfolio = lazy(() => import('./portfolio/MantinePortfolio.jsx').t
 const AntdPortfolio = lazy(() => import('./portfolio/AntdPortfolio.jsx').then((module) => ({ default: module.AntdPortfolio })))
 const AdvisoryPortfolio = lazy(() => import('./portfolio/AdvisoryPortfolio.jsx').then((module) => ({ default: module.AdvisoryPortfolio })))
 const FifthPortfolio = lazy(() => import('./portfolio/FifthPortfolio.jsx').then((module) => ({ default: module.FifthPortfolio })))
+const SixthPortfolio = lazy(() => import('./portfolio/SixthPortfolio.jsx').then((module) => ({ default: module.SixthPortfolio })))
 
 const darkRoutes = new Set(['/design/mantine', '/design/executive', '/design/advisory'])
 
@@ -36,6 +37,7 @@ const routeTitles = {
   '/design/executive': (content) => `${content.brand.name} | ${content.selector.designs[2].title}`,
   '/design/advisory': (content) => `${content.brand.name} | ${content.selector.designs[3].title}`,
   '/design/fifth': (content) => `${content.brand.name} | ${content.selector.designs[4].title}`,
+  '/design/sixth': (content) => `${content.brand.name} | ${content.selector.designs[5].title}`,
 }
 
 function App() {
@@ -133,6 +135,16 @@ function App() {
               path="/design/fifth"
               element={(
                 <FifthPortfolio
+                  content={content}
+                  locale={locale}
+                  onLocaleChange={setLocale}
+                />
+              )}
+            />
+            <Route
+              path="/design/sixth"
+              element={(
+                <SixthPortfolio
                   content={content}
                   locale={locale}
                   onLocaleChange={setLocale}
