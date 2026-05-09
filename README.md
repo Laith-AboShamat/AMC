@@ -14,3 +14,33 @@ The React Compiler is not enabled on this template because of its impact on dev 
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+## Inquiry Email (SMTP) Setup
+
+The newest inquiry form sends messages through a backend SMTP API.
+
+1. Copy `.env.example` to `.env` (already created in local workspace) and set `MAIL_PASSWORD` to the real mailbox password.
+2. Start both frontend and SMTP API together:
+
+```bash
+npm run dev:all
+```
+
+Or start them separately:
+
+```bash
+npm run server
+```
+
+```bash
+npm run dev
+```
+3. Submit the inquiry form from `/design/sixth` (or `/design/fifth`). The email is sent to `INQUIRY_MAIL_TO`.
+
+### Relevant Environment Variables
+
+- `MAIL_USERNAME`, `MAIL_PASSWORD`
+- `MAIL_OUTGOING_HOST`, `MAIL_SMTP_PORT`, `MAIL_SMTP_SECURE`
+- `MAIL_INCOMING_HOST`, `MAIL_IMAP_PORT`, `MAIL_POP3_PORT`
+- `INQUIRY_MAIL_TO`, `INQUIRY_MAIL_FROM`, `INQUIRY_MAIL_FROM_NAME`
+- `VITE_INQUIRY_API_URL` (optional if using local Vite `/api` proxy)

@@ -308,6 +308,7 @@ export const advisoryCopy = {
       ],
       submitting: 'Sending...',
       submit: 'Submit Inquiry',
+      submitError: 'Unable to send your inquiry right now. Please try again.',
       disclaimer: 'By submitting this form you agree to our Privacy Policy. We never share your data with third parties.',
     },
     footer: {
@@ -634,6 +635,7 @@ export const advisoryCopy = {
       ],
       submitting: 'جارٍ الإرسال...',
       submit: 'إرسال الاستفسار',
+      submitError: 'تعذر إرسال الاستفسار حالياً. يرجى المحاولة مرة أخرى.',
       disclaimer: 'بإرسال هذا النموذج فإنك توافق على سياسة الخصوصية لدينا. نحن لا نشارك بياناتك مع أي طرف ثالث.',
     },
     footer: {

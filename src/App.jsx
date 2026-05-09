@@ -37,7 +37,7 @@ const routeTitles = {
   '/design/executive': (content) => `${content.brand.name} | ${content.selector.designs[2].title}`,
   '/design/advisory': (content) => `${content.brand.name} | ${content.selector.designs[3].title}`,
   '/design/fifth': (content) => `${content.brand.name} | ${content.selector.designs[4].title}`,
-  '/design/sixth': (content) => `${content.brand.name} | ${content.selector.designs[5].title}`,
+  '/design/sixth': (content) => `${content.brand.name} | ${content.selector.designs[5]?.title ?? 'Sixth Design'}`,
 }
 
 function App() {

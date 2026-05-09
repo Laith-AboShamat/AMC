@@ -6,7 +6,7 @@ import { SixthHeroSection } from '../components/sixth/SixthHeroSection.jsx'
 import { SixthResultsSection } from '../components/sixth/SixthResultsSection.jsx'
 import { SixthServicesSection } from '../components/sixth/SixthServicesSection.jsx'
 
-export function SixthPortfolio({ content, locale, onLocaleChange }) {
+export function SixthPortfolio({ content, locale }) {
   return (
     <div className="min-h-screen bg-white text-slate-950">
       <SixthHeader content={content} locale={locale} />

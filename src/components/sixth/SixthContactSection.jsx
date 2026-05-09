@@ -19,6 +19,7 @@ export function SixthContactSection({ locale = 'en' }) {
   const copy = getAdvisoryCopy(locale).contact
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [submitError, setSubmitError] = useState('')
   const [form, setForm] = useState(initialForm)
 
   const handleChange = (event) => {
@@ -26,14 +27,42 @@ export function SixthContactSection({ locale = 'en' }) {
     setForm((current) => ({ ...current, [name]: value }))
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
     setLoading(true)
+    setSubmitError('')
 
-    window.setTimeout(() => {
-      setLoading(false)
+    const inquiryEndpoint = import.meta.env.VITE_INQUIRY_API_URL || '/api/inquiry'
+
+    try {
+      const response = await fetch(inquiryEndpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...form,
+          locale,
+          source: 'sixth-portfolio-inquiry',
+        }),
+      })
+
+      if (!response.ok) {
+        const payload = await response.json().catch(() => null)
+        const fallbackMessage = locale === 'ar'
+          ? 'تعذر إرسال الاستفسار حالياً. يرجى المحاولة مرة أخرى.'
+          : 'Unable to send your inquiry right now. Please try again.'
+
+        throw new Error(payload?.error || fallbackMessage)
+      }
+
       setSubmitted(true)
-    }, 1400)
+      setForm(initialForm)
+    } catch (error) {
+      setSubmitError(error.message || copy.submitError)
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -144,6 +173,12 @@ export function SixthContactSection({ locale = 'en' }) {
                 <span className="mb-2 block text-xs font-bold uppercase tracking-[0.16em] text-slate-500">{copy.fields.message}</span>
                 <textarea name="message" value={form.message} onChange={handleChange} required rows={5} placeholder={copy.placeholders.message} className="w-full rounded-[1.5rem] border border-slate-200 bg-[#f7f9fc] px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-[#2d6cdf]" />
               </label>
+
+              {submitError ? (
+                <div className="rounded-2xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-700" role="status" aria-live="polite">
+                  {submitError}
+                </div>
+              ) : null}
 
               <button type="submit" disabled={loading} className="inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-full bg-slate-950 px-6 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-70">
                 {loading ? copy.submitting : copy.submit}
