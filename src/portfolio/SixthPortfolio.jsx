@@ -1,7 +1,7 @@
-import { FifthFooter } from '../components/fifth/FifthFooter.jsx'
-import { FifthHeader } from '../components/fifth/FifthHeader.jsx'
 import { SixthAboutSection } from '../components/sixth/SixthAboutSection.jsx'
 import { SixthContactSection } from '../components/sixth/SixthContactSection.jsx'
+import { SixthFooter } from '../components/sixth/SixthFooter.jsx'
+import { SixthHeader } from '../components/sixth/SixthHeader.jsx'
 import { SixthHeroSection } from '../components/sixth/SixthHeroSection.jsx'
 import { SixthResultsSection } from '../components/sixth/SixthResultsSection.jsx'
 import { SixthServicesSection } from '../components/sixth/SixthServicesSection.jsx'
@@ -9,7 +9,7 @@ import { SixthServicesSection } from '../components/sixth/SixthServicesSection.j
 export function SixthPortfolio({ content, locale, onLocaleChange }) {
   return (
     <div className="min-h-screen bg-white text-slate-950">
-      <FifthHeader content={content} locale={locale} onLocaleChange={onLocaleChange} />
+      <SixthHeader content={content} locale={locale} />
       <main>
         <SixthHeroSection locale={locale} />
         <SixthServicesSection locale={locale} />
@@ -17,7 +17,7 @@ export function SixthPortfolio({ content, locale, onLocaleChange }) {
         <SixthResultsSection locale={locale} />
         <SixthContactSection locale={locale} />
       </main>
-      <FifthFooter locale={locale} />
+      <SixthFooter locale={locale} />
     </div>
   )
 }

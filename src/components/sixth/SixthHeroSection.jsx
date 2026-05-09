@@ -129,21 +129,6 @@ export function SixthHeroSection({ locale = 'en' }) {
           </MotionDiv>
         </div>
 
-        <MotionDiv
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.72, ease: [0.22, 1, 0.36, 1], delay: 0.24 }}
-          className="mt-12 border-t border-white/10 pt-7"
-        >
-          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-            {copy.stats.map((stat) => (
-              <div key={stat.label} className="border-l border-white/10 pl-4 first:border-l-0 first:pl-0 md:first:pl-0">
-                <div className="text-[1.45rem] font-extrabold leading-tight text-white">{stat.value}</div>
-                <div className="mt-2 text-xs font-semibold uppercase tracking-[0.16em] text-white/56">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </MotionDiv>
       </div>
     </section>
   )

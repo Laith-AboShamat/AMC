@@ -1,3 +1,7 @@
+import managementSystemsAuditingImage from '../../assets/Management Systems Adoption & Auditing.png'
+import regulatoryServicesImage from '../../assets/Regulatory & Pharmaceutical Services.png'
+import trainingImage from '../../assets/Training.png'
+
 export const advisoryCopy = {
   en: {
     header: {
@@ -8,6 +12,8 @@ export const advisoryCopy = {
         results: 'Results',
         contact: 'Contact',
       },
+      previewLabel: 'Section brief',
+      previewCta: 'Go to section',
       toggleLanguage: 'Switch language',
     },
     hero: {
@@ -82,6 +88,11 @@ export const advisoryCopy = {
       intro:
         'Four focused service areas built to remove operational drag, strengthen control, and raise performance.',
       cta: 'Talk to an expert',
+      sliderRegionLabel: 'Services showcase',
+      previousServiceLabel: 'Previous service',
+      nextServiceLabel: 'Next service',
+      jumpToServiceLabel: 'Go to service',
+      activeServiceLabel: 'Current focus',
       openDetailsLabel: 'Open details',
       closeDetailsLabel: 'Close details',
       modalEyebrow: 'Service focus',
@@ -113,8 +124,9 @@ export const advisoryCopy = {
           description:
             'Management systems should not exist for certification, they should exist to make your organization perform better. We embed management systems into the core of your operations, ensuring they actively drive control, consistency, and improvement. Through internal audits, supplier evaluations, and risk-based assessments, we identify gaps and unlock real opportunities for performance improvement. Because the true value of a system is not in passing audits, but in how it elevates your organization every day.',
           metric: '1st & 2nd Party Audits',
-          image: 'https://img.rocket.new/generatedImages/rocket_gen_img_18b824279-1767883812278.png',
+          image: managementSystemsAuditingImage,
           imageAlt: 'Business leaders reviewing governance and audit documentation',
+          imageClassName: 'object-cover object-center',
           cta: 'Audit Services',
         },
         {
@@ -128,8 +140,9 @@ export const advisoryCopy = {
           description:
             'Strong systems do not sustain themselves, people do. We build the capabilities needed to lead, operate, and continuously improve your systems with confidence. Our programs focus on developing practical skills, sound decision-making, and a performance-driven mindset across your teams. Because when your people are capable, your systems become reliable, and your results become consistent.',
           metric: 'Sustainable Capability',
-          image: 'https://img.rocket.new/generatedImages/rocket_gen_img_197ee41e5-1774398641466.png',
+          image: trainingImage,
           imageAlt: 'Workshop setting focused on professional learning and team capability building',
+          imageClassName: 'object-cover object-left-top',
           cta: 'Training Programs',
         },
         {
@@ -143,8 +156,9 @@ export const advisoryCopy = {
           description:
             'In regulated industries, mistakes are costly, and delays are even more. We ensure your regulatory and pharmaceutical processes are handled with precision, reducing errors, shortening timelines, and securing full compliance from the start. Our structured approach allows you to move faster, with fewer risks and greater confidence in every step.',
           metric: 'Regulatory Compliance',
-          image: 'https://img.rocket.new/generatedImages/rocket_gen_img_1afa1ad2d-1763301474612.png',
+          image: regulatoryServicesImage,
           imageAlt: 'Regulated operations environment representing precision and controlled execution',
+          imageClassName: 'object-cover object-center',
           cta: 'Regulatory Services',
         },
       ],
@@ -222,7 +236,7 @@ export const advisoryCopy = {
             'The financial modeling they delivered for our acquisition was the most rigorous work I have seen in 20 years. The board approved unanimously.',
           name: 'Sonia Kapoor',
           title: 'CFO, Vertex Capital Partners',
-          image: 'https://img.rocket.new/generatedImages/rocket_gen_img_18b824279-1767883812278.png',
+          image: managementSystemsAuditingImage,
           alt: 'Sonia Kapoor portrait',
           result: '$240M acquisition closed',
         },
@@ -231,7 +245,7 @@ export const advisoryCopy = {
             'We had tried two other firms. ConsultPro was the first that understood our operational complexity. Six months later we had cut costs by 19% with no layoffs.',
           name: 'James Okonkwo',
           title: 'COO, Clearfield Logistics',
-          image: 'https://img.rocket.new/generatedImages/rocket_gen_img_197ee41e5-1774398641466.png',
+          image: trainingImage,
           alt: 'James Okonkwo portrait',
           result: '19% cost reduction',
         },
@@ -268,7 +282,7 @@ export const advisoryCopy = {
       submittedText: 'Thank you for reaching out. An AMC advisor will be in touch within one business day.',
       sendAnother: 'Send Another',
       formTitle: 'Inquiry Form',
-      formNote: 'All fields marked * are required. We respond within 1 business day.',
+      formNote: 'We respond within 1 business day.',
       fields: {
         name: 'Full Name *',
         email: 'Business Email *',
@@ -297,6 +311,8 @@ export const advisoryCopy = {
       disclaimer: 'By submitting this form you agree to our Privacy Policy. We never share your data with third parties.',
     },
     footer: {
+      navigationTitle: 'Sections',
+      connectTitle: 'Connect',
       nav: [
         { label: 'Services', href: '#services' },
         { label: 'About', href: '#about' },
@@ -322,6 +338,8 @@ export const advisoryCopy = {
         contact: 'تواصل',
       },
       brandLine: 'نبني الأثر ويقودنا الهدف',
+      previewLabel: 'نبذة عن القسم',
+      previewCta: 'الانتقال إلى القسم',
       toggleLanguage: 'تبديل اللغة',
     },
     hero: {
@@ -395,6 +413,11 @@ export const advisoryCopy = {
       titleAccent: 'بتميّز حقيقي.',
       intro: 'أربع خدمات مركزة بُنيت لإزالة الهدر التشغيلي وتعزيز الضبط ورفع الأداء المؤسسي.',
       cta: 'تحدث مع خبير',
+      sliderRegionLabel: 'واجهة عرض الخدمات',
+      previousServiceLabel: 'الخدمة السابقة',
+      nextServiceLabel: 'الخدمة التالية',
+      jumpToServiceLabel: 'الانتقال إلى الخدمة',
+      activeServiceLabel: 'التركيز الحالي',
       openDetailsLabel: 'عرض التفاصيل',
       closeDetailsLabel: 'إغلاق التفاصيل',
       modalEyebrow: 'تركيز الخدمة',
@@ -426,8 +449,9 @@ export const advisoryCopy = {
           description:
             'يجب ألا توجد أنظمة الإدارة من أجل الشهادات فقط، بل من أجل أن تجعل مؤسستك تعمل بشكل أفضل. ندمج أنظمة الإدارة في صميم عملياتك لضمان أن تقود فعليًا الضبط والاتساق والتحسين. ومن خلال التدقيقات الداخلية، وتقييم الموردين، والتقييمات المبنية على المخاطر، نحدد الفجوات ونكشف فرصًا حقيقية لتحسين الأداء. لأن القيمة الحقيقية للنظام ليست في اجتياز التدقيق، بل في كيف يرفع مستوى مؤسستك كل يوم.',
           metric: 'تدقيقات الطرف الأول والثاني',
-          image: 'https://img.rocket.new/generatedImages/rocket_gen_img_18b824279-1767883812278.png',
+          image: managementSystemsAuditingImage,
           imageAlt: 'قادة أعمال يراجعون وثائق الحوكمة والتدقيق',
+          imageClassName: 'object-cover object-center',
           cta: 'خدمات التدقيق',
         },
         {
@@ -441,8 +465,9 @@ export const advisoryCopy = {
           description:
             'الأنظمة القوية لا تحافظ على نفسها... الناس هم من يفعلون ذلك. نحن نبني القدرات اللازمة لقيادة أنظمتك وتشغيلها وتحسينها المستمر بثقة. تركز برامجنا على تطوير المهارات العملية، وصناعة القرار السليم، وعقلية قائمة على الأداء عبر فرقك. لأن الناس عندما يكونون قادرين، تصبح الأنظمة أكثر موثوقية، وتصبح النتائج أكثر اتساقًا.',
           metric: 'قدرات مستدامة',
-          image: 'https://img.rocket.new/generatedImages/rocket_gen_img_197ee41e5-1774398641466.png',
+          image: trainingImage,
           imageAlt: 'بيئة تدريب مهني تركّز على التعلم وبناء قدرات الفرق',
+          imageClassName: 'object-cover object-left-top',
           cta: 'البرامج التدريبية',
         },
         {
@@ -456,8 +481,9 @@ export const advisoryCopy = {
           description:
             'في القطاعات الخاضعة للتنظيم، الأخطاء مكلفة، والتأخير أكثر كلفة. نضمن إدارة عملياتك التنظيمية والدوائية بدقة، بما يقلل الأخطاء، ويختصر الجداول الزمنية، ويؤمن الامتثال الكامل منذ البداية. ويتيح لك نهجنا المنظم التحرك بسرعة أكبر، وبمخاطر أقل، وبثقة أعلى في كل خطوة.',
           metric: 'امتثال تنظيمي',
-          image: 'https://img.rocket.new/generatedImages/rocket_gen_img_1afa1ad2d-1763301474612.png',
+          image: regulatoryServicesImage,
           imageAlt: 'بيئة عمليات منظمة تعبّر عن الدقة والتنفيذ المنضبط',
+          imageClassName: 'object-cover object-center',
           cta: 'الخدمات التنظيمية',
         },
       ],
@@ -611,6 +637,8 @@ export const advisoryCopy = {
       disclaimer: 'بإرسال هذا النموذج فإنك توافق على سياسة الخصوصية لدينا. نحن لا نشارك بياناتك مع أي طرف ثالث.',
     },
     footer: {
+      navigationTitle: 'الأقسام',
+      connectTitle: 'تواصل',
       nav: [
         { label: 'الخدمات', href: '#services' },
         { label: 'من نحن', href: '#about' },

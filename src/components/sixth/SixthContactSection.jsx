@@ -38,7 +38,7 @@ export function SixthContactSection({ locale = 'en' }) {
 
   return (
     <section id="contact" className="bg-[#f7f9fc] py-20 lg:py-24">
-      <div className="mx-auto grid max-w-[1380px] gap-10 px-4 sm:px-6 lg:grid-cols-[0.86fr_1.14fr] lg:px-10">
+      <div className="mx-auto grid max-w-[1380px] gap-10 px-4 sm:px-6 lg:grid-cols-[0.86fr_1.14fr] lg:items-start lg:px-10">
         <MotionDiv
           initial={{ opacity: 0, y: 26 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -72,22 +72,6 @@ export function SixthContactSection({ locale = 'en' }) {
                   </div>
                 </div>
               </MotionDiv>
-            ))}
-          </div>
-
-          <div className="mt-8 grid gap-4 sm:grid-cols-2">
-            {copy.contacts.map((contact) => (
-              <div key={contact.label} className="rounded-[1.5rem] border border-slate-200 bg-[#081a42] p-4 text-white shadow-[0_18px_36px_rgba(8,26,66,0.18)]">
-                <div className="flex items-center gap-3">
-                  <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-white/10 text-white">
-                    <AppIcon name={contact.icon} size={18} />
-                  </div>
-                  <div>
-                    <div className="text-xs font-bold uppercase tracking-[0.16em] text-white/54">{contact.label}</div>
-                    <div className="mt-1 text-sm font-semibold text-white" dir={contact.icon === 'PhoneIcon' ? 'ltr' : undefined}>{contact.value}</div>
-                  </div>
-                </div>
-              </div>
             ))}
           </div>
         </MotionDiv>
