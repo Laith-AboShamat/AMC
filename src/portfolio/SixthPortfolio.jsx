@@ -8,7 +8,7 @@ import { SixthServicesSection } from '../components/sixth/SixthServicesSection.j
 
 export function SixthPortfolio({ content, locale }) {
   return (
-    <div className="min-h-screen bg-white text-slate-950">
+    <div className="sixth-shell min-h-screen bg-white text-slate-950">
       <SixthHeader content={content} locale={locale} />
       <main>
         <SixthHeroSection locale={locale} />

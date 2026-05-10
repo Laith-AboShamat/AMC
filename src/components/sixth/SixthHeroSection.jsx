@@ -79,7 +79,7 @@ export function SixthHeroSection({ locale = 'en' }) {
               <button
                 type="button"
                 onClick={() => scrollToSection('contact')}
-                className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-[#081a42] transition hover:bg-white/92"
+                className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-[#081a42] transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/92 hover:shadow-[0_18px_36px_rgba(125,177,255,0.22)]"
               >
                 {copy.contactCta}
                 <ArrowRight size={16} />
@@ -87,7 +87,7 @@ export function SixthHeroSection({ locale = 'en' }) {
               <button
                 type="button"
                 onClick={() => scrollToSection('services')}
-                className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full border border-white/14 bg-white/8 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/12"
+                className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full border border-white/14 bg-white/8 px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:border-[#9fc0ff] hover:bg-[#8eb7ff] hover:text-[#081a42] hover:shadow-[0_18px_34px_rgba(2,12,32,0.24)]"
               >
                 <Play size={15} />
                 {copy.servicesCta}

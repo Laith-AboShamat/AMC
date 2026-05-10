@@ -2,7 +2,6 @@ import { Suspense, lazy, useEffect, useMemo, useState } from 'react'
 import { MantineProvider } from '@mantine/core'
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import { translations } from './i18n.js'
-import { DesignSelectorPage } from './pages/DesignSelectorPage.jsx'
 
 const EditorialPortfolio = lazy(() => import('./portfolio/EditorialPortfolio.jsx').then((module) => ({ default: module.EditorialPortfolio })))
 const MantinePortfolio = lazy(() => import('./portfolio/MantinePortfolio.jsx').then((module) => ({ default: module.MantinePortfolio })))
@@ -31,7 +30,7 @@ function getInitialLocale() {
 }
 
 const routeTitles = {
-  '/': (content) => content.selector.pageTitle,
+  '/': (content) => `${content.brand.name} | ${content.selector.designs[5]?.title ?? 'Sixth Design'}`,
   '/design/editorial': (content) => `${content.brand.name} | ${content.selector.designs[0].title}`,
   '/design/mantine': (content) => `${content.brand.name} | ${content.selector.designs[1].title}`,
   '/design/executive': (content) => `${content.brand.name} | ${content.selector.designs[2].title}`,
@@ -83,7 +82,7 @@ function App() {
             <Route
               path="/"
               element={(
-                <DesignSelectorPage
+                <SixthPortfolio
                   content={content}
                   locale={locale}
                   onLocaleChange={setLocale}
@@ -143,13 +142,7 @@ function App() {
             />
             <Route
               path="/design/sixth"
-              element={(
-                <SixthPortfolio
-                  content={content}
-                  locale={locale}
-                  onLocaleChange={setLocale}
-                />
-              )}
+              element={<Navigate to="/" replace />}
             />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>

@@ -91,6 +91,11 @@ a {
   font-style: normal !important;
 }
 
+.sixth-shell,
+.sixth-shell * {
+  font-style: normal !important;
+}
+
 .fifth-shell h1,
 .fifth-shell h2,
 .fifth-shell h3,
@@ -113,6 +118,12 @@ a {
 .locale-ar .fifth-shell h4,
 .locale-ar .fifth-shell h5,
 .locale-ar .fifth-shell h6 {
+
+.locale-ar .sixth-shell,
+.locale-ar .sixth-shell * {
+  font-family: 'Cairo', 'Inter', sans-serif !important;
+  font-style: normal !important;
+}
   font-family: 'Cairo', 'Inter', sans-serif !important;
 }
 

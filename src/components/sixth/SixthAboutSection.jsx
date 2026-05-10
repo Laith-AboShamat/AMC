@@ -24,7 +24,7 @@ export function SixthAboutSection({ locale = 'en' }) {
               {copy.titleFirst}
               <span className="block text-slate-500">{copy.titleAccent}</span>
             </h2>
-            <p className="mt-6 max-w-3xl text-base leading-8 text-slate-600">{copy.coreMessage}</p>
+            <p className="mt-6 max-w-3xl text-base leading-8 text-black">{copy.coreMessage}</p>
 
             <div className="mt-10 grid gap-4 sm:grid-cols-3">
               {copy.values.map((value, index) => (
@@ -36,11 +36,11 @@ export function SixthAboutSection({ locale = 'en' }) {
                   transition={{ duration: 0.56, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
                   className="rounded-[1.6rem] border border-white bg-white p-5 shadow-[0_16px_40px_rgba(15,23,42,0.04)]"
                 >
-                  <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-[#eef4ff] text-[#2d6cdf]">
+                  <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-[#081a42] text-white shadow-[0_14px_28px_rgba(8,26,66,0.14)]">
                     <AppIcon name={value.icon} size={20} />
                   </div>
                   <div className="mt-4 text-lg font-bold text-slate-950">{value.title}</div>
-                  <p className="mt-3 text-sm leading-7 text-slate-600">{value.desc}</p>
+                  <p className="mt-3 text-sm leading-7 text-black">{value.desc}</p>
                 </MotionDiv>
               ))}
             </div>
@@ -79,7 +79,7 @@ export function SixthAboutSection({ locale = 'en' }) {
                       <AppIcon name="RocketLaunchIcon" size={132} className="text-[#2d6cdf]/[0.08]" strokeWidth={1.4} />
                     </div>
                     <div className="relative z-10 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-500">{copy.visionTitle}</div>
-                    <p className="relative z-10 mt-3 text-sm leading-7 text-slate-600">{copy.visionText}</p>
+                    <p className="relative z-10 mt-3 text-sm leading-7 text-black">{copy.visionText}</p>
                   </div>
                   <div className="relative overflow-hidden rounded-[1.5rem] bg-[#081a42] p-5 text-white shadow-[0_18px_36px_rgba(8,26,66,0.18)]">
                     <div className="pointer-events-none absolute inset-0 flex items-center justify-center" aria-hidden="true">

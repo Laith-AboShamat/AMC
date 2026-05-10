@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { ArrowLeft, ArrowRight, ChevronDown, Menu, X } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import { ArrowRight, ChevronDown, Menu, X } from 'lucide-react'
 import { AppIcon } from '../fourth/AppIcon.jsx'
 import { getAdvisoryCopy } from '../fourth/copy.js'
 
@@ -186,17 +185,9 @@ export function SixthHeader({ content, locale }) {
         }`}
       >
         <div className="flex min-w-0 items-center gap-3">
-          <Link
-            to="/"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/14 bg-white/8 text-white/78 transition hover:border-white/24 hover:bg-white/14 hover:text-white"
-            aria-label={content.selector.backToChoices}
-          >
-            <ArrowLeft size={16} />
-          </Link>
-
-          <button type="button" onClick={() => handleNavClick('hero')} className="flex min-w-0 items-center gap-3 text-left">
-            <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-white/12 bg-white/10 p-1.5 shadow-[0_12px_24px_rgba(0,0,0,0.16)] backdrop-blur-md">
-              <img src="/amc1.png" alt={content.brand.logoAlt} className="max-h-full max-w-full object-contain" />
+          <button type="button" onClick={() => handleNavClick('hero')} className="flex min-w-0 items-center gap-3 text-left transition-all duration-300 hover:-translate-y-0.5">
+            <span className="inline-flex h-11 w-11 items-center justify-center overflow-hidden rounded-2xl bg-white/10 p-1.5 shadow-[0_12px_24px_rgba(0,0,0,0.16)] backdrop-blur-md">
+              <img src="/amc1.png" alt={content.brand.logoAlt} className="h-[142%] w-[142%] max-w-none object-contain" />
             </span>
             <div className="min-w-0">
               <p className="truncate text-sm font-bold uppercase tracking-[0.22em] text-white">{content.brand.name}</p>
@@ -216,10 +207,10 @@ export function SixthHeader({ content, locale }) {
                 type="button"
                 onClick={() => setOpenPreview((current) => (current === item.id ? null : item.id))}
                 aria-expanded={isOpen}
-                className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition ${
+                className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 ${
                   isActive || isOpen
-                    ? 'bg-white text-[#081a42] shadow-[0_12px_24px_rgba(0,0,0,0.22)]'
-                    : 'text-white/70 hover:bg-white/10 hover:text-white'
+                    ? 'bg-white text-[#081a42] shadow-[0_12px_24px_rgba(0,0,0,0.22)] hover:shadow-[0_16px_28px_rgba(0,0,0,0.24)]'
+                    : 'text-white/70 hover:bg-white/10 hover:text-white hover:shadow-[0_14px_26px_rgba(2,12,32,0.18)]'
                 }`}
               >
                 <span>{item.label}</span>
@@ -233,7 +224,7 @@ export function SixthHeader({ content, locale }) {
           <button
             type="button"
             onClick={() => handleNavClick('contact')}
-            className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-white/12 bg-white/10 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-white/16"
+            className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-white/12 bg-white/10 px-5 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:border-[#9fc0ff] hover:bg-[#8eb7ff] hover:text-[#081a42] hover:shadow-[0_18px_32px_rgba(2,12,32,0.22)]"
           >
             {content.header.cta}
             <ArrowRight size={15} className={isRtl ? 'rotate-180' : ''} />
@@ -244,7 +235,7 @@ export function SixthHeader({ content, locale }) {
           type="button"
           onClick={() => setMenuOpen((open) => !open)}
           aria-label={menuOpen ? content.controls.closeMenu : content.controls.openMenu}
-          className="ml-auto inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/12 bg-white/8 text-white lg:hidden"
+          className="ml-auto inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/12 bg-white/8 text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/12 hover:shadow-[0_16px_28px_rgba(2,12,32,0.2)] lg:hidden"
         >
           {menuOpen ? <X size={18} /> : <Menu size={18} />}
         </button>
@@ -259,7 +250,7 @@ export function SixthHeader({ content, locale }) {
                   <button
                     type="button"
                     onClick={() => setOpenPreview((current) => (current === item.id ? null : item.id))}
-                    className={`flex min-h-[44px] w-full items-center justify-between gap-3 text-left text-sm font-semibold ${
+                    className={`flex min-h-[44px] w-full items-center justify-between gap-3 text-left text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 ${
                       activeSection === item.id ? 'text-white' : 'text-white/82'
                     } ${isRtl ? 'flex-row-reverse text-right' : ''}`}
                   >
@@ -270,11 +261,11 @@ export function SixthHeader({ content, locale }) {
                   {isOpen ? (
                     <div className={`mt-3 border-t border-slate-300/70 pt-3 ${isRtl ? 'text-right' : 'text-left'}`}>
                       <div className="text-lg font-bold text-slate-950">{item.title}</div>
-                      <p className="mt-2 text-sm leading-7 text-slate-700">{item.description}</p>
+                      <p className="mt-2 text-sm leading-7 text-black">{item.description}</p>
                       <button
                         type="button"
                         onClick={() => handleNavClick(item.id)}
-                        className="mt-4 inline-flex min-h-[44px] items-center gap-2 rounded-full bg-[#0f2148] px-5 py-2.5 text-sm font-semibold text-white"
+                        className="mt-4 inline-flex min-h-[44px] items-center gap-2 rounded-full bg-[#0f2148] px-5 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#162d5c] hover:shadow-[0_18px_34px_rgba(8,26,66,0.24)]"
                       >
                         {copy.header.previewCta}
                         <ArrowRight size={15} className={isRtl ? 'rotate-180' : ''} />
@@ -288,7 +279,7 @@ export function SixthHeader({ content, locale }) {
             <button
               type="button"
               onClick={() => handleNavClick('contact')}
-              className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-2xl border border-white/12 bg-white/10 px-5 py-3 text-sm font-semibold text-white"
+              className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-2xl border border-white/12 bg-white/10 px-5 py-3 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/14 hover:shadow-[0_18px_34px_rgba(2,12,32,0.22)]"
             >
               {content.header.cta}
               <ArrowRight size={15} className={isRtl ? 'rotate-180' : ''} />
@@ -318,7 +309,7 @@ export function SixthHeader({ content, locale }) {
                     </div>
 
                     <div className="min-w-0">
-                      <p className="w-full text-sm leading-8 text-slate-700 xl:text-[15px]">
+                      <p className="w-full text-sm leading-8 text-black xl:text-[15px]">
                         {activePreviewItem.description}
                       </p>
                     </div>
@@ -327,7 +318,7 @@ export function SixthHeader({ content, locale }) {
                       <button
                         type="button"
                         onClick={() => handleNavClick(activePreviewItem.id)}
-                        className="inline-flex min-h-[44px] shrink-0 items-center gap-2 rounded-full bg-[#0f2148] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[#162d5c]"
+                        className="inline-flex min-h-[44px] shrink-0 items-center gap-2 rounded-full bg-[#0f2148] px-5 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#162d5c] hover:shadow-[0_18px_34px_rgba(8,26,66,0.24)]"
                       >
                         {copy.header.previewCta}
                         <ArrowRight size={15} className={isRtl ? 'rotate-180' : ''} />
@@ -344,7 +335,7 @@ export function SixthHeader({ content, locale }) {
                         className="rounded-[1.6rem] border border-slate-300/80 bg-white/70 px-5 py-5 text-slate-950 shadow-[0_12px_28px_rgba(15,23,42,0.08)] backdrop-blur-md"
                       >
                         <div className="text-[11px] font-bold uppercase tracking-[0.2em] text-slate-500">{activePreviewItem.companyInfo.name}</div>
-                        <p className="mt-3 max-w-3xl text-sm leading-8 text-slate-700">{copy.contact.formNote}</p>
+                        <p className="mt-3 max-w-3xl text-sm leading-8 text-black">{copy.contact.formNote}</p>
                       </MotionDiv>
 
                       <MotionDiv

@@ -109,8 +109,10 @@ export const advisoryCopy = {
           description:
             'We do not just improve operations, we eliminate the problems holding your organization back. By restructuring how your organization works across management and operations, we remove inefficiencies, reduce waste, and bring discipline to execution. The result is higher efficiency, stronger internal control, and improved profitability, where operations are no longer a source of problems, but a driver of performance.',
           metric: 'Operational & Managerial',
+          unlocks: ['Institutional Excellence', 'High efficiency', 'Waste elimination'],
           image: 'https://img.rocket.new/generatedImages/rocket_gen_img_1d0d71722-1772160480561.png',
           imageAlt: 'Business team reviewing strategy charts in a bright conference room',
+          imageClassName: 'object-cover object-[center_18%]',
           cta: 'Explore Enterprise Excellence',
         },
         {
