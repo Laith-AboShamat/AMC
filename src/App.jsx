@@ -2,6 +2,7 @@ import { Suspense, lazy, useEffect, useMemo, useState } from 'react'
 import { MantineProvider } from '@mantine/core'
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import { translations } from './i18n.js'
+import { ScrollToTopButton } from './components/ScrollToTopButton.jsx'
 
 const EditorialPortfolio = lazy(() => import('./portfolio/EditorialPortfolio.jsx').then((module) => ({ default: module.EditorialPortfolio })))
 const MantinePortfolio = lazy(() => import('./portfolio/MantinePortfolio.jsx').then((module) => ({ default: module.MantinePortfolio })))
@@ -46,6 +47,7 @@ function App() {
   const content = useMemo(() => translations[locale] ?? translations.en, [locale])
   const direction = locale === 'ar' ? 'rtl' : 'ltr'
   const isDarkRoute = darkRoutes.has(location.pathname)
+  const showGlobalScrollTop = location.pathname !== '/design/advisory'
 
   useEffect(() => {
     const root = document.documentElement
@@ -147,6 +149,13 @@ function App() {
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </Suspense>
+
+        {showGlobalScrollTop ? (
+          <ScrollToTopButton
+            locale={locale}
+            label={locale === 'ar' ? 'العودة إلى الأعلى' : 'Back to top'}
+          />
+        ) : null}
       </div>
     </MantineProvider>
   )

@@ -43,7 +43,6 @@ export function SixthContactSection({ locale = 'en' }) {
         body: JSON.stringify({
           ...form,
           locale,
-          source: 'sixth-portfolio-inquiry',
         }),
       })
 

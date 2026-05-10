@@ -1,4 +1,4 @@
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react'
 import { AppIcon } from '../fourth/AppIcon.jsx'
@@ -6,7 +6,6 @@ import { AppImage } from '../fourth/AppImage.jsx'
 import { getAdvisoryCopy } from '../fourth/copy.js'
 
 const MotionDiv = motion.div
-const MotionArticle = motion.article
 
 const revealViewport = { once: true, amount: 0.18 }
 
@@ -20,56 +19,124 @@ function getSlideDirection(step, isRtl) {
   return isRtl ? normalizedStep * -1 : normalizedStep
 }
 
-const cardVariants = {
-  enter: (direction) => ({
-    opacity: 1,
-    x: direction > 0 ? '100%' : '-100%',
-  }),
-  center: {
-    opacity: 1,
-    x: 0,
-  },
-  exit: (direction) => ({
-    opacity: 1,
-    x: direction > 0 ? '-100%' : '100%',
-  }),
-}
+function ServiceShowcaseCard({ service, copy, isRtl }) {
+  const unlocks = Array.isArray(service.unlocks) && service.unlocks.length > 0 ? service.unlocks : [service.metric]
+  const imageOverlayClass =
+    service.id === 'enterprise'
+      ? 'absolute inset-0 bg-[linear-gradient(90deg,rgba(3,17,47,0.08)_0%,rgba(3,17,47,0.04)_34%,rgba(3,17,47,0.68)_100%),linear-gradient(180deg,rgba(3,17,47,0.02)_0%,rgba(3,17,47,0.5)_100%)]'
+      : 'absolute inset-0 bg-[linear-gradient(90deg,rgba(3,17,47,0.18)_0%,rgba(3,17,47,0.08)_36%,rgba(3,17,47,0.76)_100%),linear-gradient(180deg,rgba(3,17,47,0.04)_0%,rgba(3,17,47,0.62)_100%)]'
 
-const imageVariants = {
-  enter: {
-    opacity: 0.72,
-    scale: 1.06,
-  },
-  center: {
-    opacity: 1,
-    scale: 1,
-  },
-  exit: {
-    opacity: 0.78,
-    scale: 1.03,
-  },
+  return (
+    <article className="overflow-hidden rounded-[2rem] border border-slate-200 bg-[linear-gradient(135deg,#03112f_0%,#0b1f4a_52%,#17356d_100%)] shadow-[0_28px_80px_rgba(15,23,42,0.16)] lg:h-[620px]">
+      <div className="grid gap-0 lg:h-full lg:grid-cols-[1.08fr_0.92fr]">
+        <div className="relative min-h-[360px] overflow-hidden lg:h-full lg:min-h-0">
+          <div className="absolute inset-0">
+            <AppImage
+              src={service.image}
+              alt={service.imageAlt}
+              fill
+              className={`h-full w-full ${service.imageClassName ?? 'object-cover object-center'}`}
+            />
+            <div className={imageOverlayClass} />
+          </div>
+
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(125,177,255,0.26),transparent_24%),radial-gradient(circle_at_bottom_right,rgba(255,255,255,0.1),transparent_18%)]" />
+
+          <div className={`relative z-10 flex h-full flex-col justify-between p-6 sm:p-8 lg:p-10 ${isRtl ? 'items-end text-right' : 'items-start text-left'}`}>
+            <div className="flex h-full w-full flex-col">
+              <div className="flex w-full items-start justify-between gap-4">
+                <div className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-[#081a42] text-white shadow-[0_16px_32px_rgba(3,17,47,0.34)] ring-1 ring-white/15">
+                  <AppIcon name={service.icon} size={24} />
+                </div>
+                <div className="inline-flex rounded-full border border-white/18 bg-white/14 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-[rgba(255,255,255,0.95)] backdrop-blur-md">
+                  {service.tag}
+                </div>
+              </div>
+
+              <div className="my-auto flex w-full justify-center pt-6 pb-10 sm:pb-12 lg:pb-14">
+                <h3 className="w-full whitespace-pre-line text-center text-3xl font-extrabold leading-[1.02] text-[rgba(255,255,255,0.98)] sm:text-4xl lg:text-[3rem]">
+                  {service.title}
+                </h3>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="relative p-6 sm:p-8 lg:flex lg:h-full lg:flex-col lg:p-10">
+          <div className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,rgba(125,177,255,0),rgba(125,177,255,0.6),rgba(125,177,255,0))] lg:inset-y-10 lg:left-0 lg:right-auto lg:h-auto lg:w-px lg:bg-[linear-gradient(180deg,rgba(125,177,255,0),rgba(125,177,255,0.6),rgba(125,177,255,0))]" />
+
+          <div className={`flex h-full flex-col ${isRtl ? 'text-right' : 'text-left'}`}>
+            <div className={`flex flex-wrap items-center gap-3 ${isRtl ? 'flex-row-reverse' : ''}`}>
+              <div className="rounded-full bg-white/10 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-[rgba(255,255,255,0.92)] backdrop-blur-md">
+                {service.metric}
+              </div>
+            </div>
+
+            <p className="mt-6 text-base leading-8 text-[rgba(244,247,255,0.9)]">{service.description}</p>
+
+            <div className="mt-8 rounded-[1.5rem] border border-white/10 bg-white/6 p-5 backdrop-blur-md sm:p-6">
+              <div className="text-[11px] font-bold uppercase tracking-[0.2em] text-[rgba(255,255,255,0.76)]">{copy.modalValueLabel}</div>
+              <div className="mt-4 flex flex-wrap gap-3">
+                {unlocks.map((item) => (
+                  <div
+                    key={item}
+                    className="rounded-full border border-white/12 bg-white px-4 py-2 text-sm font-semibold text-[#081a42] shadow-[0_10px_24px_rgba(3,17,47,0.16)]"
+                  >
+                    {item}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <button
+              type="button"
+              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+              className={`mt-auto inline-flex min-h-[46px] items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-[#081a42] transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/92 hover:shadow-[0_18px_36px_rgba(125,177,255,0.2)] ${isRtl ? 'self-end' : 'self-start'}`}
+            >
+              {service.cta}
+              <ArrowUpRight size={16} />
+            </button>
+          </div>
+        </div>
+      </div>
+    </article>
+  )
 }
 
 export function SixthServicesSection({ locale = 'en' }) {
   const copy = getAdvisoryCopy(locale).services
   const [activeIndex, setActiveIndex] = useState(0)
-  const [direction, setDirection] = useState(1)
+  const [slideTransition, setSlideTransition] = useState(null)
   const prefersReducedMotion = useReducedMotion()
   const isRtl = locale === 'ar'
   const activeService = copy.cards[activeIndex] ?? copy.cards[0]
-  const activeUnlocks = Array.isArray(activeService.unlocks) ? activeService.unlocks : []
-  const imageOverlayClass =
-    activeService.id === 'enterprise'
-      ? 'absolute inset-0 bg-[linear-gradient(90deg,rgba(3,17,47,0.08)_0%,rgba(3,17,47,0.04)_34%,rgba(3,17,47,0.68)_100%),linear-gradient(180deg,rgba(3,17,47,0.02)_0%,rgba(3,17,47,0.5)_100%)]'
-      : 'absolute inset-0 bg-[linear-gradient(90deg,rgba(3,17,47,0.18)_0%,rgba(3,17,47,0.08)_36%,rgba(3,17,47,0.76)_100%),linear-gradient(180deg,rgba(3,17,47,0.04)_0%,rgba(3,17,47,0.62)_100%)]'
+  const isSliding = slideTransition !== null
 
   useEffect(() => {
     setActiveIndex((current) => wrapIndex(current, copy.cards.length))
   }, [copy.cards.length])
 
+  const startSlideTransition = (targetIndex, visualDirection) => {
+    if (targetIndex === activeIndex || isSliding) {
+      return
+    }
+
+    if (prefersReducedMotion) {
+      setActiveIndex(targetIndex)
+      return
+    }
+
+    setSlideTransition({
+      fromIndex: activeIndex,
+      toIndex: targetIndex,
+      direction: visualDirection,
+    })
+  }
+
   const changeSlide = (step) => {
-    setDirection(getSlideDirection(step, isRtl))
-    setActiveIndex((current) => wrapIndex(current + step, copy.cards.length))
+    const targetIndex = wrapIndex(activeIndex + step, copy.cards.length)
+
+    startSlideTransition(targetIndex, getSlideDirection(step, isRtl))
   }
 
   const jumpToSlide = (index) => {
@@ -77,9 +144,12 @@ export function SixthServicesSection({ locale = 'en' }) {
       return
     }
 
-    setDirection(getSlideDirection(index > activeIndex ? 1 : -1, isRtl))
-    setActiveIndex(index)
+    const step = index > activeIndex ? 1 : -1
+    startSlideTransition(index, getSlideDirection(step, isRtl))
   }
+
+  const transitionFromService = slideTransition ? copy.cards[slideTransition.fromIndex] : null
+  const transitionToService = slideTransition ? copy.cards[slideTransition.toIndex] : null
 
   return (
     <section id="services" className="bg-white py-20 lg:py-24">
@@ -141,16 +211,18 @@ export function SixthServicesSection({ locale = 'en' }) {
               <button
                 type="button"
                 onClick={() => changeSlide(-1)}
+                disabled={isSliding}
                 aria-label={copy.previousServiceLabel}
-                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-[0_10px_24px_rgba(15,23,42,0.04)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#2d6cdf] hover:text-[#2d6cdf] hover:shadow-[0_16px_30px_rgba(45,108,223,0.18)]"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-[0_10px_24px_rgba(15,23,42,0.04)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#2d6cdf] hover:text-[#2d6cdf] hover:shadow-[0_16px_30px_rgba(45,108,223,0.18)] disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
               >
                 {isRtl ? <ArrowRight size={18} /> : <ArrowLeft size={18} />}
               </button>
               <button
                 type="button"
                 onClick={() => changeSlide(1)}
+                disabled={isSliding}
                 aria-label={copy.nextServiceLabel}
-                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-[0_10px_24px_rgba(15,23,42,0.04)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#2d6cdf] hover:text-[#2d6cdf] hover:shadow-[0_16px_30px_rgba(45,108,223,0.18)]"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-[0_10px_24px_rgba(15,23,42,0.04)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#2d6cdf] hover:text-[#2d6cdf] hover:shadow-[0_16px_30px_rgba(45,108,223,0.18)] disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
               >
                 {isRtl ? <ArrowLeft size={18} /> : <ArrowRight size={18} />}
               </button>
@@ -164,116 +236,41 @@ export function SixthServicesSection({ locale = 'en' }) {
             transition={{ duration: 0.62, delay: prefersReducedMotion ? 0 : 0.08, ease: [0.22, 1, 0.36, 1] }}
             className="relative overflow-hidden"
           >
-            <AnimatePresence initial={false} mode="popLayout">
-              <MotionArticle
-                key={activeService.id}
-                custom={direction}
-                variants={cardVariants}
-                initial={prefersReducedMotion ? false : 'enter'}
-                animate="center"
-                exit={prefersReducedMotion ? { opacity: 1 } : 'exit'}
-                transition={{ duration: 0.56, ease: 'easeInOut' }}
-                className="overflow-hidden rounded-[2rem] border border-slate-200 bg-[linear-gradient(135deg,#03112f_0%,#0b1f4a_52%,#17356d_100%)] shadow-[0_28px_80px_rgba(15,23,42,0.16)]"
+            {isSliding && transitionFromService && transitionToService ? (
+              <MotionDiv
+                key={`${slideTransition.fromIndex}-${slideTransition.toIndex}-${slideTransition.direction}`}
+                initial={{ x: slideTransition.direction > 0 ? '0%' : '-50%' }}
+                animate={{ x: slideTransition.direction > 0 ? '-50%' : '0%' }}
+                transition={{ duration: 0.64, ease: [0.22, 1, 0.36, 1] }}
+                onAnimationComplete={() => {
+                  setActiveIndex(slideTransition.toIndex)
+                  setSlideTransition(null)
+                }}
+                className="flex w-[200%]"
               >
-                <div className="grid gap-0 lg:grid-cols-[1.08fr_0.92fr]">
-                  <div className="relative min-h-[360px] overflow-hidden lg:min-h-[560px]">
-                    <MotionDiv
-                      variants={imageVariants}
-                      initial={prefersReducedMotion ? false : 'enter'}
-                      animate="center"
-                      exit={prefersReducedMotion ? undefined : 'exit'}
-                      transition={{ duration: 0.4, ease: 'easeOut' }}
-                      className="absolute inset-0"
-                    >
-                      <AppImage
-                        src={activeService.image}
-                        alt={activeService.imageAlt}
-                        fill
-                        className={`h-full w-full ${activeService.imageClassName ?? 'object-cover object-center'}`}
-                      />
-                      <div className={imageOverlayClass} />
-                    </MotionDiv>
-
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(125,177,255,0.26),transparent_24%),radial-gradient(circle_at_bottom_right,rgba(255,255,255,0.1),transparent_18%)]" />
-
-                    <div className={`relative z-10 flex h-full flex-col justify-between p-6 sm:p-8 lg:p-10 ${isRtl ? 'items-end text-right' : 'items-start text-left'}`}>
-                      <div className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/10 px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-[rgba(255,255,255,0.96)] backdrop-blur-md">
-                        <span className="inline-flex h-2 w-2 rounded-full bg-[#7db1ff]" />
-                        {copy.modalEyebrow}
-                      </div>
-
-                      <MotionDiv
-                        key={`${activeService.id}-hero-copy`}
-                        initial={prefersReducedMotion ? false : { opacity: 0, y: 24 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.42, delay: prefersReducedMotion ? 0 : 0.08, ease: [0.22, 1, 0.36, 1] }}
-                        className="max-w-[34rem]"
-                      >
-                        <div className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-[#081a42] text-white shadow-[0_16px_32px_rgba(3,17,47,0.26)]">
-                          <AppIcon name={activeService.icon} size={24} />
-                        </div>
-                        <h3 className="mt-5 max-w-[14ch] text-3xl font-extrabold leading-[1.02] text-[rgba(255,255,255,0.98)] sm:text-4xl lg:text-[3rem]">
-                          {activeService.title}
-                        </h3>
-                        <div className="mt-5 inline-flex rounded-full border border-white/12 bg-white/10 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-[rgba(255,255,255,0.9)] backdrop-blur-md">
-                          {activeService.tag}
-                        </div>
-                      </MotionDiv>
+                {slideTransition.direction > 0 ? (
+                  <>
+                    <div className="w-1/2 shrink-0">
+                      <ServiceShowcaseCard service={transitionFromService} copy={copy} isRtl={isRtl} />
                     </div>
-                  </div>
-
-                  <div className="relative p-6 sm:p-8 lg:p-10">
-                    <div className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,rgba(125,177,255,0),rgba(125,177,255,0.6),rgba(125,177,255,0))] lg:inset-y-10 lg:left-0 lg:right-auto lg:h-auto lg:w-px lg:bg-[linear-gradient(180deg,rgba(125,177,255,0),rgba(125,177,255,0.6),rgba(125,177,255,0))]" />
-
-                    <MotionDiv
-                      key={`${activeService.id}-body`}
-                      initial={prefersReducedMotion ? false : { opacity: 0, y: 18 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: prefersReducedMotion ? 0 : 0.12, ease: [0.22, 1, 0.36, 1] }}
-                      className={isRtl ? 'text-right' : 'text-left'}
-                    >
-                      <div className={`flex flex-wrap items-center gap-3 ${isRtl ? 'flex-row-reverse' : ''}`}>
-                        <div className="rounded-full bg-white/10 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-[rgba(255,255,255,0.92)] backdrop-blur-md">
-                          {activeService.metric}
-                        </div>
-                        <div className="rounded-full border border-white/10 bg-white/6 px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-[rgba(255,255,255,0.82)] backdrop-blur-md">
-                          {copy.activeServiceLabel}
-                        </div>
-                      </div>
-
-                      <p className="mt-6 text-base leading-8 text-[rgba(244,247,255,0.9)]">{activeService.description}</p>
-
-                      <div className="mt-8 rounded-[1.5rem] border border-white/10 bg-white/6 p-5 backdrop-blur-md sm:p-6">
-                        <div className="text-[11px] font-bold uppercase tracking-[0.2em] text-[rgba(255,255,255,0.76)]">{copy.modalValueLabel}</div>
-                        {activeUnlocks.length > 0 ? (
-                          <div className="mt-4 flex flex-wrap gap-3">
-                            {activeUnlocks.map((item) => (
-                              <div
-                                key={item}
-                                className="rounded-full border border-white/12 bg-white px-4 py-2 text-sm font-semibold text-[#081a42] shadow-[0_10px_24px_rgba(3,17,47,0.16)]"
-                              >
-                                {item}
-                              </div>
-                            ))}
-                          </div>
-                        ) : (
-                          <div className="mt-3 text-xl font-extrabold leading-snug text-[rgba(255,255,255,0.98)]">{activeService.metric}</div>
-                        )}
-                      </div>
-
-                      <button
-                        type="button"
-                        onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
-                        className="mt-8 inline-flex min-h-[46px] items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-[#081a42] transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/92 hover:shadow-[0_18px_36px_rgba(125,177,255,0.2)]"
-                      >
-                        {activeService.cta}
-                        <ArrowUpRight size={16} />
-                      </button>
-                    </MotionDiv>
-                  </div>
-                </div>
-              </MotionArticle>
-            </AnimatePresence>
+                    <div className="w-1/2 shrink-0">
+                      <ServiceShowcaseCard service={transitionToService} copy={copy} isRtl={isRtl} />
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div className="w-1/2 shrink-0">
+                      <ServiceShowcaseCard service={transitionToService} copy={copy} isRtl={isRtl} />
+                    </div>
+                    <div className="w-1/2 shrink-0">
+                      <ServiceShowcaseCard service={transitionFromService} copy={copy} isRtl={isRtl} />
+                    </div>
+                  </>
+                )}
+              </MotionDiv>
+            ) : (
+              <ServiceShowcaseCard service={activeService} copy={copy} isRtl={isRtl} />
+            )}
           </MotionDiv>
 
           <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
@@ -305,7 +302,7 @@ export function SixthServicesSection({ locale = 'en' }) {
                       </div>
                     </div>
                     <div className="mt-4 text-[11px] font-bold uppercase tracking-[0.18em] text-slate-400">{service.tag}</div>
-                    <div className={`mt-2 text-lg font-extrabold leading-snug ${isActive ? 'text-slate-950' : 'text-slate-700'}`}>{service.title}</div>
+                    <div className={`mt-2 whitespace-pre-line text-lg font-extrabold leading-snug ${isActive ? 'text-slate-950' : 'text-slate-700'}`}>{service.title}</div>
                     <div className="mt-auto pt-3" />
                   </button>
                 </MotionDiv>

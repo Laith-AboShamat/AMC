@@ -371,7 +371,7 @@ export function SixthHeader({ content, locale }) {
                           className="rounded-[1.5rem] border border-slate-300/80 bg-white/72 px-4 py-4 text-slate-950 shadow-[0_12px_28px_rgba(15,23,42,0.08)] backdrop-blur-md"
                         >
                           <div className="flex items-start justify-between gap-3">
-                            <span className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-slate-200 text-[#0f2148]">
+                            <span className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-[#0f2148] text-white">
                               <AppIcon
                                 name={
                                   index % 4 === 0

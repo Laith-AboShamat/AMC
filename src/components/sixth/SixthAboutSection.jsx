@@ -76,16 +76,16 @@ export function SixthAboutSection({ locale = 'en' }) {
                 <div className="grid gap-4 p-5 sm:p-6 lg:grid-cols-2">
                   <div className="relative overflow-hidden rounded-[1.5rem] bg-white p-5 shadow-[0_14px_30px_rgba(15,23,42,0.04)]">
                     <div className="pointer-events-none absolute inset-0 flex items-center justify-center" aria-hidden="true">
-                      <AppIcon name="RocketLaunchIcon" size={132} className="text-[#2d6cdf]/[0.08]" strokeWidth={1.4} />
+                      <AppIcon name="RocketLaunchIcon" size={132} className="text-[#2d6cdf]/[0.16]" strokeWidth={1.4} />
                     </div>
-                    <div className="relative z-10 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-500">{copy.visionTitle}</div>
+                    <div className="relative z-10 text-base font-extrabold uppercase tracking-[0.14em] text-slate-700 sm:text-lg">{copy.visionTitle}</div>
                     <p className="relative z-10 mt-3 text-sm leading-7 text-black">{copy.visionText}</p>
                   </div>
                   <div className="relative overflow-hidden rounded-[1.5rem] bg-[#081a42] p-5 text-white shadow-[0_18px_36px_rgba(8,26,66,0.18)]">
                     <div className="pointer-events-none absolute inset-0 flex items-center justify-center" aria-hidden="true">
-                      <AppIcon name="ClipboardDocumentCheckIcon" size={132} className="text-white/[0.08]" strokeWidth={1.4} />
+                      <AppIcon name="ClipboardDocumentCheckIcon" size={132} className="text-white/[0.16]" strokeWidth={1.4} />
                     </div>
-                    <div className="relative z-10 text-[11px] font-bold uppercase tracking-[0.2em] text-white/60">{copy.missionTitle}</div>
+                    <div className="relative z-10 text-base font-extrabold uppercase tracking-[0.14em] text-white/90 sm:text-lg">{copy.missionTitle}</div>
                     <p className="relative z-10 mt-3 text-sm leading-7 text-white/78">{copy.missionText}</p>
                   </div>
                 </div>

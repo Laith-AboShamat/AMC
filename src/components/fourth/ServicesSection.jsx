@@ -294,7 +294,6 @@ export function FourthServicesSection({ locale = 'en' }) {
                 <div className="advisory-service-modal-content relative z-10 p-6 sm:p-8 lg:p-10">
                   <div className={`flex items-start justify-between gap-4 ${isRtl ? 'flex-row-reverse' : ''}`}>
                     <div className={`${isRtl ? 'text-right' : 'text-left'}`}>
-                      <span className="advisory-section-label block mb-3">{copy.modalEyebrow}</span>
                       <div className={`inline-flex items-center rounded-full px-3 py-1.5 text-xs font-semibold ${isDarkVariant ? 'advisory-service-dark-metric' : 'bg-[var(--gold-pale)] text-[var(--navy)]'}`}>
                         {activeService.metric}
                       </div>

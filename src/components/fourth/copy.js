@@ -108,7 +108,7 @@ export const advisoryCopy = {
           title: 'Enterprise Excellence (Operational & Managerial)',
           description:
             'We do not just improve operations, we eliminate the problems holding your organization back. By restructuring how your organization works across management and operations, we remove inefficiencies, reduce waste, and bring discipline to execution. The result is higher efficiency, stronger internal control, and improved profitability, where operations are no longer a source of problems, but a driver of performance.',
-          metric: 'Operational & Managerial',
+          metric: 'Enterprise Excellence',
           unlocks: ['Institutional Excellence', 'High efficiency', 'Waste elimination'],
           image: 'https://img.rocket.new/generatedImages/rocket_gen_img_1d0d71722-1772160480561.png',
           imageAlt: 'Business team reviewing strategy charts in a bright conference room',
@@ -121,15 +121,16 @@ export const advisoryCopy = {
           rowSpan: 'lg:row-span-2',
           dark: true,
           icon: 'ClipboardDocumentCheckIcon',
-          tag: 'Auditing',
+          tag: 'Management Systems',
           title: 'Management Systems Adoption & Auditing (1st & 2nd Party)',
           description:
             'Management systems should not exist for certification, they should exist to make your organization perform better. We embed management systems into the core of your operations, ensuring they actively drive control, consistency, and improvement. Through internal audits, supplier evaluations, and risk-based assessments, we identify gaps and unlock real opportunities for performance improvement. Because the true value of a system is not in passing audits, but in how it elevates your organization every day.',
-          metric: '1st & 2nd Party Audits',
+          metric: 'Management Systems',
+          unlocks: ['Robust institutional system', 'Certification readiness'],
           image: managementSystemsAuditingImage,
           imageAlt: 'Business leaders reviewing governance and audit documentation',
           imageClassName: 'object-cover object-center',
-          cta: 'Audit Services',
+          cta: 'Management Systems Services',
         },
         {
           id: 'training',
@@ -157,7 +158,7 @@ export const advisoryCopy = {
           title: 'Regulatory & Pharmaceutical Services',
           description:
             'In regulated industries, mistakes are costly, and delays are even more. We ensure your regulatory and pharmaceutical processes are handled with precision, reducing errors, shortening timelines, and securing full compliance from the start. Our structured approach allows you to move faster, with fewer risks and greater confidence in every step.',
-          metric: 'Regulatory Compliance',
+          metric: 'Regulatory Compliance & Registration',
           image: regulatoryServicesImage,
           imageAlt: 'Regulated operations environment representing precision and controlled execution',
           imageClassName: 'object-cover object-center',

@@ -103,10 +103,6 @@ export function FifthServicesSection({ locale = 'en' }) {
                   <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,23,42,0.04)_0%,rgba(15,23,42,0.44)_100%)]" />
 
                   <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
-                    <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/12 px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-white backdrop-blur-md">
-                      <span className="inline-flex h-2 w-2 rounded-full bg-[#7db1ff]" />
-                      {copy.modalEyebrow}
-                    </div>
                     <h3 className="mt-4 max-w-[14ch] text-3xl font-extrabold leading-[1.02] text-white sm:text-4xl">{activeService.title}</h3>
                   </div>
                 </div>

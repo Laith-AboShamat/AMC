@@ -271,7 +271,7 @@ function buildInquiryHtml(inquiry) {
     label: 'New Website Inquiry',
     title: 'New inquiry received',
     intro: 'A new message has been sent from the AMC portfolio inquiry form and is ready for your review.',
-    summary: `Source: ${inquiry.source || 'website'} · Language: ${inquiry.locale || 'en'}`,
+    summary: `Language: ${inquiry.locale || 'en'}`,
     highlightTitle: 'Priority Focus',
     highlightText: `${inquiry.company} · ${inquiry.service}`,
     rows: [
@@ -323,7 +323,6 @@ function buildInquiryText(inquiry) {
     `Role: ${inquiry.role || 'Not provided'}`,
     `Service: ${inquiry.service}`,
     `Language: ${inquiry.locale}`,
-    `Source: ${inquiry.source}`,
     '',
     'Message:',
     inquiry.message,
@@ -372,7 +371,6 @@ app.post('/api/inquiry', async (req, res) => {
     service: String(payload.service || '').trim(),
     message: String(payload.message || '').trim(),
     locale: String(payload.locale || 'en').trim(),
-    source: String(payload.source || 'website').trim(),
   }
 
   if (!inquiry.name || !inquiry.email || !inquiry.company || !inquiry.service || !inquiry.message) {
