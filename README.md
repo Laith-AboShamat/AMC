@@ -19,7 +19,7 @@ If you are developing a production application, we recommend using TypeScript wi
 
 The newest inquiry form sends messages through a backend SMTP API.
 
-1. Copy `.env.example` to `.env` (already created in local workspace) and set `MAIL_PASSWORD` to the real mailbox password.
+1. Copy `.env.example` to `.env` (already created in local workspace) and fill in the SMTP settings.
 2. Start both frontend and SMTP API together:
 
 ```bash
@@ -35,12 +35,11 @@ npm run server
 ```bash
 npm run dev
 ```
-3. Submit the inquiry form from `/design/sixth` (or `/design/fifth`). The email is sent to `INQUIRY_MAIL_TO`.
+3. Submit the inquiry form from `/design/sixth` (or `/design/fifth`). The server sends the inquiry to `INQUIRY_MAIL_TO` and also sends a branded confirmation email back to the sender.
 
 ### Relevant Environment Variables
 
-- `MAIL_USERNAME`, `MAIL_PASSWORD`
-- `MAIL_OUTGOING_HOST`, `MAIL_SMTP_PORT`, `MAIL_SMTP_SECURE`
-- `MAIL_INCOMING_HOST`, `MAIL_IMAP_PORT`, `MAIL_POP3_PORT`
+- `Email_Smtp_Host`, `Email_Smtp_Port`, `Email_Smtp_UseSsl`
+- `Email__Smtp__UserName`, `Email_Smtp_Password`
 - `INQUIRY_MAIL_TO`, `INQUIRY_MAIL_FROM`, `INQUIRY_MAIL_FROM_NAME`
 - `VITE_INQUIRY_API_URL` (optional if using local Vite `/api` proxy)
