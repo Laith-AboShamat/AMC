@@ -4,13 +4,14 @@ import cors from 'cors'
 import dotenv from 'dotenv'
 import express from 'express'
 import nodemailer from 'nodemailer'
+import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 dotenv.config()
 
 const app = express()
-const port = Number(process.env.INQUIRY_API_PORT || 8787)
+const port = Number(process.env.PORT || process.env.INQUIRY_API_PORT || 8787)
 
 function getEnv(...names) {
   for (const name of names) {
@@ -93,9 +94,16 @@ const allowedOrigins = (process.env.INQUIRY_ALLOWED_ORIGINS || 'http://localhost
 
 const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const defaultLogoPath = path.join(rootDir, 'public', 'amc1.png')
+const distDir = path.join(rootDir, 'dist')
+const distIndexPath = path.join(distDir, 'index.html')
+const canServeStatic = fs.existsSync(distIndexPath)
 
 app.use(cors({ origin: allowedOrigins }))
 app.use(express.json({ limit: '1mb' }))
+
+if (canServeStatic) {
+  app.use(express.static(distDir))
+}
 
 function escapeHtml(value = '') {
   return String(value)
@@ -432,6 +440,13 @@ app.post('/api/inquiry', async (req, res) => {
 app.get('/api/health', (_req, res) => {
   res.status(200).json({ ok: true })
 })
+
+if (canServeStatic) {
+  // Keep API routes on /api and return the SPA shell for all other routes.
+  app.get(/^(?!\/api).*/, (_req, res) => {
+    res.sendFile(distIndexPath)
+  })
+}
 
 app.listen(port, () => {
   console.log(`Inquiry API listening on port ${port}`)
