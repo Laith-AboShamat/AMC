@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion'
+import { useEffect, useId, useMemo, useRef, useState } from 'react'
+import { motion, useInView, useReducedMotion } from 'framer-motion'
 
 const MotionPath = motion.path
 
@@ -30,9 +31,54 @@ const animations = pathData.map((_, index) => ({
   delay: index * 0.15,
 }))
 
+function getBeamProfile() {
+  if (typeof window === 'undefined') {
+    return { step: 1, opacity: 0.72, repeatDelay: 0 }
+  }
+
+  const cores = navigator.hardwareConcurrency ?? 4
+  const memory = navigator.deviceMemory ?? 4
+  const connection = navigator.connection
+  const isConstrainedConnection = Boolean(connection?.saveData) || /2g/.test(connection?.effectiveType ?? '')
+
+  if (isConstrainedConnection || cores <= 4 || memory <= 4) {
+    return { step: 3, opacity: 0.48, repeatDelay: 0.5 }
+  }
+
+  if (cores <= 8 || memory <= 8) {
+    return { step: 2, opacity: 0.6, repeatDelay: 0.2 }
+  }
+
+  return { step: 1, opacity: 0.72, repeatDelay: 0 }
+}
+
 export function FifthHeroBeams({ className = '' }) {
+  const containerRef = useRef(null)
+  const gradientPrefix = useId().replace(/:/g, '')
+  const prefersReducedMotion = useReducedMotion()
+  const isInView = useInView(containerRef, { margin: '200px 0px 200px 0px', amount: 0.15 })
+  const [beamProfile, setBeamProfile] = useState(() => getBeamProfile())
+
+  useEffect(() => {
+    setBeamProfile(getBeamProfile())
+  }, [])
+
+  const animatedBeamIndexes = useMemo(() => {
+    if (prefersReducedMotion || !isInView) {
+      return []
+    }
+
+    return pathData.reduce((indexes, _, index) => {
+      if (index % beamProfile.step === 0) {
+        indexes.push(index)
+      }
+
+      return indexes
+    }, [])
+  }, [beamProfile.step, isInView, prefersReducedMotion])
+
   return (
-    <div className={`pointer-events-none absolute inset-0 overflow-hidden ${className}`.trim()} aria-hidden="true">
+    <div ref={containerRef} className={`pointer-events-none absolute inset-0 overflow-hidden ${className}`.trim()} aria-hidden="true">
       <svg
         className="absolute inset-0 h-full w-full"
         fill="none"
@@ -46,22 +92,23 @@ export function FifthHeroBeams({ className = '' }) {
           ))}
         </g>
 
-        {pathData.map((path, index) => (
+        {animatedBeamIndexes.map((index) => (
           <MotionPath
             key={`beam-${index}`}
-            d={path}
-            stroke={`url(#fifth-hero-beam-${index})`}
+            d={pathData[index]}
+            stroke={`url(#${gradientPrefix}-fifth-hero-beam-${index})`}
             strokeWidth="1.4"
             strokeLinecap="round"
             initial={{ pathLength: 0, opacity: 0 }}
             animate={{
               pathLength: [0, 1],
-              opacity: [0, 0.72, 0.6, 0],
+              opacity: [0, beamProfile.opacity, Math.max(beamProfile.opacity - 0.12, 0.2), 0],
             }}
             transition={{
               duration: animations[index].duration,
               delay: animations[index].delay,
               repeat: Number.POSITIVE_INFINITY,
+              repeatDelay: beamProfile.repeatDelay,
               ease: 'easeInOut',
             }}
           />
@@ -71,7 +118,7 @@ export function FifthHeroBeams({ className = '' }) {
           {pathData.map((_, index) => (
             <linearGradient
               key={`gradient-${index}`}
-              id={`fifth-hero-beam-${index}`}
+              id={`${gradientPrefix}-fifth-hero-beam-${index}`}
               x1="0%"
               y1="0%"
               x2="100%"

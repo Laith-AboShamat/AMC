@@ -29,6 +29,7 @@ export function SixthHeader({ content, locale }) {
   const [openPreview, setOpenPreview] = useState(null)
   const [panelTop, setPanelTop] = useState(88)
   const headerRef = useRef(null)
+  const scrollFrameRef = useRef(0)
   const copy = getAdvisoryCopy(locale)
   const isRtl = locale === 'ar'
 
@@ -112,15 +113,13 @@ export function SixthHeader({ content, locale }) {
         return
       }
 
-      setPanelTop(headerRef.current.getBoundingClientRect().bottom)
+      const nextPanelTop = headerRef.current.getBoundingClientRect().bottom
+
+      setPanelTop((current) => (Math.abs(current - nextPanelTop) > 1 ? nextPanelTop : current))
     }
 
-    updatePanelTop()
-
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 18)
-      updatePanelTop()
-
+    const syncHeaderState = () => {
+      const nextScrolled = window.scrollY > 18
       const scrollMarker = window.scrollY + 160
       let nextActiveSection = 'hero'
 
@@ -131,18 +130,47 @@ export function SixthHeader({ content, locale }) {
         }
       })
 
-      setActiveSection(nextActiveSection)
+      setScrolled((current) => (current === nextScrolled ? current : nextScrolled))
+      setActiveSection((current) => (current === nextActiveSection ? current : nextActiveSection))
     }
 
+    const handleScroll = () => {
+      if (scrollFrameRef.current) {
+        return
+      }
+
+      scrollFrameRef.current = window.requestAnimationFrame(() => {
+        scrollFrameRef.current = 0
+        syncHeaderState()
+      })
+    }
+
+    updatePanelTop()
+    syncHeaderState()
     handleScroll()
     window.addEventListener('scroll', handleScroll, { passive: true })
-    window.addEventListener('resize', handleScroll)
+    window.addEventListener('resize', syncHeaderState)
+    window.addEventListener('resize', updatePanelTop)
 
     return () => {
+      if (scrollFrameRef.current) {
+        window.cancelAnimationFrame(scrollFrameRef.current)
+      }
+
       window.removeEventListener('scroll', handleScroll)
-      window.removeEventListener('resize', handleScroll)
+      window.removeEventListener('resize', syncHeaderState)
+      window.removeEventListener('resize', updatePanelTop)
     }
   }, [])
+
+  useEffect(() => {
+    if (!headerRef.current) {
+      return
+    }
+
+    const nextPanelTop = headerRef.current.getBoundingClientRect().bottom
+    setPanelTop((current) => (Math.abs(current - nextPanelTop) > 1 ? nextPanelTop : current))
+  }, [menuOpen, openPreview])
 
   useEffect(() => {
     const handlePointerDown = (event) => {
