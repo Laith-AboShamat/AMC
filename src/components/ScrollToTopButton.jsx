@@ -1,9 +1,11 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { ArrowUp } from 'lucide-react'
 
 export function ScrollToTopButton({ locale = 'en', offset = 0, label }) {
   const [visible, setVisible] = useState(false)
   const [lightStyle, setLightStyle] = useState(false)
+  const buttonRef = useRef(null)
+  const frameRef = useRef(0)
   const isRtl = locale === 'ar'
 
   useEffect(() => {
@@ -26,7 +28,9 @@ export function ScrollToTopButton({ locale = 'en', offset = 0, label }) {
     const hasNavyBehindButton = () => {
       const x = isRtl ? 30 : window.innerWidth - 30
       const y = window.innerHeight - (30 + offset)
-      let element = document.elementFromPoint(x, y)
+
+      const candidates = document.elementsFromPoint(x, y)
+      let element = candidates.find((node) => (buttonRef.current ? !buttonRef.current.contains(node) : true))
 
       const sectionNode = element?.closest?.('#results, footer')
       if (sectionNode) {
@@ -47,8 +51,16 @@ export function ScrollToTopButton({ locale = 'en', offset = 0, label }) {
     }
 
     const updateButtonState = () => {
-      setVisible(window.scrollY > window.innerHeight * 0.5)
-      setLightStyle(hasNavyBehindButton())
+      if (frameRef.current) {
+        return
+      }
+
+      frameRef.current = window.requestAnimationFrame(() => {
+        frameRef.current = 0
+        const nextVisible = window.scrollY > window.innerHeight * 0.5
+        setVisible(nextVisible)
+        setLightStyle(nextVisible ? hasNavyBehindButton() : false)
+      })
     }
 
     updateButtonState()
@@ -56,6 +68,10 @@ export function ScrollToTopButton({ locale = 'en', offset = 0, label }) {
     window.addEventListener('resize', updateButtonState)
 
     return () => {
+      if (frameRef.current) {
+        window.cancelAnimationFrame(frameRef.current)
+        frameRef.current = 0
+      }
       window.removeEventListener('scroll', updateButtonState)
       window.removeEventListener('resize', updateButtonState)
     }
@@ -63,6 +79,7 @@ export function ScrollToTopButton({ locale = 'en', offset = 0, label }) {
 
   return (
     <button
+      ref={buttonRef}
       type="button"
       aria-label={label}
       title={label}

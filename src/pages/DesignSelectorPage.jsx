@@ -181,7 +181,6 @@ function PreviewPanel({ design, index, openLabel }) {
           <>
             <div className="rounded-[1.3rem] bg-[linear-gradient(180deg,#04112f_0%,#0a2a66_100%)] p-5 text-white">
               <div className="inline-flex rounded-full border border-white/12 bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-white/84">
-                Sectioned enterprise
               </div>
               <div className="mt-4 h-3 w-3/4 rounded-full bg-white/85" />
               <div className="mt-2 h-2 w-2/3 rounded-full bg-white/30" />

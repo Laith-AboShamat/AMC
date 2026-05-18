@@ -17,8 +17,16 @@ const STORAGE_KEYS = {
   locale: 'amc-locale',
 }
 
+function isSixthRoutePathname(pathname) {
+  return pathname === '/' || pathname === '/design/sixth'
+}
+
 function getInitialLocale() {
   if (typeof window === 'undefined') {
+    return 'en'
+  }
+
+  if (isSixthRoutePathname(window.location?.pathname)) {
     return 'en'
   }
 
@@ -31,32 +39,42 @@ function getInitialLocale() {
 }
 
 const routeTitles = {
-  '/': (content) => `${content.brand.name} | ${content.selector.designs[5]?.title ?? 'Sixth Design'}`,
+  '/': (content) => content.brand.name,
   '/design/editorial': (content) => `${content.brand.name} | ${content.selector.designs[0].title}`,
   '/design/mantine': (content) => `${content.brand.name} | ${content.selector.designs[1].title}`,
   '/design/executive': (content) => `${content.brand.name} | ${content.selector.designs[2].title}`,
   '/design/advisory': (content) => `${content.brand.name} | ${content.selector.designs[3].title}`,
   '/design/fifth': (content) => `${content.brand.name} | ${content.selector.designs[4].title}`,
-  '/design/sixth': (content) => `${content.brand.name} | ${content.selector.designs[5]?.title ?? 'Sixth Design'}`,
+  '/design/sixth': (content) => content.brand.name,
 }
 
 function App() {
   const [locale, setLocale] = useState(getInitialLocale)
   const location = useLocation()
+  const isSixthRoute = isSixthRoutePathname(location.pathname)
+  const effectiveLocale = isSixthRoute ? 'en' : locale
 
-  const content = useMemo(() => translations[locale] ?? translations.en, [locale])
-  const direction = locale === 'ar' ? 'rtl' : 'ltr'
+  useEffect(() => {
+    if (isSixthRoute && locale !== 'en') {
+      setLocale('en')
+    }
+  }, [isSixthRoute, locale])
+
+  const content = useMemo(() => translations[effectiveLocale] ?? translations.en, [effectiveLocale])
+  const direction = effectiveLocale === 'ar' ? 'rtl' : 'ltr'
   const isDarkRoute = darkRoutes.has(location.pathname)
   const showGlobalScrollTop = location.pathname !== '/design/advisory'
 
   useEffect(() => {
     const root = document.documentElement
-    root.lang = locale
+    root.lang = effectiveLocale
     root.dir = direction
     root.setAttribute('data-theme', isDarkRoute ? 'amcDark' : 'amc')
     root.style.colorScheme = isDarkRoute ? 'dark' : 'light'
 
-    window.localStorage.setItem(STORAGE_KEYS.locale, locale)
+    if (!isSixthRoute) {
+      window.localStorage.setItem(STORAGE_KEYS.locale, locale)
+    }
 
     const metaDescription = document.querySelector('meta[name="description"]')
     if (metaDescription) {
@@ -65,7 +83,7 @@ function App() {
 
     const resolveTitle = routeTitles[location.pathname]
     document.title = resolveTitle ? resolveTitle(content) : content.meta.title
-  }, [content, direction, isDarkRoute, locale, location.pathname])
+  }, [content, direction, effectiveLocale, isDarkRoute, isSixthRoute, locale, location.pathname])
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
@@ -86,7 +104,7 @@ function App() {
               element={(
                 <SixthPortfolio
                   content={content}
-                  locale={locale}
+                  locale={effectiveLocale}
                   onLocaleChange={setLocale}
                 />
               )}
@@ -96,7 +114,7 @@ function App() {
               element={(
                 <EditorialPortfolio
                   content={content}
-                  locale={locale}
+                  locale={effectiveLocale}
                   onLocaleChange={setLocale}
                   direction={direction}
                 />
@@ -107,7 +125,7 @@ function App() {
               element={(
                 <MantinePortfolio
                   content={content}
-                  locale={locale}
+                  locale={effectiveLocale}
                   onLocaleChange={setLocale}
                 />
               )}
@@ -117,7 +135,7 @@ function App() {
               element={(
                 <AntdPortfolio
                   content={content}
-                  locale={locale}
+                  locale={effectiveLocale}
                   onLocaleChange={setLocale}
                 />
               )}
@@ -127,7 +145,7 @@ function App() {
               element={(
                 <AdvisoryPortfolio
                   content={content}
-                  locale={locale}
+                  locale={effectiveLocale}
                   onLocaleChange={setLocale}
                 />
               )}
@@ -137,7 +155,7 @@ function App() {
               element={(
                 <FifthPortfolio
                   content={content}
-                  locale={locale}
+                  locale={effectiveLocale}
                   onLocaleChange={setLocale}
                 />
               )}
@@ -152,8 +170,8 @@ function App() {
 
         {showGlobalScrollTop ? (
           <ScrollToTopButton
-            locale={locale}
-            label={locale === 'ar' ? 'العودة إلى الأعلى' : 'Back to top'}
+            locale={effectiveLocale}
+            label={effectiveLocale === 'ar' ? 'العودة إلى الأعلى' : 'Back to top'}
           />
         ) : null}
       </div>
