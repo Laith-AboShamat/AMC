@@ -3,7 +3,7 @@ export const translations = {
     meta: {
       title: 'AMC | Operational Excellence Consultant',
       description:
-        'AMC portfolio website focused on operational excellence, quality management, organizational systems, and sustainable process improvement.',
+        'AMC is a premium operational excellence and business transformation firm that helps organizations improve operational performance, reduce inefficiencies, strengthen institutional systems, and achieve scalable growth through customized, measurable, and implementation-oriented solutions.',
     },
     brand: {
       name: 'AMC',
@@ -312,7 +312,7 @@ export const translations = {
     meta: {
       title: 'AMC | استشارات التميز التشغيلي',
       description:
-        'موقع AMC للتعريف بخدمات التميز التشغيلي وإدارة الجودة والأنظمة المؤسسية والتحسين المستدام للعمليات.',
+        'AMC شركة رائدة في التميز التشغيلي والتحول المؤسسي، تساعد المؤسسات على رفع الأداء التشغيلي وتقليل الهدر وتعزيز الأنظمة المؤسسية وتحقيق نمو قابل للتوسع عبر حلول مخصصة وقابلة للقياس ومرتكزة على التنفيذ.',
     },
     brand: {
       name: 'AMC',

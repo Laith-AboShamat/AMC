@@ -44,6 +44,17 @@ a {
   min-height: 100vh;
 }
 
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
 .app-shell {
   color: #191c1e;
 }

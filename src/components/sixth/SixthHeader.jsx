@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import { ArrowRight, ChevronDown, Menu, X } from 'lucide-react'
 import { AppIcon } from '../fourth/AppIcon.jsx'
@@ -6,6 +7,7 @@ import { getAdvisoryCopy } from '../fourth/copy.js'
 
 const sectionIds = ['hero', 'services', 'about', 'results', 'contact']
 const MotionDiv = motion.div
+const MotionButton = motion.button
 
 function toBriefText(text, maxLength = 108) {
   if (!text) {
@@ -120,18 +122,8 @@ export function SixthHeader({ content, locale }) {
 
     const syncHeaderState = () => {
       const nextScrolled = window.scrollY > 18
-      const scrollMarker = window.scrollY + 160
-      let nextActiveSection = 'hero'
-
-      sectionIds.forEach((id) => {
-        const element = document.getElementById(id)
-        if (element && scrollMarker >= element.offsetTop) {
-          nextActiveSection = id
-        }
-      })
 
       setScrolled((current) => (current === nextScrolled ? current : nextScrolled))
-      setActiveSection((current) => (current === nextActiveSection ? current : nextActiveSection))
     }
 
     const handleScroll = () => {
@@ -164,6 +156,79 @@ export function SixthHeader({ content, locale }) {
   }, [])
 
   useEffect(() => {
+    let observer = null
+
+    const updateActiveSectionFallback = () => {
+      const headerHeight = headerRef.current?.offsetHeight ?? 88
+      const scrollMarker = window.scrollY + headerHeight + 24
+      let nextActiveSection = 'hero'
+
+      sectionIds.forEach((id) => {
+        const element = document.getElementById(id)
+        if (!element) {
+          return
+        }
+
+        const absoluteTop = element.getBoundingClientRect().top + window.scrollY
+        if (scrollMarker >= absoluteTop) {
+          nextActiveSection = id
+        }
+      })
+
+      setActiveSection((current) => (current === nextActiveSection ? current : nextActiveSection))
+    }
+
+    const connectObserver = () => {
+      if (observer) {
+        observer.disconnect()
+      }
+
+      const headerHeight = headerRef.current?.offsetHeight ?? 88
+      observer = new IntersectionObserver(
+        (entries) => {
+          const visibleEntries = entries
+            .filter((entry) => entry.isIntersecting)
+            .sort((a, b) => b.intersectionRatio - a.intersectionRatio)
+
+          if (visibleEntries.length > 0) {
+            const nextId = visibleEntries[0].target.id
+            setActiveSection((current) => (current === nextId ? current : nextId))
+            return
+          }
+
+          updateActiveSectionFallback()
+        },
+        {
+          root: null,
+          rootMargin: `-${headerHeight + 8}px 0px -55% 0px`,
+          threshold: [0.05, 0.2, 0.4, 0.6],
+        },
+      )
+
+      sectionIds.forEach((id) => {
+        const element = document.getElementById(id)
+        if (element) {
+          observer.observe(element)
+        }
+      })
+
+      updateActiveSectionFallback()
+    }
+
+    connectObserver()
+    window.addEventListener('resize', connectObserver)
+    window.addEventListener('scroll', updateActiveSectionFallback, { passive: true })
+
+    return () => {
+      if (observer) {
+        observer.disconnect()
+      }
+      window.removeEventListener('resize', connectObserver)
+      window.removeEventListener('scroll', updateActiveSectionFallback)
+    }
+  }, [])
+
+  useEffect(() => {
     if (!headerRef.current) {
       return
     }
@@ -185,6 +250,19 @@ export function SixthHeader({ content, locale }) {
       document.removeEventListener('mousedown', handlePointerDown)
     }
   }, [])
+
+  useEffect(() => {
+    if (!menuOpen) {
+      return undefined
+    }
+
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+
+    return () => {
+      document.body.style.overflow = previousOverflow
+    }
+  }, [menuOpen])
 
   const handleNavClick = (id) => {
     setMenuOpen(false)
@@ -268,52 +346,112 @@ export function SixthHeader({ content, locale }) {
           {menuOpen ? <X size={18} /> : <Menu size={18} />}
         </button>
 
-        {menuOpen ? (
-          <div className="flex basis-full flex-col gap-3 rounded-[1.5rem] border border-white/12 bg-[#0b1d49]/94 p-4 text-white shadow-[0_18px_45px_rgba(0,0,0,0.18)] backdrop-blur-xl lg:hidden">
-            {navItems.map((item) => {
-              const isOpen = openPreview === item.id
+        {menuOpen && typeof document !== 'undefined'
+          ? createPortal(
+            <div className="fixed inset-0 z-[120] lg:hidden">
+              <button
+                type="button"
+                aria-label={content.controls.closeMenu}
+                onClick={() => {
+                  setMenuOpen(false)
+                  setOpenPreview(null)
+                }}
+                className="absolute inset-0 bg-[#020d26]/70 backdrop-blur-[2px]"
+              />
 
-              return (
-                <div key={item.id} className="rounded-[1.25rem] border border-white/8 bg-white/6 p-3">
-                  <button
-                    type="button"
-                    onClick={() => setOpenPreview((current) => (current === item.id ? null : item.id))}
-                    className={`flex min-h-[44px] w-full items-center justify-between gap-3 text-left text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 ${
-                      activeSection === item.id ? 'text-white' : 'text-white/82'
-                    } ${isRtl ? 'flex-row-reverse text-right' : ''}`}
-                  >
-                    <span>{item.label}</span>
-                    <ChevronDown size={15} className={`transition ${isOpen ? 'rotate-180' : ''}`} />
-                  </button>
+              <MotionDiv
+                initial={{ x: isRtl ? '-100%' : '100%', opacity: 0.98 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ x: isRtl ? '-100%' : '100%', opacity: 0.98 }}
+                transition={{ duration: 0.34, ease: [0.22, 1, 0.36, 1] }}
+                className={`hide-scrollbar absolute top-0 h-full w-[min(92vw,420px)] overflow-y-auto border-white/14 bg-[linear-gradient(180deg,#03163d_0%,#061f52_58%,#0a2b69_100%)] p-4 pb-6 shadow-[0_30px_70px_rgba(0,0,0,0.45)] ${
+                  isRtl
+                    ? 'left-0 rounded-r-[2rem] border-r'
+                    : 'right-0 rounded-l-[2rem] border-l'
+                }`}
+              >
+              <div className={`mb-4 flex items-center justify-between gap-3 ${isRtl ? 'flex-row-reverse' : ''}`}>
+                <div>
+                  <div className="text-[11px] font-bold uppercase tracking-[0.2em] text-white/66">{content.brand.name}</div>
+                  <div className="mt-1 text-[1.45rem] font-bold leading-none text-white">{isRtl ? 'القائمة' : 'Main Menu'}</div>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setMenuOpen(false)
+                    setOpenPreview(null)
+                  }}
+                  aria-label={content.controls.closeMenu}
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white"
+                >
+                  <X size={16} />
+                </button>
+              </div>
 
-                  {isOpen ? (
-                    <div className={`mt-3 border-t border-slate-300/70 pt-3 ${isRtl ? 'text-right' : 'text-left'}`}>
-                      <div className="text-lg font-bold text-slate-950">{item.title}</div>
-                      <p className="mt-2 text-sm leading-7 text-black">{item.description}</p>
-                      <button
+              <div className="rounded-[1.4rem] border border-white/14 bg-white/[0.06] p-3 text-white shadow-[0_16px_36px_rgba(2,12,32,0.22)] backdrop-blur-md">
+                <button
+                  type="button"
+                  onClick={() => handleNavClick('contact')}
+                  className={`flex w-full items-start justify-between gap-3 rounded-[1.05rem] bg-[#0f2a5f] px-3 py-2.5 text-left transition hover:bg-[#12326f] ${isRtl ? 'flex-row-reverse text-right' : ''}`}
+                >
+                  <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white text-[#0c2452]">
+                    <AppIcon name="EnvelopeIcon" size={16} />
+                  </span>
+                  <span className="flex-1">
+                    <span className="block text-sm font-semibold text-white">{content.header.cta}</span>
+                    <span className="mt-1 block text-[11px] leading-4 text-white/72">{toBriefText(copy.contact.description, 56)}</span>
+                  </span>
+                  <ArrowRight size={16} className={`mt-1 shrink-0 text-white/84 ${isRtl ? 'rotate-180' : ''}`} />
+                </button>
+              </div>
+
+              <div className="mt-3 rounded-[1.4rem] border border-white/14 bg-white/[0.05] p-3 text-white backdrop-blur-md">
+                <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-white/68">{isRtl ? 'وصول سريع' : 'Quick Access'}</div>
+                <div className="mt-2.5 grid grid-cols-2 gap-2">
+                  {navItems.map((item) => {
+                    const iconNameById = {
+                      hero: 'HomeIcon',
+                      services: 'SparklesIcon',
+                      about: 'UserGroupIcon',
+                      results: 'ArrowTrendingUpIcon',
+                      contact: 'EnvelopeIcon',
+                    }
+
+                    const iconName = iconNameById[item.id] ?? 'SparklesIcon'
+
+                    return (
+                      <MotionButton
+                        key={`quick-${item.id}`}
                         type="button"
                         onClick={() => handleNavClick(item.id)}
-                        className="mt-4 inline-flex min-h-[44px] items-center gap-2 rounded-full bg-[#0f2148] px-5 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#162d5c] hover:shadow-[0_18px_34px_rgba(8,26,66,0.24)]"
+                        whileHover={{ y: -2 }}
+                        whileTap={{ scale: 0.98, y: 0 }}
+                        transition={{ duration: 0.18, ease: 'easeOut' }}
+                        className={`rounded-[1rem] border border-white/14 bg-[#081f4a] px-3 py-3 text-sm font-medium text-white transition hover:bg-[#0d2a63] ${
+                          activeSection === item.id ? 'ring-1 ring-[#9fc0ff]/70 shadow-[0_10px_22px_rgba(2,12,32,0.28)]' : ''
+                        } ${isRtl ? 'text-right' : 'text-left'}`}
                       >
-                        {copy.header.previewCta}
-                        <ArrowRight size={15} className={isRtl ? 'rotate-180' : ''} />
-                      </button>
-                    </div>
-                  ) : null}
+                        <span className={`flex items-start justify-between gap-2 ${isRtl ? 'flex-row-reverse' : ''}`}>
+                          <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/10 text-white/92">
+                            <AppIcon name={iconName} size={15} />
+                          </span>
+                          <ArrowRight
+                            size={14}
+                            className={`${activeSection === item.id ? 'opacity-100' : 'opacity-65'} ${isRtl ? 'rotate-180' : ''}`}
+                          />
+                        </span>
+                        <span className="mt-2 block text-[13px] font-semibold">{item.label}</span>
+                        <span className="mt-1 block text-[11px] leading-5 text-white/70">{toBriefText(item.description, 58)}</span>
+                      </MotionButton>
+                    )
+                  })}
                 </div>
-              )
-            })}
-
-            <button
-              type="button"
-              onClick={() => handleNavClick('contact')}
-              className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-2xl border border-white/12 bg-white/10 px-5 py-3 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/14 hover:shadow-[0_18px_34px_rgba(2,12,32,0.22)]"
-            >
-              {content.header.cta}
-              <ArrowRight size={15} className={isRtl ? 'rotate-180' : ''} />
-            </button>
-          </div>
-        ) : null}
+              </div>
+              </MotionDiv>
+            </div>,
+            document.body,
+          )
+          : null}
 
       </div>
 

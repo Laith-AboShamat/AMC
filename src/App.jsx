@@ -48,6 +48,83 @@ const routeTitles = {
   '/design/sixth': (content) => content.brand.name,
 }
 
+const DEFAULT_SEO_KEYWORDS =
+  'AMC, AMCCO, amcco, amcco.ps, operational excellence, operational excellence consulting, business transformation, business transformation consulting, operational performance improvement, process optimization, process improvement, process efficiency consulting, reduce inefficiencies, institutional systems strengthening, institutional development consulting, scalable growth strategy, implementation-oriented consulting, measurable business solutions, organizational performance, performance improvement consulting, continuous improvement consulting, management consulting, operations consulting, strategy and execution consulting'
+
+const DEFAULT_SEO_KEYWORDS_AR =
+  'AMC, التميز التشغيلي, التحول المؤسسي, تحسين الأداء التشغيلي, تقليل الهدر, تطوير العمليات, تعزيز الأنظمة المؤسسية, النمو القابل للتوسع, حلول قابلة للقياس, استشارات تنفيذية'
+
+const ROUTE_SEO = {
+  '/': {
+    title: 'AMC | Premium Operational Excellence & Business Transformation',
+    description:
+      'AMC is a premium operational excellence and business transformation firm that helps organizations improve operational performance, reduce inefficiencies, strengthen institutional systems, and achieve scalable growth through customized, measurable, and implementation-oriented solutions.',
+    keywords: DEFAULT_SEO_KEYWORDS,
+  },
+}
+
+const ROUTE_SEO_AR = {
+  '/': {
+    title: 'AMC | شركة رائدة في التميز التشغيلي والتحول المؤسسي',
+    description:
+      'AMC شركة رائدة في التميز التشغيلي والتحول المؤسسي، تساعد المؤسسات على رفع الأداء التشغيلي وتقليل الهدر وتعزيز الأنظمة المؤسسية وتحقيق نمو قابل للتوسع عبر حلول مخصصة وقابلة للقياس ومرتكزة على التنفيذ.',
+    keywords: DEFAULT_SEO_KEYWORDS_AR,
+  },
+}
+
+function resolveRouteSeo(pathname, locale, content) {
+  if (locale === 'ar') {
+    const arSeo = ROUTE_SEO_AR[pathname] ?? ROUTE_SEO_AR['/']
+    return {
+      title: arSeo?.title ?? content.meta.title,
+      description: arSeo?.description ?? content.meta.description,
+      keywords: arSeo?.keywords ?? DEFAULT_SEO_KEYWORDS_AR,
+    }
+  }
+
+  const seo = ROUTE_SEO[pathname] ?? ROUTE_SEO['/']
+  if (seo) {
+    return seo
+  }
+
+  return {
+    title: content.meta.title,
+    description: content.meta.description,
+    keywords: DEFAULT_SEO_KEYWORDS,
+  }
+}
+
+function upsertMeta(selector, attributeName, attributeValue, content) {
+  let tag = document.querySelector(selector)
+  if (!tag) {
+    tag = document.createElement('meta')
+    tag.setAttribute(attributeName, attributeValue)
+    document.head.appendChild(tag)
+  }
+  tag.setAttribute('content', content)
+}
+
+function upsertCanonical(url) {
+  let canonical = document.querySelector('link[rel="canonical"]')
+  if (!canonical) {
+    canonical = document.createElement('link')
+    canonical.setAttribute('rel', 'canonical')
+    document.head.appendChild(canonical)
+  }
+  canonical.setAttribute('href', url)
+}
+
+function upsertJsonLdScript(scriptId, payload) {
+  let script = document.getElementById(scriptId)
+  if (!script) {
+    script = document.createElement('script')
+    script.id = scriptId
+    script.type = 'application/ld+json'
+    document.head.appendChild(script)
+  }
+  script.textContent = JSON.stringify(payload)
+}
+
 function App() {
   const [locale, setLocale] = useState(getInitialLocale)
   const location = useLocation()
@@ -76,13 +153,52 @@ function App() {
       window.localStorage.setItem(STORAGE_KEYS.locale, locale)
     }
 
+    const routeSeo = resolveRouteSeo(location.pathname, effectiveLocale, content)
+
     const metaDescription = document.querySelector('meta[name="description"]')
     if (metaDescription) {
-      metaDescription.setAttribute('content', content.meta.description)
+      metaDescription.setAttribute('content', routeSeo.description)
     }
 
+    upsertMeta('meta[name="keywords"]', 'name', 'keywords', routeSeo.keywords)
+    upsertMeta(
+      'meta[name="robots"]',
+      'name',
+      'robots',
+      isSixthRoute ? 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1' : 'noindex, nofollow'
+    )
+    upsertMeta('meta[property="og:type"]', 'property', 'og:type', 'website')
+    upsertMeta('meta[property="og:site_name"]', 'property', 'og:site_name', 'AMC')
+    upsertMeta('meta[property="og:description"]', 'property', 'og:description', routeSeo.description)
+    upsertMeta('meta[name="twitter:card"]', 'name', 'twitter:card', 'summary_large_image')
+    upsertMeta('meta[name="twitter:description"]', 'name', 'twitter:description', routeSeo.description)
+
     const resolveTitle = routeTitles[location.pathname]
-    document.title = resolveTitle ? resolveTitle(content) : content.meta.title
+    const title = routeSeo.title ?? (resolveTitle ? resolveTitle(content) : content.meta.title)
+    document.title = title
+
+    upsertMeta('meta[property="og:title"]', 'property', 'og:title', title)
+    upsertMeta('meta[name="twitter:title"]', 'name', 'twitter:title', title)
+
+    const canonicalPath = isSixthRoute ? location.pathname : '/'
+    const canonicalUrl = new URL(canonicalPath, window.location.origin).toString()
+    upsertCanonical(canonicalUrl)
+    upsertMeta('meta[property="og:url"]', 'property', 'og:url', canonicalUrl)
+
+    upsertJsonLdScript('amc-route-seo-schema', {
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      name: title,
+      description: routeSeo.description,
+      url: canonicalUrl,
+      inLanguage: effectiveLocale,
+      keywords: routeSeo.keywords,
+      about: {
+        '@type': 'Organization',
+        name: 'AMC',
+        url: window.location.origin,
+      },
+    })
   }, [content, direction, effectiveLocale, isDarkRoute, isSixthRoute, locale, location.pathname])
 
   useEffect(() => {
