@@ -40,23 +40,23 @@ function getInitialLocale() {
 
 const routeTitles = {
   '/': (content) => content.brand.name,
-  '/design/editorial': (content) => `${content.brand.name} | ${content.selector.designs[0].title}`,
-  '/design/mantine': (content) => `${content.brand.name} | ${content.selector.designs[1].title}`,
-  '/design/executive': (content) => `${content.brand.name} | ${content.selector.designs[2].title}`,
-  '/design/advisory': (content) => `${content.brand.name} | ${content.selector.designs[3].title}`,
-  '/design/fifth': (content) => `${content.brand.name} | ${content.selector.designs[4].title}`,
+  '/design/editorial': (content) => content.brand.name,
+  '/design/mantine': (content) => content.brand.name,
+  '/design/executive': (content) => content.brand.name,
+  '/design/advisory': (content) => content.brand.name,
+  '/design/fifth': (content) => content.brand.name,
   '/design/sixth': (content) => content.brand.name,
 }
 
 const DEFAULT_SEO_KEYWORDS =
-  'AMC, AMCCO, amcco, amcco.ps, operational excellence, operational excellence consulting, business transformation, business transformation consulting, operational performance improvement, process optimization, process improvement, process efficiency consulting, reduce inefficiencies, institutional systems strengthening, institutional development consulting, scalable growth strategy, implementation-oriented consulting, measurable business solutions, organizational performance, performance improvement consulting, continuous improvement consulting, management consulting, operations consulting, strategy and execution consulting'
+  'AMC, amc, AMCCO, amcco, amcco.ps, operational excellence, operational excellence consulting, business transformation, business transformation consulting, operational performance improvement, process optimization, process improvement, process efficiency consulting, reduce inefficiencies, institutional systems strengthening, institutional development consulting, scalable growth strategy, implementation-oriented consulting, measurable business solutions, organizational performance, performance improvement consulting, continuous improvement consulting, management consulting, operations consulting, strategy and execution consulting'
 
 const DEFAULT_SEO_KEYWORDS_AR =
   'AMC, التميز التشغيلي, التحول المؤسسي, تحسين الأداء التشغيلي, تقليل الهدر, تطوير العمليات, تعزيز الأنظمة المؤسسية, النمو القابل للتوسع, حلول قابلة للقياس, استشارات تنفيذية'
 
 const ROUTE_SEO = {
   '/': {
-    title: 'AMC | Premium Operational Excellence & Business Transformation',
+    title: 'AMC',
     description:
       'AMC is a premium operational excellence and business transformation firm that helps organizations improve operational performance, reduce inefficiencies, strengthen institutional systems, and achieve scalable growth through customized, measurable, and implementation-oriented solutions.',
     keywords: DEFAULT_SEO_KEYWORDS,
@@ -168,7 +168,7 @@ function App() {
       isSixthRoute ? 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1' : 'noindex, nofollow'
     )
     upsertMeta('meta[property="og:type"]', 'property', 'og:type', 'website')
-    upsertMeta('meta[property="og:site_name"]', 'property', 'og:site_name', 'AMC')
+    upsertMeta('meta[property="og:site_name"]', 'property', 'og:site_name', 'AMCCO.ps')
     upsertMeta('meta[property="og:description"]', 'property', 'og:description', routeSeo.description)
     upsertMeta('meta[name="twitter:card"]', 'name', 'twitter:card', 'summary_large_image')
     upsertMeta('meta[name="twitter:description"]', 'name', 'twitter:description', routeSeo.description)
@@ -195,7 +195,7 @@ function App() {
       keywords: routeSeo.keywords,
       about: {
         '@type': 'Organization',
-        name: 'AMC',
+        name: 'AMCCO',
         url: window.location.origin,
       },
     })
