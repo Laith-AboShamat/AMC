@@ -1,4 +1,6 @@
 User-agent: *
+Allow: /assets/
+Allow: /favicon.svg
 Allow: /
 
 Sitemap: https://amcco.ps/sitemap.xml

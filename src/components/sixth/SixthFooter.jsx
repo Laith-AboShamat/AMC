@@ -110,7 +110,7 @@ export function SixthFooter({ locale = 'en' }) {
         subscribeSuccess: 'Your email has been received. We will share relevant AMC insights and updates.',
         faq: 'FAQ',
         privacy: 'Privacy Policy',
-        rights: '© 2026 AMC. All rights reserved.',
+        rights: '© 2026 AMCCO (AMC). All rights reserved.',
       }
 
   const dialogContent = useMemo(() => {

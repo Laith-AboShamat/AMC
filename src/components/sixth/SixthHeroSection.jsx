@@ -30,6 +30,7 @@ const item = {
 
 export function SixthHeroSection({ locale = 'en' }) {
   const copy = getAdvisoryCopy(locale).hero
+  const brandPrefix = locale === 'ar' ? 'AMC (AMCCO) ' : 'AMC (AMCCO) '
 
   const scrollToSection = (id) => {
     const element = document.getElementById(id)
@@ -72,6 +73,7 @@ export function SixthHeroSection({ locale = 'en' }) {
             </MotionH1>
 
             <MotionP variants={item} className="mt-6 max-w-2xl text-base leading-8 text-white/76 sm:text-lg">
+              <span className="font-semibold text-white">{brandPrefix}</span>
               {copy.description}
             </MotionP>
 
